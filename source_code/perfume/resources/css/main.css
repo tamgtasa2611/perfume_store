@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+* {
+    font-family: 'Lora', serif;
+}
+
+.search-form {
+    margin-right: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.filter-item {
+
+}
+
+.filter-title {
+    font-weight: bold;
+}
+
+.filter-main {
+}
+
+.hover-pointer {
+    cursor: pointer;
+}
+
+.product-item {
+    background-color: #F2F2F4;
+    border: 1px solid white;
+}
+
+.product-item img {
+    transition: all 300ms ease-in-out;
+}
+
+.product-item img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 300ms ease-in-out;
+}
+
+.expand {
+    overflow: hidden;
+    transition: all 200ms ease-in-out;
+    padding: 0.25rem 0 0 1rem;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.w-80 {
+    width: 80%;
+}
