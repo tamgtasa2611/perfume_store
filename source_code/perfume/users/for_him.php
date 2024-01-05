@@ -15,19 +15,50 @@
 <?php
 require_once '../layouts/navbar.php';
 include '../connect/open.php';
+$search = "";
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+}
+$uri = $_SERVER['REQUEST_URI'];
+$filterPosition = strpos($uri, "?");
+$productFilter = substr($uri, $filterPosition + 1);
+$filterSort = "";
+$filterPrice = "";
+$filterSize = "";
+$filterBrand = "";
+
+//pagination
+$recordOnePage = 6;
+$sqlCountRecord = "SELECT COUNT(*) as count_record FROM products 
+                    WHERE product_name LIKE '%$search%'";
+$countRecords = mysqli_query($connect, $sqlCountRecord);
+foreach ($countRecords as $countRecord) {
+    $records = $countRecord['count_record'];
+}
+$countPage = ceil($records / $recordOnePage);
+$page = 1;
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+}
+$start = ($page - 1) * $recordOnePage;
 ?>
 
-<div class="container-fluid vh-100 py-3 fs-6">
+<div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout fs-6">
     <div class="d-flex justify-content-between">
-        <div class="w-100 text-uppercase text-center fs-4 fw-bold">Male perfumes</div>
+        <div class="w-100 text-uppercase text-center fs-4 fw-bold">Male Perfumes</div>
     </div>
     <hr>
     <div class="d-flex">
         <div class="w-20 pe-3">
+            <div>
+                <div>Filter</div>
+            </div>
+            <hr>
             <form action="" method="get">
+                <input type="hidden" name="search" value="<?= $search ?>" class="d-none" readonly>
                 <div class="w-100 filter-item">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
+                        <div class="d-flex justify-content-between align-items-center h-pointer filter-main"
                              data-bs-toggle="collapse" data-bs-target="#sort" aria-expanded="false"
                              aria-controls="sort">
                             <div class="filter-title">Sort by</div>
@@ -38,26 +69,26 @@ include '../connect/open.php';
                         <div class="collapse collapsing expand" id="sort">
                             <div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="re" value=""
+                                    <input class="form-check-input" type="radio" name="sort" id="re" value="0"
                                            checked>
                                     <label class="form-check-label" for="re">
                                         Recommended
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="ne" value="">
+                                    <input class="form-check-input" type="radio" name="sort" id="ne" value="1">
                                     <label class="form-check-label" for="ne">
                                         Newest
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="lo" value="">
+                                    <input class="form-check-input" type="radio" name="sort" id="lo" value="2">
                                     <label class="form-check-label" for="lo">
                                         Price: Low to High
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="hi" value="">
+                                    <input class="form-check-input" type="radio" name="sort" id="hi" value="3">
                                     <label class="form-check-label" for="hi">
                                         Price: High to Low
                                     </label>
@@ -85,10 +116,11 @@ include '../connect/open.php';
                                 foreach ($genders as $gender) {
                                     ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="gender" id="g<?=$gender['id']?>" value="<?=$gender['id']?>"
+                                        <input class="form-check-input" type="checkbox" name="gender"
+                                               id="g<?= $gender['id'] ?>" value="<?= $gender['id'] ?>"
                                         >
-                                        <label class="form-check-label" for="g<?=$gender['id']?>">
-                                            <?=$gender['gender_name']?>
+                                        <label class="form-check-label" for="g<?= $gender['id'] ?>">
+                                            <?= $gender['gender_name'] ?>
                                         </label>
                                     </div>
                                     <?php
@@ -117,10 +149,11 @@ include '../connect/open.php';
                                 foreach ($brands as $brand) {
                                     ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="brand" id="br<?=$brand['id']?>" value="<?=$brand['id']?>"
+                                        <input class="form-check-input" type="checkbox" name="brand"
+                                               id="br<?= $brand['id'] ?>" value="<?= $brand['id'] ?>"
                                         >
-                                        <label class="form-check-label" for="br<?=$brand['id']?>">
-                                            <?=$brand['brand_name']?>
+                                        <label class="form-check-label" for="br<?= $brand['id'] ?>">
+                                            <?= $brand['brand_name'] ?>
                                         </label>
                                     </div>
                                     <?php
@@ -149,10 +182,11 @@ include '../connect/open.php';
                                 foreach ($types as $type) {
                                     ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="type" id="ty<?=$type['id']?>" value="<?=$type['id']?>"
+                                        <input class="form-check-input" type="checkbox" name="type"
+                                               id="ty<?= $type['id'] ?>" value="<?= $type['id'] ?>"
                                         >
-                                        <label class="form-check-label" for="ty<?=$type['id']?>">
-                                            <?=$type['type_name']?>
+                                        <label class="form-check-label" for="ty<?= $type['id'] ?>">
+                                            <?= $type['type_name'] ?>
                                         </label>
                                     </div>
                                     <?php
@@ -238,14 +272,42 @@ include '../connect/open.php';
                     </div>
                     <hr>
                 </div>
-                <button class="btn btn-secondary w-100">Apply</button>
+                <button class="btn btn-dark w-100">Apply</button>
             </form>
         </div>
         <div class="w-80">
             <?php
-            $product_sql = "SELECT * FROM products";
+            $sort = "";
+            if (isset($_GET['sort'])) {
+                $sort = $_GET['sort'];
+                $filterSort = $_GET['sort'];
+            }
+            switch ($filterSort) {
+                case 0:
+                    $filterSort = "ORDER BY id";
+                    break;
+                case 1:
+                    $filterSort = "ORDER BY id DESC";
+                    break;
+                case 2:
+                    $filterSort = "ORDER BY price";
+                    break;
+                case 3:
+                    $filterSort = "ORDER BY price DESC";
+                    break;
+            }
+            $product_sql = "SELECT * FROM products
+                            WHERE product_name LIKE '%$search%'
+                            {$filterSort}
+                            LIMIT $start, $recordOnePage";
             $products = mysqli_query($connect, $product_sql);
             ?>
+            <div class="d-flex justify-content-end align-items-center">
+                <div>
+                    Showing <?= $records ?> products
+                </div>
+            </div>
+            <hr>
             <div class="container text-center">
                 <div class="row row-cols-3">
                     <?php
@@ -256,18 +318,18 @@ include '../connect/open.php';
                                 <img src="<?= $product['image'] ?>"
                                      width="280px" alt="">
                             </div>
-                            <div class="py-3">
+                            <div class="my-5">
                                 <?= $product['product_name'] ?>
                             </div>
                             <div class="d-flex justify-content-between align-items-center py-3">
                                 <div class="w-50 text-start text-success fw-bold">$<?= $product['price'] ?></div>
                                 <div class="d-flex w-50 justify-content-end">
-                                    <div>
-                                        <i class="p-3 bi bi-star"></i>
-                                    </div>
-                                    <div>
-                                        <i class="p-3 bi bi-bag"></i>
-                                    </div>
+                                    <a href="#" class="product-item-btn">
+                                        <i class="p-3 bi bi-star-fill text-warning"></i>
+                                    </a>
+                                    <a href="#" class="product-item-btn">
+                                        <i class="p-3 bi bi-bag-fill text-primary"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -277,15 +339,47 @@ include '../connect/open.php';
                 </div>
             </div>
             <hr>
-            <div class="w-100 text-end">
-                <div>
-                    Showing <?=mysqli_num_rows($products)?> products
+            <?php
+            if ($records > 6) {
+                ?>
+                <div class="d-flex justify-content-center align-items-center mt-3">
+                    <nav aria-label="Products pages">
+                        <ul class="pagination justify-content-center mb-0">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="<?= ($page == 1) ? '#blank' : '?page=' . ($page - 1) . '&search=' . $search . '&sort=' . $sort ?>"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <?php
+                            for ($i = 1; $i <= $countPage; $i++) {
+                                ?>
+                                <li class="page-item <?= $i == $page ? 'active' : '' ?>" aria-current="page">
+                                    <a class="page-link" href="?page=<?= $i ?>&search=<?= $search ?>&sort=<?= $sort ?>"><?= $i ?></a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="<?= ($page == ($i - 1)) ? '#blank' : '?page=' . ($page + 1) . '&search=' . $search . '&sort=' . $sort ?>"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
-
     </div>
 </div>
-
+<?php
+require_once '../layouts/footer.php';
+?>
+<script src="../resources/js/product.js"></script>
 </body>
 </html>

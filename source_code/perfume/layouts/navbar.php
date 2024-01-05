@@ -1,7 +1,8 @@
-<nav class="navbar bg-dark border-bottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid text-uppercase">
+<nav class="navbar bg-dark border-bottom navbar-expand-lg bd-navbar sticky-top" data-bs-theme="dark">
+    <div class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-uppercase">
         <a class="navbar-brand" href="#">PerfumeStore</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,8 +24,10 @@
                 </li>
             </ul>
             <form class="d-flex search-form" role="search">
-                <div class="input-group">
-                    <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group input-group-sm">
+                    <input class="form-control" name="search" type="search" placeholder="Type to search..."
+                           aria-label="Search"
+                           value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                     <button class="btn btn-outline-secondary" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
