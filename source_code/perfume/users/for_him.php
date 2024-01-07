@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../resources/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../resources/css/main.css">
     <script src="../resources/bootstrap/js/bootstrap.js"></script>
-    <title>Male Perfumes</title>
+    <title>MEN'S PERFUMES</title>
 </head>
 <body>
 <?php
@@ -26,7 +26,11 @@ $filterSort = "";
 $filterPrice = "";
 $filterSize = "";
 $filterBrand = "";
-
+$sort = "";
+if (isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+    $filterSort = $_GET['sort'];
+}
 //pagination
 $recordOnePage = 6;
 $sqlCountRecord = "SELECT COUNT(*) as count_record FROM products 
@@ -45,7 +49,7 @@ $start = ($page - 1) * $recordOnePage;
 
 <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout fs-6">
     <div class="d-flex justify-content-between">
-        <div class="w-100 text-uppercase text-center fs-4 fw-bold">Male Perfumes</div>
+        <div class="w-100 text-uppercase text-center fs-4 fw-bold">MEN'S PERFUMES</div>
     </div>
     <hr>
     <div class="d-flex">
@@ -62,33 +66,36 @@ $start = ($page - 1) * $recordOnePage;
                              data-bs-toggle="collapse" data-bs-target="#sort" aria-expanded="false"
                              aria-controls="sort">
                             <div class="filter-title">Sort by</div>
-                            <div>
+                            <div class="expand-icon">
                                 <i class="bi bi-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="collapse collapsing expand" id="sort">
+                        <div class="collapse expand" id="sort">
                             <div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="sort" id="re" value="0"
-                                           checked>
+                                        <?= $sort == 0 ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="re">
                                         Recommended
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="ne" value="1">
+                                    <input class="form-check-input" type="radio" name="sort" id="ne" value="1"
+                                        <?= $sort == 1 ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="ne">
                                         Newest
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="lo" value="2">
+                                    <input class="form-check-input" type="radio" name="sort" id="lo" value="2"
+                                        <?= $sort == 2 ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="lo">
                                         Price: Low to High
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sort" id="hi" value="3">
+                                    <input class="form-check-input" type="radio" name="sort" id="hi" value="3"
+                                        <?= $sort == 3 ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="hi">
                                         Price: High to Low
                                     </label>
@@ -100,15 +107,15 @@ $start = ($page - 1) * $recordOnePage;
                 </div>
                 <div class="w-100 filter-item">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
+                        <div class="d-flex justify-content-between align-items-center h-pointer filter-main"
                              data-bs-toggle="collapse" data-bs-target="#gender" aria-expanded="false"
                              aria-controls="gender">
                             <div class="filter-title">Gender</div>
-                            <div>
+                            <div class="expand-icon">
                                 <i class="bi bi-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="collapse collapsing expand" id="gender">
+                        <div class="collapse expand" id="gender">
                             <div>
                                 <?php
                                 $gender_sql = "SELECT * FROM genders";
@@ -133,15 +140,15 @@ $start = ($page - 1) * $recordOnePage;
                 </div>
                 <div class="w-100 filter-item">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
+                        <div class="d-flex justify-content-between align-items-center h-pointer filter-main"
                              data-bs-toggle="collapse" data-bs-target="#brand" aria-expanded="false"
                              aria-controls="brand">
                             <div class="filter-title">Brand</div>
-                            <div>
+                            <div class="expand-icon">
                                 <i class="bi bi-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="collapse collapsing expand" id="brand">
+                        <div class="collapse expand" id="brand">
                             <div>
                                 <?php
                                 $brand_sql = "SELECT * FROM brands";
@@ -166,15 +173,15 @@ $start = ($page - 1) * $recordOnePage;
                 </div>
                 <div class="w-100 filter-item">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
+                        <div class="d-flex justify-content-between align-items-center h-pointer filter-main"
                              data-bs-toggle="collapse" data-bs-target="#type" aria-expanded="false"
                              aria-controls="type">
                             <div class="filter-title">Perfume type</div>
-                            <div>
+                            <div class="expand-icon">
                                 <i class="bi bi-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="collapse collapsing expand" id="type">
+                        <div class="collapse expand" id="type">
                             <div>
                                 <?php
                                 $type_sql = "SELECT * FROM product_types";
@@ -199,15 +206,15 @@ $start = ($page - 1) * $recordOnePage;
                 </div>
                 <div class="w-100 filter-item">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
+                        <div class="d-flex justify-content-between align-items-center h-pointer filter-main"
                              data-bs-toggle="collapse" data-bs-target="#price" aria-expanded="false"
                              aria-controls="price">
                             <div class="filter-title">Price</div>
-                            <div>
+                            <div class="expand-icon">
                                 <i class="bi bi-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="collapse collapsing expand" id="price">
+                        <div class="collapse expand" id="price">
                             <div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="price" id="0" value=""
@@ -241,15 +248,15 @@ $start = ($page - 1) * $recordOnePage;
                 </div>
                 <div class="w-100 filter-item">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
+                        <div class="d-flex justify-content-between align-items-center h-pointer filter-main"
                              data-bs-toggle="collapse" data-bs-target="#capacity" aria-expanded="false"
                              aria-controls="capacity">
                             <div class="filter-title">Size</div>
-                            <div>
+                            <div class="expand-icon">
                                 <i class="bi bi-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="collapse collapsing expand" id="capacity">
+                        <div class="collapse expand" id="capacity">
                             <div>
                                 <?php
                                 $size_sql = "SELECT * FROM sizes";
@@ -277,11 +284,6 @@ $start = ($page - 1) * $recordOnePage;
         </div>
         <div class="w-80">
             <?php
-            $sort = "";
-            if (isset($_GET['sort'])) {
-                $sort = $_GET['sort'];
-                $filterSort = $_GET['sort'];
-            }
             switch ($filterSort) {
                 case 0:
                     $filterSort = "ORDER BY id";
@@ -324,10 +326,10 @@ $start = ($page - 1) * $recordOnePage;
                             <div class="d-flex justify-content-between align-items-center py-3">
                                 <div class="w-50 text-start text-success fw-bold">$<?= $product['price'] ?></div>
                                 <div class="d-flex w-50 justify-content-end">
-                                    <a href="#" class="product-item-btn">
+                                    <a href="#" class="product-item-btn d-flex">
                                         <i class="p-3 bi bi-star-fill text-warning"></i>
                                     </a>
-                                    <a href="#" class="product-item-btn">
+                                    <a href="#" class="product-item-btn d-flex">
                                         <i class="p-3 bi bi-bag-fill text-primary"></i>
                                     </a>
                                 </div>
@@ -346,7 +348,7 @@ $start = ($page - 1) * $recordOnePage;
                     <nav aria-label="Products pages">
                         <ul class="pagination justify-content-center mb-0">
                             <li class="page-item">
-                                <a class="page-link"
+                                <a class="page-link text-dark"
                                    href="<?= ($page == 1) ? '#blank' : '?page=' . ($page - 1) . '&search=' . $search . '&sort=' . $sort ?>"
                                    aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
@@ -356,13 +358,14 @@ $start = ($page - 1) * $recordOnePage;
                             for ($i = 1; $i <= $countPage; $i++) {
                                 ?>
                                 <li class="page-item <?= $i == $page ? 'active' : '' ?>" aria-current="page">
-                                    <a class="page-link" href="?page=<?= $i ?>&search=<?= $search ?>&sort=<?= $sort ?>"><?= $i ?></a>
+                                    <a class="page-link text-dark"
+                                       href="?page=<?= $i ?>&search=<?= $search ?>&sort=<?= $sort ?>"><?= $i ?></a>
                                 </li>
                                 <?php
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link"
+                                <a class="page-link text-dark"
                                    href="<?= ($page == ($i - 1)) ? '#blank' : '?page=' . ($page + 1) . '&search=' . $search . '&sort=' . $sort ?>"
                                    aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>

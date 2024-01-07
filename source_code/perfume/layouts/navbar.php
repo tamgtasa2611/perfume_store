@@ -15,11 +15,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="for_her.php">PERFUMES FOR HER
+                    <a class="nav-link" href="for_her.php">WOMEN'S PERFUMES
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="for_him.php">PERFUMES FOR HIM
+                    <a class="nav-link" href="for_him.php">MEN'S PERFUMES
                     </a>
                 </li>
             </ul>

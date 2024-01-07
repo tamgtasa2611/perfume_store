@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Lora', serif;
+    scroll-behavior: smooth;
 }
 
 .search-form {
@@ -21,8 +22,16 @@
 
 .expand {
     overflow: hidden;
-    transition: all 200ms ease-in-out;
-    padding: 0.25rem 0 0 1rem;
+    transition: all 300ms ease-in-out;
+    margin-left: 1rem;
+}
+
+.expand-icon {
+    transition: all 300ms ease-in-out;
+}
+
+.rotate180 {
+    transform: rotate(180deg);
 }
 
 .h-pointer {
@@ -48,7 +57,12 @@
     transition: all 300ms ease-in-out;
 }
 
-.product-item-btn i:hover {
+.product-item-btn {
+    transition: all 200ms ease-in-out;
+}
+
+.product-item-btn:hover {
+    transform: scale(1.1);
     cursor: pointer;
 }
 
