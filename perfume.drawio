@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-10T16:22:12.138Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="Sq8M6tIuNJ14hlddaR_7" version="22.1.16" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-10T16:24:22.750Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="cZ938JJw0d6ZqzIsMsqM" version="22.1.16" type="github">
   <diagram name="Page-1" id="CvaU3Jlr8pYj9KTvs-bT">
     <mxGraphModel dx="1313" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
       <root>
@@ -674,11 +674,11 @@
         <mxCell id="qncBwUZHwgfDJe8R2LjT-53" value="The action of clicking into a product of the user&lt;br&gt;(currently the user is on the product list/search results page)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="1390" y="1360" width="372" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-54" value="Checking the database for the product wanted" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1496" y="1495" width="120" height="125" as="geometry" />
-        </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-54" target="qncBwUZHwgfDJe8R2LjT-51">
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-54" target="qncBwUZHwgfDJe8R2LjT-66">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-54" value="Valid database connection in open.php?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1496" y="1495" width="120" height="125" as="geometry" />
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-57" target="qncBwUZHwgfDJe8R2LjT-49">
           <mxGeometry relative="1" as="geometry" />
@@ -690,13 +690,28 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-59" value="True" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1720" y="1580" width="60" height="30" as="geometry" />
+          <mxGeometry x="1710" y="1520" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-60" value="False" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1370" y="1580" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-62" value="Product detail" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1510" y="1170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-66" value="Checking the database for the product wanted" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="1580" width="120" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-66" target="qncBwUZHwgfDJe8R2LjT-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-66" target="qncBwUZHwgfDJe8R2LjT-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-70" value="True" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="1710" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-71" value="False" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1436" y="1650" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
