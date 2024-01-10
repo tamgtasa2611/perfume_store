@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-10T16:37:13.878Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="5ZVEEXPkpuF5MvnRCfeX" version="22.1.16" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-10T16:37:30.557Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="rDU1fdFY6ZSzmzZYMPry" version="22.1.16" type="github">
   <diagram name="Page-1" id="CvaU3Jlr8pYj9KTvs-bT">
     <mxGraphModel dx="1235" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
       <root>
@@ -781,7 +781,7 @@
         <mxCell id="qncBwUZHwgfDJe8R2LjT-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="qncBwUZHwgfDJe8R2LjT-106" target="qncBwUZHwgfDJe8R2LjT-104" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-106" value="Product detail page" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;rotation=90;horizontal=0;" vertex="1" parent="1">
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-106" value="Filtered product list page" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;rotation=90;horizontal=0;" vertex="1" parent="1">
           <mxGeometry x="3230" y="1710" width="80" height="150" as="geometry" />
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="qncBwUZHwgfDJe8R2LjT-108" target="qncBwUZHwgfDJe8R2LjT-110" parent="1">
