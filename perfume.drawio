@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-01-10T16:30:51.574Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="C73RARKf5O498ic3oZCL" version="22.1.16" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-10T16:31:15.903Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="vJLbvObW58qQWAk-4Uhv" version="22.1.16" type="github">
   <diagram name="Page-1" id="CvaU3Jlr8pYj9KTvs-bT">
-    <mxGraphModel dx="1909" dy="949" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
+    <mxGraphModel dx="1313" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -726,8 +726,10 @@
         <mxCell id="qncBwUZHwgfDJe8R2LjT-81" value="The product name that the user enters in the search bar" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="1420" y="1390" width="372" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-83" target="qncBwUZHwgfDJe8R2LjT-90">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-83" target="qncBwUZHwgfDJe8R2LjT-99">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1775" y="1610" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-83" value="Valid database connection in open.php?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1526" y="1525" width="120" height="125" as="geometry" />
@@ -750,17 +752,15 @@
         <mxCell id="qncBwUZHwgfDJe8R2LjT-89" value="Search product" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1540" y="1200" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-90" value="Checking the database for the products names match with the searched value" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1670" y="1610" width="210" height="170" as="geometry" />
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-99" target="qncBwUZHwgfDJe8R2LjT-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1775" y="1780" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-90" target="qncBwUZHwgfDJe8R2LjT-79">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qncBwUZHwgfDJe8R2LjT-90" target="qncBwUZHwgfDJe8R2LjT-85">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qncBwUZHwgfDJe8R2LjT-93" value="True" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1820" y="1800" width="60" height="30" as="geometry" />
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="qncBwUZHwgfDJe8R2LjT-85">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1670" y="1695" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-94" value="False" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1400" y="1700" width="60" height="30" as="geometry" />
@@ -770,6 +770,9 @@
         </mxCell>
         <mxCell id="qncBwUZHwgfDJe8R2LjT-98" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="1960" y="1240" width="640" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="qncBwUZHwgfDJe8R2LjT-99" value="Checking the database for the products names match with the searched value" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="1660" width="180" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
