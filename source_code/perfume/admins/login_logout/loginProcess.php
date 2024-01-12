@@ -2,6 +2,8 @@
 session_start();
 $email = $_POST['email'];
 $password = $_POST['password'];
+$_SESSION['email'] = $email;
+$_SESSION['password'] = $password;
 include_once '../../connect/open.php';
 $sql = "SELECT *, COUNT(id) as count_account FROM admins 
                     WHERE email = '$email' AND password = '$password'";

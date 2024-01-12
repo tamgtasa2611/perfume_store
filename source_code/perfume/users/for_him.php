@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../resources/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../resources/css/main.css">
-    <script src="../resources/bootstrap/js/bootstrap.js"></script>
+
     <title>MEN'S PERFUMES</title>
 </head>
 <body>
@@ -383,6 +383,7 @@ $start = ($page - 1) * $recordOnePage;
 <?php
 require_once '../layouts/footer.php';
 ?>
+<script src="../resources/bootstrap/js/bootstrap.js"></script>
 <script src="../resources/js/product.js"></script>
 </body>
 </html>

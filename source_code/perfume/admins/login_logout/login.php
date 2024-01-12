@@ -7,39 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="author" content="AdminKit">
-    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="keywords"
+          content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
     <link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../resources/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../resources/css/admin.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
-    <link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
+    <link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <title>Sign In</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color: #232D45">
 <!--Thong bao login-->
 <?php
-    if(!isset($_SESSION['failed'])){
-        $_SESSION['failed'] = 0;
-    }
+session_start();
+if (!isset($_SESSION['failed'])) {
+    $_SESSION['failed'] = 0;
+}
 ?>
-<section class="position-relative">
-    <?php
-        if($_SESSION['failed'] === 1){
-           echo '<div class="alert alert-danger position-absolute" role="alert"
-            style="top: 5%; right: 2%; box-shadow: 1px 1px red; animation: fadeOut 5s;">
-            Wrong email or password!
-            <i class="bi-caret-right-fill" style="font-size: 12px; padding: 8px; cursor: pointer"></i>        
-            </div>';
-           $_SESSION['failed'] = 0;
-        }
-    ?>
-
-</section>
 <main class="d-flex w-100">
     <div class="container d-flex flex-column">
         <div class="row vh-100">
@@ -56,25 +45,42 @@
                     <div class="rounded-5" style="background-color: #23272b">
                         <div class="card-body">
                             <div class="m-sm-4 ">
-                                <form class="text-white" method="post" action="loginProcess.php">
+                                <form class="text-white" method="post" id="form" action="loginProcess.php">
                                     <div class="mb-3">
                                         <label class="form-label">Email</label>
-                                        <input class="form-control form-control-lg text-bg-dark" type="email" name="email" placeholder="Enter your email" />
+                                        <input class="form-control form-control-lg text-bg-dark" type="email"
+                                               name="email" id="email" placeholder="Enter your email"
+                                               value="<?= $_SESSION['email'] ?? '' ?>"/>
+                                        <?php
+                                        if ($_SESSION['failed'] === 1) {
+                                            ?>
+                                            <span class="mt-3 text-danger">Wrong email</span>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
-                                        <input class="form-control form-control-lg text-bg-dark" type="password" name="password" placeholder="Enter your password" />
-                                        <small>
-                                            <a href="index.html">Forgot password?</a>
-                                        </small>
+                                        <input class="form-control form-control-lg text-bg-dark" type="password"
+                                               name="password" id="password" placeholder="Enter your password"
+                                        <?php
+                                        if ($_SESSION['failed'] === 1) {
+                                            ?>
+                                            <span class="mt-3 text-danger">Wrong password</span>
+                                            <?php
+                                        }
+                                        $_SESSION['failed'] = 0;
+                                        ?>
                                     </div>
-                                    <div>
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
-                                            <span class="form-check-label">
-              Remember me next time
-            </span>
+                                            <input class="form-check-input" type="checkbox" value="remember-me"
+                                                   name="remember-me" checked>
+                                            <span class="form-check-label">Remember me</span>
                                         </label>
+                                        <span class="form-check-label">
+                                            <a href="index.html">Forgot password?</a>
+                                        </span>
                                     </div>
                                     <div class="text-center mt-3">
                                         <button class="btn btn-lg btn-primary">Sign in</button>
@@ -90,5 +96,6 @@
         </div>
     </div>
 </main>
+<script src="../../resources/js/admin.js"></script>
 </body>
 </html>
