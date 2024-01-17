@@ -28,10 +28,6 @@
     //Chạy query
     $products = mysqli_query($connect, $sql);
 
-//Query lấy dữ liệu ở bảng PK (bảng classes)
-$sql = "SELECT * FROM sizes";
-//Chạy query
-$sizes = mysqli_query($connect, $sql);
     //Đóng kết nối
     include_once '../connect/close.php';
     foreach ($products as $product){
@@ -83,6 +79,7 @@ $sizes = mysqli_query($connect, $sql);
                                 <button type="submit" class="btn w-50 btn-dark mb-2">
                                     Add to Cart <i class="fe fe-shopping-cart ms-2"></i>
                                 </button>
+                            </div>
                         </div>
                     </div>
                 </div>
