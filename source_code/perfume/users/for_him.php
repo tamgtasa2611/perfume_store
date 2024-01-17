@@ -317,8 +317,10 @@ $start = ($page - 1) * $recordOnePage;
                         ?>
                         <div class="col product-item">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img src="<?= $product['image'] ?>"
-                                     width="280px" alt="">
+                                <a href="product_detail.php?id=<?= $product['id'] ?>">
+                                    <img src="<?= $product['image'] ?>"
+                                         width="280px" alt="">
+                                </a>
                             </div>
                             <div class="my-5">
                                 <?= $product['product_name'] ?>
