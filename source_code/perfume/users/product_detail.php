@@ -67,30 +67,22 @@ $sizes = mysqli_query($connect, $sql);
                             <div class="mb-7">
                                 <p class="ms-1 fs-5 fw-bolder text-danger"> $<?= $product['price'] ?></p>
                             </div>
+                            
+                            <!-- Brand -->
+                            <p class="mb-5">
+                                Brand: <strong id="colorCaption"> <?= $product['brand_name'] ?> </strong>
+                            </p>
 
-                            <!-- Form -->
-                            <form>
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <p class="mb-5">
-                                        Brand: <strong id="colorCaption"> <?= $product['brand_name'] ?> </strong>
-                                    </p>
-                                    <!-- Label -->
-                                    <p class="mb-5">
-                                        Size: <strong><span id="sizeCaption"><?= $product['size_name'] ?> </span>ml</strong>
-                                    </p>
+                            <!-- Size -->
+                            <p class="mb-5">
+                                Size: <strong><span id="sizeCaption"><?= $product['size_name'] ?> </span>ml</strong>
+                            </p>
 
-                                        <div class="col-12 col-lg">
-                                            <!-- Submit -->
-                                            <button type="submit" class="btn w-100 btn-dark mb-2">
-                                                Add to Cart <i class="fe fe-shopping-cart ms-2"></i>
-                                            </button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                        </form>
-
+                            <div class="col-12 col-lg">
+                                <!-- Submit -->
+                                <button type="submit" class="btn w-50 btn-dark mb-2">
+                                    Add to Cart <i class="fe fe-shopping-cart ms-2"></i>
+                                </button>
                         </div>
                     </div>
                 </div>
