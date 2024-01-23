@@ -14,5 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/product', function () {
+    return view('products.index');
+});
+
+Route::get('/product/female', function () {
+    return view('products.female');
+});
+
+Route::get('/product/male', function () {
+    return view('products.male');
 });
