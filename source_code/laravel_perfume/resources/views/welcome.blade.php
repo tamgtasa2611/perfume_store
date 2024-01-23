@@ -1,0 +1,20 @@
+@vite(["resources/sass/app.scss"])
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+    </tr>
+    <tr>
+        <td>#</td>
+        <td>$</td>
+        <td>@</td>
+    </tr>
+</table>
