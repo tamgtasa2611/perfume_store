@@ -18,6 +18,8 @@ npm run build
 
 4. add file css tự viết     
 ![image](https://github.com/tamgtasa2611/perfume_store/assets/97651251/c3834c75-874d-4ae2-9d05-6257c6d66af1)    
-![image](https://github.com/tamgtasa2611/perfume_store/assets/97651251/97ce3088-2b4a-4d02-aaad-51bd74e44e95)    
+![image](https://github.com/tamgtasa2611/perfume_store/assets/97651251/97ce3088-2b4a-4d02-aaad-51bd74e44e95)      
 
+php artisan serve chạy đc như này là ok    
+![image](https://github.com/tamgtasa2611/perfume_store/assets/97651251/79b28d65-0343-4261-9995-141e74fdc9cc)    
 
