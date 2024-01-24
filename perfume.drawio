@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-01-24T01:38:09.876Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="SSakEJHp1_ItHglvl5Km" version="22.1.18" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-24T01:40:29.229Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="iiDyJXZVEvqh45-ATXyU" version="22.1.18" type="github">
   <diagram name="Page-1" id="CvaU3Jlr8pYj9KTvs-bT">
-    <mxGraphModel dx="1500" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
+    <mxGraphModel dx="1400" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -943,6 +943,54 @@
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-50" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="2080" y="2040" width="560" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-51" value="Customer management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="790" y="2010" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-52" value="Add new customer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="2020" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-53" value="Reset password" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2296" y="2010" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-55" target="Bc-jwoOu1adwab45VVSA-57" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-55" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3077.5" y="2080" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-56" value="End" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2896" y="2520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-57" value="The admin click on the disable button on the customer management page" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2962.5" y="2240" width="350" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-59" target="Bc-jwoOu1adwab45VVSA-61" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-59" value="Confirm modal" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="2872" y="2370" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-57" target="Bc-jwoOu1adwab45VVSA-59" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-61" value="The admin click on the confirm button" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="3210" y="2380" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="Bc-jwoOu1adwab45VVSA-63" target="Bc-jwoOu1adwab45VVSA-56" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-63" value="Lock account successfully" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="3223" y="2510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-61" target="Bc-jwoOu1adwab45VVSA-63" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-66" value="Lock account" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3056" y="2010" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-68" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2840" y="2040" width="637.5" height="610" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
