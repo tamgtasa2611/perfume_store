@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-24T01:36:24.940Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="pVpFbhHuz2XQb0YmT7HB" version="22.1.18" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-24T01:38:09.876Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="SSakEJHp1_ItHglvl5Km" version="22.1.18" type="github">
   <diagram name="Page-1" id="CvaU3Jlr8pYj9KTvs-bT">
     <mxGraphModel dx="1500" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
       <root>
@@ -897,16 +897,16 @@
           <mxGeometry x="2317.5" y="2080" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-33" value="End" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2313.5" y="2560" width="120" height="60" as="geometry" />
+          <mxGeometry x="2136" y="2520" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-34" value="The admin click on the edit customer button on the customer management page" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="2225" y="2240" width="305" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bc-jwoOu1adwab45VVSA-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-36" target="Bc-jwoOu1adwab45VVSA-33" parent="1">
+        <mxCell id="Bc-jwoOu1adwab45VVSA-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bc-jwoOu1adwab45VVSA-36" target="Bc-jwoOu1adwab45VVSA-45">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-36" value="Edit customer page" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;direction=south;" vertex="1" parent="1">
-          <mxGeometry x="2305.5" y="2400" width="144" height="80" as="geometry" />
+          <mxGeometry x="2112" y="2370" width="144" height="80" as="geometry" />
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-34" target="Bc-jwoOu1adwab45VVSA-36" parent="1">
           <mxGeometry relative="1" as="geometry" />
@@ -925,6 +925,24 @@
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Bc-jwoOu1adwab45VVSA-39" target="Bc-jwoOu1adwab45VVSA-41">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-44" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="2050" width="560" height="670" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-45" value="Enter new password" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2450" y="2380" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bc-jwoOu1adwab45VVSA-47" target="Bc-jwoOu1adwab45VVSA-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-47" value="Reset password successfully" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="2463" y="2510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Bc-jwoOu1adwab45VVSA-45" target="Bc-jwoOu1adwab45VVSA-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-50" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2080" y="2040" width="560" height="640" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
