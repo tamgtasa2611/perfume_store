@@ -1,4 +1,4 @@
-<nav class="navbar bg-dark border-bottom navbar-expand-lg bd-navbar sticky-top" data-bs-theme="dark">
+<nav class="navbar bg-dark navbar-expand-lg bd-navbar sticky-top" data-bs-theme="dark">
     <div class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-uppercase">
         <a class="navbar-brand" href="/">PerfumeStore</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -23,7 +23,7 @@
                     </a>
                 </li>
             </ul>
-            <form class="d-flex search-form" role="search">
+            <form class="d-flex search-form mb-0" role="search">
                 <div class="input-group input-group-sm">
                     <input class="form-control" name="search" type="search" placeholder="Type to search..."
                            aria-label="Search"

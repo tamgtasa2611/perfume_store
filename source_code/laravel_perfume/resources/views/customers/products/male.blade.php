@@ -1,6 +1,6 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <x-layout>
-    @include('layouts/nav')
+    @include('layouts.nav')
     trang nuoc hoa nam
-    @include('layouts/footer')
+    @include('layouts.footer')
 </x-layout>
