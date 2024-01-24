@@ -5,7 +5,8 @@
         <div class="ratio ratio-21x9 bg-dark position-relative">
             <video class="w-100 object-fit-cover opacity-75"
                    preload="auto" autoplay="true" loop="true" muted="true" playsinline="">
-                <source src="https://mediastorage.livestory.io/armani/posts/orig/633aeb9057e272000b8b4dfe.mp4" type="video/mp4">
+                <source src="https://mediastorage.livestory.io/armani/posts/orig/633aeb9057e272000b8b4dfe.mp4"
+                        type="video/mp4">
             </video>
             <div
                 class="position-absolute text-white fs-1 text-capitalize d-flex justify-content-center align-items-center">
@@ -48,9 +49,15 @@
             </div>
             <div class="text-justify home-product-text fade-right">
                 <p>
-                    The essence of joy, extracted from the heart of natural elements: the perfect harmony between woman
-                    and nature. The base notes encapsulate the essence of water from the depths of the earth,
-                    revealed by the inviting heart of LMR cedarwood with sensuous hints of sugar cane and labdanum.
+                    The scent of joy that combines happiness, serenity and optimism for a joyful emblematic
+                    women's fragrance by Giorgio Armani. Feel the rhythm of the waves with a burst of acquatic freshness
+                    and energy with primofiore lemon for a life lived to the fullest. Created with an amber woody base,
+                    followed by notes of petalled white jasmine, cedar and brown sugar accord as deep, addictive and
+                    inviting as the ocean. Inspired by the forms of nature, the organic bottle embodies Giorgio Armani's
+                    aesthetic vision of essential elegance, with curved lines and sealed with an emerald green cap. This
+                    fragrance is captured in a bottle that references the contemporary, authentic femininity that
+                    inspires him. Created for the free-spirited, serene and optimistic woman who is in perfect harmony
+                    with nature, with herself.
                 </p>
             </div>
         </div>
