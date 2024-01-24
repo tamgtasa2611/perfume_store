@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-01-24T01:29:15.405Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="oQSCQ6PnaMCBvCa7IHix" version="22.1.18" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-24T01:32:22.887Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="0iiv75X6LZyNtibXC8VI" version="22.1.18" type="github">
   <diagram name="Page-1" id="CvaU3Jlr8pYj9KTvs-bT">
-    <mxGraphModel dx="1050" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
+    <mxGraphModel dx="1235" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -868,6 +868,27 @@
         </mxCell>
         <mxCell id="Bc-jwoOu1adwab45VVSA-14" value="False" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="710" y="2420" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="Bc-jwoOu1adwab45VVSA-16" target="Bc-jwoOu1adwab45VVSA-19" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-16" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="2080" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-17" value="End" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1536" y="2560" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-19" value="The admin click on the add customer button on the customer management page" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1447.5" y="2240" width="305" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bc-jwoOu1adwab45VVSA-24" target="Bc-jwoOu1adwab45VVSA-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-24" value="Add customer page" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1528" y="2400" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Bc-jwoOu1adwab45VVSA-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Bc-jwoOu1adwab45VVSA-19" target="Bc-jwoOu1adwab45VVSA-24">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
