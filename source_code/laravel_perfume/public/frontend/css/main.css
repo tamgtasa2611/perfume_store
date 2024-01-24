@@ -12,6 +12,13 @@
     text-align: justify;
 }
 
+.scroll-to-top {
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
 nav {
     transition: all 0.5s ease-in-out;
 }

@@ -16,7 +16,7 @@
     <title>SDLC</title>
 </head>
 <body>
-<main class="overflow-hidden">
+<main class="overflow-hidden position-relative">
     {{$slot}}
 </main>
 <script src="{{asset('frontend/js/home.js')}}"></script>

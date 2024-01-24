@@ -38,12 +38,13 @@ var fadeBottom = {
     origin: "bottom",
 };
 
-ScrollReveal().reveal(".home-text", fadeIn);
-ScrollReveal().reveal(".home-text", fadeBottom);
-
 ScrollReveal().reveal(".home-product-text", fadeInFast);
+
+ScrollReveal().reveal(".fade-in", fadeIn);
 ScrollReveal().reveal(".fade-left", fadeLeft);
 ScrollReveal().reveal(".fade-right", fadeRight);
+ScrollReveal().reveal(".fade-top", fadeTop);
+ScrollReveal().reveal(".fade-bottom", fadeBottom);
 
 
 let expandElements = document.querySelectorAll(".filter-item");
