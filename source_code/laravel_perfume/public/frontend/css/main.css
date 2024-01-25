@@ -14,9 +14,10 @@
 
 .scroll-to-top {
     z-index: 10;
-    bottom: 0;
-    right: 0;
+    bottom: 2rem;
+    right: 2rem;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 nav {

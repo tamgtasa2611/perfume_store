@@ -19,6 +19,5 @@
 <main class="overflow-hidden position-relative">
     {{$slot}}
 </main>
-<script src="{{asset('frontend/js/home.js')}}"></script>
 </body>
 </html>

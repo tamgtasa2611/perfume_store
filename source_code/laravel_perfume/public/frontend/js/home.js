@@ -1,14 +1,21 @@
-// Nav bar
+// Nav bar scroll
 let navElement = document.querySelector("nav");
-window.onscroll = function () {
-    if (window.scrollY >= 10) {
-        navElement.classList.add("border-bottom");
+let scrollToTopElement = document.querySelector(".scroll-to-top");
+window.addEventListener("scroll", () => {
+    if (window.scrollY >= 100) {
         navElement.classList.add("shadow");
+        //scroll to top button
+        scrollToTopElement.classList.remove("opacity-0");
+        scrollToTopElement.classList.remove("invisible");
+        scrollToTopElement.classList.add("opacity-100");
     } else {
-        navElement.classList.remove("border-bottom");
         navElement.classList.remove("shadow");
+        //scroll to top button
+        scrollToTopElement.classList.remove("opacity-100");
+        scrollToTopElement.classList.add("opacity-0");
+        scrollToTopElement.classList.add("invisible");
     }
-};
+})
 
 //ScrollReveal
 var fadeIn = {
@@ -47,11 +54,6 @@ ScrollReveal().reveal(".fade-top", fadeTop);
 ScrollReveal().reveal(".fade-bottom", fadeBottom);
 
 
-let expandElements = document.querySelectorAll(".filter-item");
-expandElements.forEach((div) => {
-    let expandDiv = div.querySelector(".expand")
-    let expandIcon = div.querySelector(".expand-icon");
-    div.addEventListener("click", () => {
-        expandIcon.classList.toggle("rotate180");
-    })
-})
+
+
+

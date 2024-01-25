@@ -137,6 +137,7 @@
             </div>
         </div>
     </div>
-    @include('layouts/footer')
     @include('layouts/scroll_to_top')
+    @include('layouts/footer')
 </x-layout>
+<script src="{{asset('frontend/js/home.js')}}"></script>

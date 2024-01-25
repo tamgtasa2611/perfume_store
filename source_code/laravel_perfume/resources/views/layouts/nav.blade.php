@@ -1,6 +1,9 @@
-<nav class="navbar bg-dark navbar-expand-lg bd-navbar sticky-top" data-bs-theme="dark">
+<nav class="navbar bg-dark navbar-expand-lg bd-navbar fixed-top" data-bs-theme="dark">
     <div class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-uppercase">
-        <a class="navbar-brand" href="/">PerfumeStore</a>
+        <a class="navbar-brand" href="/">
+            <img src="{{asset('images/brand.png')}}" alt="brand"
+                 height="32" class="rounded">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
