@@ -25,6 +25,10 @@ Route::get('/product', function () {
     return view('customers.products.index');
 })->name('product');
 
+Route::get('/bestseller', function () {
+    return view('customers.products.discover');
+})->name('discover');
+
 Route::get('/product/female', function () {
     return view('customers.products.female');
 })->name('product/female');

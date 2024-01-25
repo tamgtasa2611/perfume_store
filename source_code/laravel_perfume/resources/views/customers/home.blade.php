@@ -3,8 +3,8 @@
     @include('layouts/nav')
     <div class="container-fluid p-0">
         <div class="ratio ratio-21x9 bg-dark position-relative">
-            <video class="w-100 object-fit-cover opacity-75"
-                   preload="auto" autoplay="true" loop="true" muted="true" playsinline="">
+            <video class="w-100 object-fit-cover fade-in opacity-75"
+                   preload="auto" autoplay="true" loop="true" muted="true">
                 <source src="https://mediastorage.livestory.io/armani/posts/orig/633aeb9057e272000b8b4dfe.mp4"
                         type="video/mp4">
             </video>
@@ -17,7 +17,7 @@
     {{--  Products  --}}
     <div class="container d-flex mt-5">
         <div class="w-50 d-flex flex-column justify-content-center">
-            <div class="fs-1 luxury-font home-product-text fade-left">
+            <div class="fs-1 luxury-font text-uppercase home-product-text fade-left">
                 ACQUA DI GIÒ PROFONDO
             </div>
             <div class="text-justify home-product-text fade-left">
@@ -44,7 +44,7 @@
 
     <div class="container d-flex mt-5 flex-row-reverse">
         <div class="w-50 d-flex flex-column justify-content-center">
-            <div class="fs-1 luxury-font text-end home-product-text fade-right">
+            <div class="fs-1 luxury-font text-uppercase text-end home-product-text fade-right">
                 VELVET DESERT OUD EAU DE PARFUM
             </div>
             <div class="text-justify home-product-text fade-right">
@@ -68,7 +68,7 @@
 
     <div class="container d-flex mt-5">
         <div class="w-50 d-flex flex-column justify-content-center">
-            <div class="fs-1 luxury-font home-product-text fade-left">
+            <div class="fs-1 luxury-font text-uppercase home-product-text fade-left">
                 ACQUA DI GIOIA
             </div>
             <div class="text-justify home-product-text fade-left">
@@ -92,7 +92,7 @@
 
     <div class="container d-flex mt-5 flex-row-reverse">
         <div class="w-50 d-flex flex-column justify-content-center">
-            <div class="fs-1 luxury-font text-end home-product-text fade-right">
+            <div class="fs-1 luxury-font text-uppercase text-end home-product-text fade-right">
                 SAUVAGE Parfum
             </div>
             <div class="text-justify home-product-text fade-right">

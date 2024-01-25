@@ -45,7 +45,7 @@ var fadeBottom = {
     origin: "bottom",
 };
 
-ScrollReveal().reveal(".home-product-text", fadeInFast);
+ScrollReveal().reveal(".home-product-text", fadeIn);
 
 ScrollReveal().reveal(".fade-in", fadeIn);
 ScrollReveal().reveal(".fade-left", fadeLeft);

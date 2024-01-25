@@ -33,6 +33,10 @@ nav {
     margin-right: calc(var(--bs-gutter-x) * 0.5);
 }
 
+video {
+    transition: all 0.3s ease-in-out;
+}
+
 .filter-item {
 
 }

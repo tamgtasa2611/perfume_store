@@ -15,6 +15,11 @@
                        aria-current="page" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('discover') ? 'active' : '' }}"
+                       href="{{ route('discover') }}">DISCOVER
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('product') ? 'active' : '' }}"
                        href="{{ route('product') }}">NEW
                         ARRIVALS
