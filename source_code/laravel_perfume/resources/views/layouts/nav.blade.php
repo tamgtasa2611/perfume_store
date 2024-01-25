@@ -11,18 +11,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }} {{ request()->routeIs('home') ? 'active' : '' }}"
+                       aria-current="page" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product">NEW ARRIVALS
+                    <a class="nav-link {{ request()->routeIs('product') ? 'active' : '' }}"
+                       href="{{ route('product') }}">NEW
+                        ARRIVALS
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product/female">WOMEN'S PERFUMES
+                    <a class="nav-link {{ request()->routeIs('product/female') ? 'active' : '' }}"
+                       href="{{ route('product/female') }}">WOMEN'S PERFUMES
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product/male">MEN'S PERFUMES
+                    <a class="nav-link {{ request()->routeIs('product/male') ? 'active' : '' }}"
+                       href="{{ route('product/male') }}">MEN'S PERFUMES
                     </a>
                 </li>
             </ul>
@@ -38,7 +43,7 @@
             </form>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">
+                    <a class="nav-link" href="{{ route('profile') }}">
                         <i class="bi bi-person"></i>
                     </a>
                 </li>
@@ -48,7 +53,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart">
+                    <a class="nav-link" href="{{ route('cart') }}">
                         <i class="bi bi-bag"></i>
                     </a>
                 </li>
