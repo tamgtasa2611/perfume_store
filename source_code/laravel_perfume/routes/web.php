@@ -32,3 +32,11 @@ Route::get('/product/female', function () {
 Route::get('/product/male', function () {
     return view('customers.products.male');
 });
+
+Route::get('/profile', function () {
+    return view('customers.profiles.profile');
+});
+
+Route::get('/cart', function () {
+    return view('customers.carts.cart');
+});

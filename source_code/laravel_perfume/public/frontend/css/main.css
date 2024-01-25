@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
-
 * {
     scroll-behavior: smooth;
 }
 
+body {
+    /*padding khoi navbar*/
+    padding-top: 58.23px;
+}
+
+/*font danh cho 1 vai cho can chu dep*/
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 .luxury-font {
     font-family: 'Lora', serif;
 }

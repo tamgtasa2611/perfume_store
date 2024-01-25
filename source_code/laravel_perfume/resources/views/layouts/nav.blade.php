@@ -38,17 +38,17 @@
             </form>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/profile">
                         <i class="bi bi-person"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/wishlist">
                         <i class="bi bi-star"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/cart">
                         <i class="bi bi-bag"></i>
                     </a>
                 </li>
