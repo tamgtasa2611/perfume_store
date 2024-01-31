@@ -24,7 +24,8 @@
                 </form>
 
             </div>
-            <table class="table table-striped table-dark table-hover table-borderless align-middle text-center nice-box-shadow">
+            <table
+                class="table table-striped table-dark table-hover table-borderless align-middle text-center nice-box-shadow">
                 <thead class="text-white">
                 <tr>
                     <th>ID</th>
@@ -40,40 +41,46 @@
 
                 @foreach ($customers as $customer)
 
-                <tr style="background-color: #000000">
-                    <td> {{$customer->id}} </td>
-                    <td> {{$customer->first_name}} </td>
-                    <td> {{$customer->last_name}} </td>
-                    <td> {{$customer->email}} </td>
-                    <td> {{$customer->phone_number}} </td>
-                    <td> {{$customer->address}} </td>
-                </tr>
-                <!--          modal  delete        -->
-{{--                <div id="delete-modal?cus=<?= $customer['id'] ?>" class="my-modal" style="z-index: 10">--}}
-{{--                    <div class="modal__content">--}}
-{{--                        <h2>Confirm delete</h2>--}}
+                    <tr style="background-color: #000000">
+                        <td> {{$customer->id}} </td>
+                        <td> {{$customer->first_name}} </td>
+                        <td> {{$customer->last_name}} </td>
+                        <td> {{$customer->email}} </td>
+                        <td> {{$customer->phone_number}} </td>
+                        <td> {{$customer->address}} </td>
+                        <td> {{$customer->status}} </td>
+                    </tr>
+                    <!--          modal  delete        -->
+                    {{--                <div id="delete-modal?cus=<?= $customer['id'] ?>" class="my-modal" style="z-index: 10">--}}
+                    {{--                    <div class="modal__content">--}}
+                    {{--                        <h2>Confirm delete</h2>--}}
 
-{{--                        <p>--}}
-{{--                            Do you really want to delete <span style="color: red"><?= $customer['first_name'] ?>--}}
-{{--                                                                                      <?= $customer['last_name'] ?>--}}
-{{--                                </span>?--}}
-{{--                        </p>--}}
+                    {{--                        <p>--}}
+                    {{--                            Do you really want to delete <span style="color: red"><?= $customer['first_name'] ?>--}}
+                    {{--                                                                                      <?= $customer['last_name'] ?>--}}
+                    {{--                                </span>?--}}
+                    {{--                        </p>--}}
 
-{{--                        <div class="modal__footer">--}}
-{{--                            <div>--}}
-{{--                                <a href="destroy.php?id=<?= $customer['id'] ?>" class="btn btn-danger"--}}
-{{--                                   style="font-size: 16px;">--}}
-{{--                                    Delete</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                    {{--                        <div class="modal__footer">--}}
+                    {{--                            <div>--}}
+                    {{--                                <a href="destroy.php?id=<?= $customer['id'] ?>" class="btn btn-danger"--}}
+                    {{--                                   style="font-size: 16px;">--}}
+                    {{--                                    Delete</a>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
 
-{{--                        <a href="#" class="modal__close">&times;</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                    {{--                        <a href="#" class="modal__close">&times;</a>--}}
+                    {{--                    </div>--}}
+                    {{--                </div>--}}
 
-                <!--                              end modal-->
+                    <!--                              end modal-->
                 @endforeach
             </table>
+            <div class="mt-5">
+                <div class="pt-3 bg-light">
+                    {{$customers->onEachSide(2)->links()}}
+                </div>
+            </div>
         </div>
     </div>
     <!--  js close button modal  -->

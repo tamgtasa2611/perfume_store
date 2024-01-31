@@ -28,7 +28,7 @@ CREATE TABLE seasons (
 
 CREATE TABLE sizes (
 	id INT auto_increment,
-    size INT,
+    size_name INT,
     PRIMARY KEY (id)
 );
 
@@ -137,7 +137,7 @@ INSERT INTO seasons(season_name) VALUES
 ("Autumn"),
 ("Winter");
 
-INSERT INTO sizes(size) VALUES
+INSERT INTO sizes(size_name) VALUES
 (25),
 (30),
 (50),

@@ -11,7 +11,7 @@ class Customer extends Model
     //disable created_at updated_at
     public $timestamps = false;
 
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'phone_number', 'address'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'phone_number', 'address', 'status'];
 
     public function scopeFilter($query, array $filters)
     {

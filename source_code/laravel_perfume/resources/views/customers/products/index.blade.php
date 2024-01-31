@@ -2,25 +2,28 @@
 <x-layout>
     @include('layouts/nav')
     <div class="d-flex justify-content-between mb-3">
-        <div class="w-100 text-capitalize text-center fs-3 fw-bold bg-dark text-white py-4">
-            Sannin Store Lego Products
+        <div class="w-100 text-capitalize text-center fs-3 fw-bold bg-warning py-4">
+            All Perfumes
         </div>
     </div>
+
     <div class="container-fluid fs-6">
         {{--                SORTING--}}
         <div class="d-flex justify-content-end align-items-center">
-            <form action="" class="d-flex">
+            <form action="" class="d-flex" style="width: 250px">
                 <label for="sorting" class="w-50 d-flex align-items-center justify-content-center px-1">
                     Sort by
                 </label>
-                <select class="form-select" aria-label="sorting" id="sorting">
-                    <option value="1">Default</option>
-                    <option value="2">Newest</option>
-                    <option value="3">Bestseller</option>
-                    <option value="4">Price: Low to High</option>
-                    <option value="5">Price: High to Low</option>
-                    <option value="5">Price: High to Low</option>
+                <select class="form-select" aria-label="sorting" id="sorting" name="sorting"
+                        onchange="this.form.submit()">
+                    <option value="1" {{$sorting == 1 ? 'selected' : ''}}>Default
+                    </option>
+                    <option value="2" {{$sorting == 2 ? 'selected' : ''}}>Newest</option>
+                    <option value="3" {{$sorting == 3 ? 'selected' : ''}}>Bestseller</option>
+                    <option value="4" {{$sorting == 4 ? 'selected' : ''}}>Price: Low to High</option>
+                    <option value="5" {{$sorting == 5 ? 'selected' : ''}}>Price: High to Low</option>
                 </select>
+                <input type="hidden" name="page" value="{{ $currentPage }}" />
             </form>
         </div>
         {{--        MAIN--}}
@@ -189,7 +192,7 @@
                                         <div class="d-flex align-items-center">
                                             <i class="bi bi-droplet p-1"></i>
                                             <span class="p-1">
-                                                {{$product->size_id}}
+                                                {{$product->size_name}}ml
                                             </span>
                                         </div>
                                     </div>

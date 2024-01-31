@@ -9,9 +9,9 @@ class CustomerController extends Controller
 {
     public function index()
     {
-//        $customers = DB::table("customers")
-//            ->get();
-        $customers = Customer::paginate(5);
+        $customers = DB::table('customers')
+            ->paginate(5);
+//        $customers = Customer::paginate(5);
         return view("admins.customer_manager.index", [
             "customers" => $customers
         ]);

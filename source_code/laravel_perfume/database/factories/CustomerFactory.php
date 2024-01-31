@@ -23,7 +23,8 @@ class CustomerFactory extends Factory
             'email' => $this->faker->unique()->email(),
             'password' => '123456',
             'phone_number' => $this->faker->e164PhoneNumber(),
-            'address' => $this->faker->address()
+            'address' => $this->faker->address(),
+            'status' => $this->faker->boolean()
         ];
     }
 }
