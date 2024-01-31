@@ -71,6 +71,7 @@ CREATE TABLE customers (
     last_name VARCHAR(100),
     phone_number VARCHAR(13),
     address TEXT,
+    status INT(1),
     PRIMARY KEY (id)
 );
 
