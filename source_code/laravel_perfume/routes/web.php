@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +43,6 @@ Route::get('/profile', function () {
 Route::get('/cart', function () {
     return view('customers.carts.cart');
 })->name('cart');
+
+Route::get('/admin', [CustomerController::class, 'index'])->name('customer_manager');
+
