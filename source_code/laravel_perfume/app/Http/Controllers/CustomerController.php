@@ -11,7 +11,7 @@ class CustomerController extends Controller
     {
 //        $customers = DB::table("customers")
 //            ->get();
-        $customers = Customer::paginate(6);
+        $customers = Customer::paginate(5);
         return view("admins.customer_manager.index", [
             "customers" => $customers
         ]);

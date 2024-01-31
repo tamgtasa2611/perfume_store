@@ -21,8 +21,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('product') ? 'active' : '' }}"
-                       href="{{ route('product') }}">NEW
-                        ARRIVALS
+                       href="{{ route('product') }}">ALL PRODUCTS
                     </a>
                 </li>
                 <li class="nav-item">

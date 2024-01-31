@@ -171,7 +171,7 @@
                 <div class="container text-center">
                     <div class="row row-cols-3">
                         @foreach($products as $product)
-                            <div class="col border">
+                            <div class="col border bg-white">
                                 <div
                                     class="position-relative overflow-hidden d-flex justify-content-center">
                                     <img
@@ -181,26 +181,32 @@
                                         alt="product_image">
                                     <div
                                         class="w-100 mt-3 position-absolute d-flex justify-content-between">
-                                        <div class="p-2 bg-light border rounded-5">
-                                            <i class="py-3 bi bi-star text-warning"></i>
+                                        <div class="border rounded-5">
+                                            <a href="" class="btn btn-light rounded-5 p-2">
+                                                <i class="py-3 bi bi-star text-warning"></i>
+                                            </a>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <i class="bi bi-cake2 p-1"></i>
+                                            <i class="bi bi-droplet p-1"></i>
                                             <span class="p-1">
-                                                {{$product->age_id}}
+                                                {{$product->size_id}}
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-5">
+                                <div class="mt-5 text-capitalize">
                                     {{$product->product_name}}
                                 </div>
                                 <div class="mt-5 mb-3 d-flex justify-content-between align-items-center">
-                                    <div class="w-50 text-start text-success fw-bold">${{$product->price}}</div>
-                                    <div class="w-50 text-end">
-                                        <a href="" class="btn btn-primary rounded-5">
+                                    <div class="text-start text-success">${{$product->price}}</div>
+                                    <div class="d-flex text-end">
+                                        <a href="" class="btn btn-warning rounded-5 me-2">
                                             <i class="p-2 bi bi-bag"></i>
                                             <span class="pe-2">Add to cart</span>
+                                        </a>
+                                        <a href="" class="btn btn-primary rounded-5">
+                                            <i class="p-2 bi bi-bag"></i>
+                                            <span class="pe-2">Buy now</span>
                                         </a>
                                     </div>
                                 </div>
