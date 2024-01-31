@@ -13,15 +13,16 @@ CREATE TABLE genders (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE product_types (
+CREATE TABLE categories (
 	id INT auto_increment,
-    type_name VARCHAR(100),
+    category_name VARCHAR(100),
+    description TEXT,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE countries (
+CREATE TABLE seasons (
 	id INT auto_increment,
-    country_name VARCHAR(100),
+    season_name VARCHAR(100),
     PRIMARY KEY (id)
 );
 
@@ -39,14 +40,14 @@ CREATE TABLE products (
     description TEXT,
     image TEXT,
     size_id INT,
-    type_id INT,
-    country_id INT,
+    category_id INT,
+    season_id INT,
     gender_id INT,
     brand_id INT,
     PRIMARY KEY (id),
     FOREIGN KEY (size_id) REFERENCES sizes(id),
-    FOREIGN KEY (type_id) REFERENCES product_types(id),
-    FOREIGN KEY (country_id) REFERENCES countries(id),
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (season_id) REFERENCES seasons(id),
     FOREIGN KEY (gender_id) REFERENCES genders(id),
     FOREIGN KEY (brand_id) REFERENCES brands(id)
 );
@@ -83,6 +84,9 @@ CREATE TABLE orders (
 	id INT auto_increment,
     order_date DATETIME,
     order_status INT,
+	receiver_name VARCHAR(255),
+    receiver_phone VARCHAR(13),
+    receiver_address TEXT,
     admin_id INT,
     customer_id INT,
     method_id INT,
@@ -107,6 +111,9 @@ CREATE TABLE orders_details (
 INSERT INTO brands(brand_name) VALUES
 ("Dior"),
 ("Chanel"),
+("Giorgio Armani"),
+("Gucci"),
+("Tom Ford"),
 ("D&G");
 
 INSERT INTO genders(gender_name) VALUES
@@ -114,28 +121,30 @@ INSERT INTO genders(gender_name) VALUES
 ("Female"),
 ("Unisex");
 
-INSERT INTO product_types(type_name) VALUES
-("Common"),
-("Unique");
+INSERT INTO categories(category_name) VALUES
+("Parfum"),
+("Eau de Parfum"),
+("Eau de Toilette"),
+("Eau de Cologne"),
+("Eau Fraiche"),
+("Perfume Oil"),
+("Body Mists");
 
-INSERT INTO countries(country_name) VALUES
-("United States"),
-("Korea"),
-("Italy"),
-("China"),
-("Japan");
+INSERT INTO seasons(season_name) VALUES
+("Spring"),
+("Summer"),
+("Autumn"),
+("Winter");
 
 INSERT INTO sizes(size) VALUES
+(25),
 (30),
 (50),
 (100),
-(125);
+(125),
+(200);
 
-INSERT INTO products(product_name, quantity, price, description, image, size_id, type_id, country_id, gender_id, brand_id) VALUES
-("Product 1", 10, 49.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 1, 1, 1, 1, 1),
-("Product 2", 10, 69.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 2, 2, 2, 2, 2),
-("Product 3", 10, 100.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 3, 1, 1, 3, 2),
-("Product 4", 10, 89.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 4, 1, 3, 3, 1),
-("Product 5", 10, 79.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 1, 2, 1, 1, 1),
-("Product 6", 10, 29.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 2, 1, 4, 3, 3),
-("Product 7", 10, 159.99, "", "https://mediacdn.livestory.io/v1/armani/posts/r1000/6349244778f58e000b07e6a8.png.webp", 3, 2, 1, 2, 2);
+INSERT INTO products(product_name, quantity, price, description, image, size_id, category_id, season_id, gender_id, brand_id) VALUES
+("ACQUA DI GIOIA", 100, 120, "", "images/products/product_1.webp", 4, 2, 2, 2, 3),
+("PLATINUM", 100, 185, "", "images/products/product_2.webp", 2, 3, 2, 3, 2),
+("SAUVAGE ELIXIR", 100, 149, "", "images/products/product_3.webp", 3, 1, 4, 1, 1);
