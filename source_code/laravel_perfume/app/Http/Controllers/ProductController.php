@@ -11,27 +11,30 @@ class ProductController extends Controller
     //show all products
     public function index()
     {
-        $sorting = 1;
+        //filter
+        $sorting = 'default';
         if (isset($_GET['sorting'])) {
             $sorting = $_GET['sorting'];
         }
-        $currentPage = 1;
-        if (isset($_GET['page'])) {
-            $currentPage = $_GET['page'];
+
+        $price = 0;
+        if (isset($_GET['price'])) {
+            $price = $_GET['price'];
         }
+
         $orderBy = "id";
         $orderDirection = "asc";
         switch ($sorting) {
-            case 2:
+            case 'newest':
                 $orderDirection = "desc";
                 break;
-            case 3:
+            case 'bestseller':
                 //bestseller de lai khi nao lam xong order tinh sau
                 break;
-            case 4:
+            case 'low_to_high':
                 $orderBy = "price";
                 break;
-            case 5:
+            case 'high_to_low':
                 $orderBy = "price";
                 $orderDirection = "desc";
                 break;
@@ -41,7 +44,8 @@ class ProductController extends Controller
 //        $products = Product::all()->filter(request('search'))->paginate(3);
         $products = DB::table('products')
             ->join('sizes', 'products.size_id', 'sizes.id')
-            ->select('products.*', 'sizes.size_name')
+            ->join('seasons', 'products.season_id', 'seasons.id')
+            ->select('products.*', 'sizes.size_name', 'seasons.season_name')
             ->orderBy($orderBy, $orderDirection)
             ->paginate(6);
 //        cach 3 khong join duoc
@@ -49,8 +53,8 @@ class ProductController extends Controller
 
         return view('customers.products.index', [
             'products' => $products,
-            'currentPage' => $currentPage,
-            'sorting' => $sorting
+            'sorting' => $sorting,
+            'price' => $price
         ]);
     }
 }
