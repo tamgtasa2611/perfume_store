@@ -2,26 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Season;
+use App\Models\Size;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class ProductController extends Controller
 {
     //show all products
-    public function index()
+    public function index(Request $request)
     {
         //filter
+        $price_1 = 0;
+        $price_2 = 9999;
+        if ($request->price_1 != null) {
+            $price_1 = $request->price_1;
+        }
+        if ($request->price_2 != null) {
+            $price_2 = $request->price_2;
+        }
+        if ($price_1 > $price_2) {
+            $bigger = $price_1;
+            $price_1 = $price_2;
+            $price_2 = $bigger;
+        }
+
+        $brand = Brand::all('id')->toArray();
+        if (isset($request->brand)) {
+            $brand = $request->brand;
+        }
+
+        $category = Category::all('id')->toArray();
+        if (isset($request->category)) {
+            $category = $request->category;
+        }
+
+        $size = Size::all('id')->toArray();
+        if (isset($request->size)) {
+            $size = $request->size;
+        }
+
+//        $season = [];
+        $season = Season::all('id')->toArray();
+        if (isset($request->season)) {
+            $season = $request->season;
+        }
+
+        //sorting
         $sorting = 'default';
-        if (isset($_GET['sorting'])) {
-            $sorting = $_GET['sorting'];
+        if (isset($request->sorting)) {
+            $sorting = $request->sorting;
         }
-
-        $price = 0;
-        if (isset($_GET['price'])) {
-            $price = $_GET['price'];
-        }
-
         $orderBy = "id";
         $orderDirection = "asc";
         switch ($sorting) {
@@ -46,15 +82,34 @@ class ProductController extends Controller
             ->join('sizes', 'products.size_id', 'sizes.id')
             ->join('seasons', 'products.season_id', 'seasons.id')
             ->select('products.*', 'sizes.size_name', 'seasons.season_name')
+            ->whereBetween('price', [$price_1, $price_2])
+            ->whereIn('brand_id', $brand)
+            ->whereIn('category_id', $category)
+            ->whereIn('size_id', $size)
+            ->whereIn('season_id', $season)
             ->orderBy($orderBy, $orderDirection)
             ->paginate(6);
 //        cach 3 khong join duoc
 //        $products = Product::paginate(6);
 
+        $categories = Category::all();
+        $brands = Brand::all();
+        $sizes = Size::all();
+        $seasons = Season::all();
+
         return view('customers.products.index', [
             'products' => $products,
+            'brands' => $brands,
+            'categories' => $categories,
+            'sizes' => $sizes,
+            'seasons' => $seasons,
             'sorting' => $sorting,
-            'price' => $price
+            'f_price_1' => $price_1,
+            'f_price_2' => $price_2,
+            'f_brand' => $brand,
+            'f_category' => $category,
+            'f_size' => $size,
+            'f_season' => $season,
         ]);
     }
 }

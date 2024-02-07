@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+
     //disable created_at updated_at
     public $timestamps = false;
 
     protected $fillable = ['first_name', 'last_name', 'email', 'password', 'phone_number', 'address', 'status'];
+    protected $table = 'customers';
 
     public function scopeFilter($query, array $filters)
     {

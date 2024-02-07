@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Size extends Model
+class Season extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['size_name'];
-    protected $table = 'sizes';
+    protected $fillable = ['season_name'];
+    protected $table = 'seasons';
+
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false) {
-            $query->where('size_name', 'like', '%' . request('search') . '%');
+            $query->where('season_name', 'like', '%' . request('search') . '%');
         }
     }
 

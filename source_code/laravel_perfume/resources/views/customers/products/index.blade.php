@@ -17,11 +17,20 @@
                         onchange="this.form.submit()">
                     <option value="default" {{$sorting == 'default' ? 'selected' : ''}}>Default
                     </option>
-                    <option value="newest" {{$sorting == 'newest' ? 'selected' : ''}}>Newest</option>
-                    <option value="bestseller" {{$sorting == 'bestseller' ? 'selected' : ''}}>Bestseller</option>
-                    <option value="low_to_high" {{$sorting == 'low_to_high' ? 'selected' : ''}}>Price: Low to High</option>
-                    <option value="high_to_low" {{$sorting == 'high_to_low' ? 'selected' : ''}}>Price: High to Low</option>
+                    <option value="newest" {{$sorting == 'newest' ? 'selected' : ''}}>Newest
+                    </option>
+                    <option value="bestseller" {{$sorting == 'bestseller' ? 'selected' : ''}}>
+                        Bestseller
+                    </option>
+                    <option value="low_to_high" {{$sorting == 'low_to_high' ? 'selected' : ''}}>
+                        Price: Low to High
+                    </option>
+                    <option value="high_to_low" {{$sorting == 'high_to_low' ? 'selected' : ''}}>
+                        Price: High to Low
+                    </option>
                 </select>
+                <input type="hidden" class="invisible" name="price_1" value="{{$f_price_1}}">
+                <input type="hidden" class="invisible" name="price_2" value="{{$f_price_2}}">
             </form>
         </div>
         {{--        MAIN--}}
@@ -30,71 +39,178 @@
             <div class="w-20 pe-3">
                 <hr class="mt-0">
                 <form action="" method="get">
-                    <div class="w-100 filter-item">
+                    {{--                    PRICE--}}
+                    <div class="w-100">
                         <div>
-                            <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
-                                 data-bs-toggle="collapse" data-bs-target="#price" aria-expanded="false"
+                            <div class="d-flex justify-content-between align-items-center h-pointer"
+                                 data-bs-toggle="collapse" data-bs-target="#price"
                                  aria-controls="price">
-                                <div class="filter-title">Price</div>
+                                <div class="">Price</div>
                                 <div>
                                     <i class="bi bi-chevron-down"></i>
                                 </div>
                             </div>
                             <div class="collapse collapsing expand" id="price">
-                                <div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="price" id="0" value="0"
-                                            {{$price == 0 ? 'checked' : ''}}>
-                                        <label class="form-check-label" for="0">
-                                            $0 - $50
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="price" id="1" value="1"
-                                            {{$price == 1 ? 'checked' : ''}}>
-                                        <label class="form-check-label" for="1">
-                                            $50 - $100
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="price" id="2"
-                                               value="2"{{$price == 2 ? 'checked' : ''}}>
-                                        <label class="form-check-label" for="2">
-                                            $100 - $200
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="price" id="3"
-                                               value="3"{{$price == 3 ? 'checked' : ''}}>
-                                        <label class="form-check-label" for="3">
-                                            > $200
-                                        </label>
-                                    </div>
+                                {{--                                <div>--}}
+                                {{--                                    <div class="form-check">--}}
+                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
+                                {{--                                               id="price_1"--}}
+                                {{--                                               value="1"--}}
+                                {{--                                            {{in_array(1, $f_price) ? 'checked' : ''}}>--}}
+                                {{--                                        <label class="form-check-label h-pointer" for="price_1">--}}
+                                {{--                                            $0 - $50--}}
+                                {{--                                        </label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="form-check">--}}
+                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
+                                {{--                                               id="price_2"--}}
+                                {{--                                               value="2"--}}
+                                {{--                                            {{in_array(2, $f_price) ? 'checked' : ''}}>--}}
+                                {{--                                        <label class="form-check-label h-pointer" for="price_2">--}}
+                                {{--                                            $50 - $100--}}
+                                {{--                                        </label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="form-check">--}}
+                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
+                                {{--                                               id="price_3"--}}
+                                {{--                                               value="3" {{in_array(3, $f_price) ? 'checked' : ''}}>--}}
+                                {{--                                        <label class="form-check-label h-pointer" for="price_3">--}}
+                                {{--                                            $100 - $200--}}
+                                {{--                                        </label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="form-check">--}}
+                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
+                                {{--                                               id="price_4"--}}
+                                {{--                                               value="4" {{in_array(4, $f_price) ? 'checked' : ''}}>--}}
+                                {{--                                        <label class="form-check-label h-pointer" for="price_4">--}}
+                                {{--                                            > $200--}}
+                                {{--                                        </label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <input type="number" class="form-control w-45" name="price_1" id="price_1"
+                                           step="0.01" value="{{$f_price_1 != 0 ? $f_price_1 : ''}}" min="0"
+                                           placeholder="Start price">
+                                    <input type="number" class="form-control w-45" name="price_2" id="price_2"
+                                           step="0.01" value="{{$f_price_2 != 9999 ? $f_price_2 : ''}}" min="0"
+                                           placeholder="End price">
                                 </div>
                             </div>
                         </div>
                         <hr>
                     </div>
-
-                    <div class="w-100 filter-item">
+                    {{--BRAND--}}
+                    <div class="w-100">
                         <div>
-                            <div class="d-flex justify-content-between align-items-center hover-pointer filter-main"
-                                 data-bs-toggle="collapse" data-bs-target="#brand" aria-expanded="false"
+                            <div class="d-flex justify-content-between align-items-center h-pointer"
+                                 data-bs-toggle="collapse" data-bs-target="#brand"
                                  aria-controls="brand">
-                                <div class="filter-title">Brand</div>
+                                <div class="">Brand</div>
                                 <div>
                                     <i class="bi bi-chevron-down"></i>
                                 </div>
                             </div>
                             <div class="collapse collapsing expand" id="brand">
                                 <div>
-                                    @foreach($products as $product)
+                                    @foreach($brands as $brand)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="brand" id="ga"
-                                                   value=""
+                                            <input class="form-check-input h-pointer" type="checkbox" name="brand[]"
+                                                   id="brand_{{$brand->id}}"
+                                                   value="{{$brand->id}}"
+                                                {{in_array($brand->id, $f_brand) ? 'checked' : ''}}
                                             >
-                                            <label class="form-check-label" for="ga">
-                                                Giorgio Armani
+                                            <label class="form-check-label h-pointer" for="brand_{{$brand->id}}">
+                                                {{$brand->brand_name}}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    {{--CATEGORY--}}
+                    <div class="w-100">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center h-pointer"
+                                 data-bs-toggle="collapse" data-bs-target="#category"
+                                 aria-controls="category">
+                                <div class="">Category</div>
+                                <div>
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="collapse collapsing expand" id="category">
+                                <div>
+                                    @foreach($categories as $category)
+                                        <div class="form-check">
+                                            <input class="form-check-input h-pointer" type="checkbox" name="category[]"
+                                                   id="category_{{$category->id}}"
+                                                   value="{{$category->id}}"
+                                                {{in_array($category->id, $f_category) ? 'checked' : ''}}
+                                            >
+                                            <label class="form-check-label h-pointer" for="category_{{$category->id}}">
+                                                {{$category->category_name}}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    {{--SIZE--}}
+                    <div class="w-100">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center h-pointer"
+                                 data-bs-toggle="collapse" data-bs-target="#size"
+                                 aria-controls="size">
+                                <div class="">Sizes</div>
+                                <div>
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="collapse collapsing expand" id="size">
+                                <div>
+                                    @foreach($sizes as $size)
+                                        <div class="form-check">
+                                            <input class="form-check-input h-pointer" type="checkbox" name="size[]"
+                                                   id="size_{{$size->id}}"
+                                                   value="{{$size->id}}"
+                                                {{in_array($size->id, $f_size) ? 'checked' : ''}}
+                                            >
+                                            <label class="form-check-label h-pointer" for="size_{{$size->id}}">
+                                                {{$size->size_name}}ml
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    {{--SEASON--}}
+                    <div class="w-100">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center h-pointer"
+                                 data-bs-toggle="collapse" data-bs-target="#season"
+                                 aria-controls="season">
+                                <div class="">Season</div>
+                                <div>
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="collapse collapsing expand" id="season">
+                                <div>
+                                    @foreach($seasons as $season)
+                                        <div class="form-check">
+                                            <input class="form-check-input h-pointer" type="checkbox" name="season[]"
+                                                   id="season_{{$season->id}}"
+                                                   value="{{$season->id}}"
+                                                {{in_array($season->id, $f_season) ? 'checked' : ''}}
+                                            >
+                                            <label class="form-check-label h-pointer" for="season_{{$season->id}}">
+                                                {{$season->season_name}}
                                             </label>
                                         </div>
                                     @endforeach
@@ -105,7 +221,7 @@
                     </div>
 
                     <div class="w-100 d-flex justify-content-between align-items-center">
-                        <a href="" class="btn btn-dark rounded-5 w-45">Reset</a>
+                        <a href="{{route('product')}}" class="btn btn-dark rounded-5 w-45">Reset</a>
                         <button class="btn btn-primary rounded-5 w-45">Apply</button>
                     </div>
                 </form>
@@ -117,7 +233,7 @@
                 <div class="container text-center">
                     <div class="row row-cols-3">
                         @foreach($products as $product)
-                            <div class="col border">
+                            <div class="col border bg-white">
                                 <div
                                     class="position-relative overflow-hidden d-flex justify-content-center">
                                     <img

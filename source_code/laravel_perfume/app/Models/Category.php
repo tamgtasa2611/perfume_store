@@ -10,6 +10,7 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['category_name', 'description'];
+    protected $table = 'categories';
 
     public function scopeFilter($query, array $filters)
     {
