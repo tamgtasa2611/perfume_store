@@ -146,6 +146,6 @@ INSERT INTO sizes(size_name) VALUES
 (200);
 
 INSERT INTO products(product_name, quantity, price, description, image, size_id, category_id, season_id, gender_id, brand_id) VALUES
-("ACQUA DI GIOIA", 100, 120, "", "images/products/product_1.webp", 4, 2, 2, 2, 3),
-("PLATINUM", 100, 185, "", "images/products/product_2.webp", 2, 3, 2, 3, 2),
-("SAUVAGE ELIXIR", 100, 149, "", "images/products/product_3.webp", 3, 1, 4, 1, 1);
+("ACQUA DI GIOIA", 100, 200, "", "images/products/product_1.webp", 2, 2, 3, 2, 5),
+("PLATINUM", 100, 88, "", "images/products/product_2.webp", 3, 5, 1, 3, 1),
+("SAUVAGE ELIXIR", 100, 49, "", "images/products/product_3.webp", 4, 4, 3, 2, 6);
