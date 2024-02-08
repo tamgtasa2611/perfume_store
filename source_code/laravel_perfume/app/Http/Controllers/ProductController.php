@@ -47,7 +47,6 @@ class ProductController extends Controller
             $size = $request->size;
         }
 
-//        $season = [];
         $season = Season::all('id')->toArray();
         if (isset($request->season)) {
             $season = $request->season;
@@ -88,7 +87,8 @@ class ProductController extends Controller
             ->whereIn('size_id', $size)
             ->whereIn('season_id', $season)
             ->orderBy($orderBy, $orderDirection)
-            ->paginate(6);
+            ->paginate(6)
+            ->withQueryString();
 //        cach 3 khong join duoc
 //        $products = Product::paginate(6);
 

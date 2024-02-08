@@ -10,6 +10,7 @@
         {{--                SORTING--}}
         <div class="d-flex justify-content-end align-items-center">
             <form action="" class="d-flex" style="width: 250px">
+                {{--                select--}}
                 <label for="sorting" class="w-50 d-flex align-items-center justify-content-center px-1">
                     Sort by
                 </label>
@@ -29,8 +30,25 @@
                         Price: High to Low
                     </option>
                 </select>
+                {{--                lay gia tri filter      --}}
                 <input type="hidden" class="invisible" name="price_1" value="{{$f_price_1}}">
                 <input type="hidden" class="invisible" name="price_2" value="{{$f_price_2}}">
+                @foreach($f_brand as $brand_value)
+                    <input type="hidden" class="invisible" name="brand[]"
+                           value="{{is_array($brand_value) ? implode($brand_value) : $brand_value}}">
+                @endforeach
+                @foreach($f_category as $category_value)
+                    <input type="hidden" class="invisible" name="category[]"
+                           value="{{is_array($category_value) ? implode($category_value) : $category_value}}">
+                @endforeach
+                @foreach($f_size as $size_value)
+                    <input type="hidden" class="invisible" name="size[]"
+                           value="{{is_array($size_value) ? implode($size_value) : $size_value}}">
+                @endforeach
+                @foreach($f_season as $season_value)
+                    <input type="hidden" class="invisible" name="season[]"
+                           value="{{is_array($season_value) ? implode($season_value) : $season_value}}">
+                @endforeach
             </form>
         </div>
         {{--        MAIN--}}
