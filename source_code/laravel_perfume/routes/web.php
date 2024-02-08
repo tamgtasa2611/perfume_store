@@ -44,5 +44,21 @@ Route::get('/cart', function () {
     return view('customers.carts.cart');
 })->name('cart');
 
-Route::get('/admin', [CustomerController::class, 'index'])->name('customer_manager');
+////show create form
+//Route::get('/admin/customer/create', [CustomerController::class, 'create'])->name('admin/customer/create');
+//
+////store data
+//Route::post('/admin/customer/store', [CustomerController::class, 'store'])->name('customer/store');
 
+Route::get('/create', [CustomerController::class, 'create'])->name('customer/create');
+Route::post('/create', [CustomerController::class, 'store'])->name('customer/store');
+//show edit form
+Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('customer/edit');
+Route::put('/{customer}/edit', [CustomerController::class, 'update'])->name('customer/update');
+Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('customer/destroy');
+
+//Route::get('/admin/customer/edit', [CustomerController::class, 'edit'])->name('customer/edit');
+//Route::put('/admin/customer/update', [CustomerController::class, 'update'])->name('{customers}/update');
+
+//show home customer manager
+Route::get('/admin/customer', [CustomerController::class, 'show'])->name('admin/customer');

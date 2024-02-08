@@ -11,76 +11,101 @@
 
         <!--  content  -->
 
-        <div class="content-container">
-            <div class="d-flex">
-                <h1 class="content-heading me-sm-5">Customer list</h1>
+        <div class="content-container mt-5 ">
+            <div class="d-flex mx-auto mt-5">
+                <h1 class="me-sm-5 text-white">Customer list</h1>
                 <nav style="width: 520px"></nav>
-                <form class="search-form" action="" method="get">
-                    <input type="text" name="search" value="" placeholder="Search here..."
-                           class="rounded-2 my-sm-5 text-white" style="background-color: #28334E">
-                    <button type="button" class="btn btn-light nice-box-shadow" style="background-color: #28334E">
-                        <i class="text-white bi-search" style="text-decoration: none"></i>
-                    </button>
+
+                <form class="d-flex search-form mb-0" action="{{route('admin/customer')}}">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control" name="search" type="text" placeholder="Type to search...">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
                 </form>
-
             </div>
-            <table
-                class="table table-striped table-dark table-hover table-borderless align-middle text-center nice-box-shadow">
-                <thead class="text-white">
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone number</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
+            <section>
+                <div class="h-100">
+                    <div class="d-flex align-items-center h-100">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 row-gap-xxl-5">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">FIRST NAME</th>
+                                                        <th scope="col">LAST NAME</th>
+                                                        <th scope="col">EMAIL</th>
+                                                        <th scope="col">PHONE</th>
+                                                        <th scope="col">ADDRESS</th>
+                                                        <th scope="col">STATUS</th>
+                                                        <th scope="col">ACTION</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach ($customers as $customer)
+                                                        <tr style="background-color: #000000">
+                                                            <td> {{$customer->id}} </td>
+                                                            <td> {{$customer->first_name}} </td>
+                                                            <td> {{$customer->last_name}} </td>
+                                                            <td> {{$customer->email}} </td>
+                                                            <td> {{$customer->phone_number}} </td>
+                                                            <td> {{$customer->address}} </td>
+                                                            <td>
+                                                                    <?php
+                                                                    if($customer['status'] == 1){
+                                                                        echo '<button class="btn btn-success"><a href="status.php?id='.$customer['id'].'&status=0"
+                                    class="link-light nav-link">Enable</a></button>';
+                                                                    }
+                                                                    else{
+                                                                        echo '<button class="btn btn-danger"><a href="status.php?id='.$customer['id'].'&status=1"
+                                    class="link-light nav-link">Disable</a></button>';
+                                                                    }
+                                                                    ?>
+                                                            </td>
+                                                            <td class="d-flex justify-content-center pt-4">
+                                                                <div>
+                                                                    <button type="button" class="btn btn-primary">
+                                                                        <a href="{{route('customer/edit', $customer) }}" class="text-white nav-link bi-pencil"
+                                                                           style="text-decoration: none">Edit</a>
+                                                                    </button>
+                                                                </div>
 
-                @foreach ($customers as $customer)
+                                                                <form method="post" action="{{ route('customer/destroy', $customer) }}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button class="text-white btn bg-danger border-danger-subtle">Delete</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
 
-                    <tr style="background-color: #000000">
-                        <td> {{$customer->id}} </td>
-                        <td> {{$customer->first_name}} </td>
-                        <td> {{$customer->last_name}} </td>
-                        <td> {{$customer->email}} </td>
-                        <td> {{$customer->phone_number}} </td>
-                        <td> {{$customer->address}} </td>
-                        <td> {{$customer->status}} </td>
-                    </tr>
-                    <!--          modal  delete        -->
-                    {{--                <div id="delete-modal?cus=<?= $customer['id'] ?>" class="my-modal" style="z-index: 10">--}}
-                    {{--                    <div class="modal__content">--}}
-                    {{--                        <h2>Confirm delete</h2>--}}
 
-                    {{--                        <p>--}}
-                    {{--                            Do you really want to delete <span style="color: red"><?= $customer['first_name'] ?>--}}
-                    {{--                                                                                      <?= $customer['last_name'] ?>--}}
-                    {{--                                </span>?--}}
-                    {{--                        </p>--}}
-
-                    {{--                        <div class="modal__footer">--}}
-                    {{--                            <div>--}}
-                    {{--                                <a href="destroy.php?id=<?= $customer['id'] ?>" class="btn btn-danger"--}}
-                    {{--                                   style="font-size: 16px;">--}}
-                    {{--                                    Delete</a>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-
-                    {{--                        <a href="#" class="modal__close">&times;</a>--}}
-                    {{--                    </div>--}}
-                    {{--                </div>--}}
-
-                    <!--                              end modal-->
-                @endforeach
-            </table>
-            <div class="mt-5">
-                <div class="pt-3 bg-light">
-                    {{$customers->onEachSide(2)->links()}}
+                                                        <!--                              end modal-->
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                                <div style="display: flex" class="justify-content-between">
+                                                    <button type="button" class="btn btn-primary nice-box-shadow h-75 mt-3">
+                                                        <a href="{{route('customer/create')}}" class="text-white" style="text-decoration: none">Add a customer</a>
+                                                    </button>
+                                                    <div class="pt-3">
+                                                        {{$customers->onEachSide(3)->links()}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
     <!--  js close button modal  -->
@@ -92,8 +117,9 @@
             closeTarget.classList.add("d-none");
         }
     </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </div>
 </body>
-
+<x-flash-message/>
 
 
