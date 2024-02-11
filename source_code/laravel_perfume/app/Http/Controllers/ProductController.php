@@ -120,8 +120,17 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show(Product $product)
+    public function show(int $id)
     {
+        $product = DB::table('products')
+            ->join('brands', 'products.brand_id', 'brands.id')
+            ->join('categories', 'products.category_id', 'categories.id')
+            ->join('sizes', 'products.size_id', 'sizes.id')
+            ->join('seasons', 'products.season_id', 'seasons.id')
+            ->select('products.*', 'brands.brand_name', 'categories.category_name', 'sizes.size_name', 'seasons.season_name')
+            ->where('products.id', '=', $id)
+            ->first();
+
         return view('customers.products.show', [
             'product' => $product
         ]);

@@ -2,40 +2,74 @@
 <x-layout>
     @include('layouts/nav')
     <div class="container bg-white h-80 mt-5 rounded-5 d-flex justify-content-center align-items-center">
-        <div class="w-50 d-flex align-items-center justify-content-center h-100">
+        {{--       IMG--}}
+        <div class="w-50 d-flex align-items-center justify-content-center h-100 overflow-hidden">
             <img src="{{asset($product->image)}}" alt="product_image"
                  class="h-80">
         </div>
-        <div class="w-50">
-            <div class="w-100 d-flex justify-content-between align-items-baseline">
-                <div class="fs-4 fw-bold text-capitalize">{{$product->product_name}}</div>
-                <div class="fst-italic">brand</div>
+        {{--        MAIN--}}
+        <div class="w-50 pe-3">
+            {{--            HEADING--}}
+            <div class="w-100 d-flex justify-content-between align-items-center mb-3">
+                <div class="fs-3 fw-bold text-capitalize w-50">{{$product->product_name}}</div>
+                <div>
+                    <div class="btn rounded-5 btn-dark border">{{$product->category_name}}</div>
+                </div>
             </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-baseline">
-                <div class="fs-5 fw-bold text-success">${{$product->price}}</div>
-                <div class="">{{$product->quantity}} left in stock</div>
+            {{--            BODY--}}
+            <div class="d-flex justify-content-start align-items-center">
+                <div class="fs-5 fw-bold text-success">
+                    <span class="text-danger text-decoration-line-through">${{$product->price + 20}}</span>
+                    ${{$product->price}}
+                </div>
             </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
+            <div class="my-3">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <table class="table table-bordered text-center w-100 my-3">
+                <tr>
+                    <td class="w-25">Brand</td>
+                    <td class="bg-white">{{$product->brand_name}}</td>
+                </tr>
+                <tr>
+                    <td class="w-25">Size</td>
+                    <td class="bg-white">{{$product->size_name}}</td>
+                </tr>
+                <tr>
+                    <td class="w-25">Season</td>
+                    <td class="bg-white">{{$product->season_name}}</td>
+                </tr>
+                <tr>
+                    <td class="w-25">In stock</td>
+                    <td class="bg-white">{{$product->quantity}}</td>
+                </tr>
+            </table>
+            {{--BUTTON--}}
+            <form action="" class="d-flex justify-content-between align-items-center w-100">
+                <div class="d-flex align-items-center w-50">
                     <span class="me-3">
-                        Quantity
+                        Buy quantity
                     </span>
                     <input type="number" class="form-control rounded-5 w-25" name="quantity" id="quantity"
-                           step="1" value="" min="0">
+                           step="1" value="" min="0" max="{{$product->quantity}}" required>
                 </div>
-                <div>
-                    <a href="" class="btn btn-light border rounded-5 me-2">
+                <div class="w-50 text-end">
+                    <button class="btn btn-light border rounded-5 me-2">
                         <i class="p-2 bi bi-bag"></i>
                         <span class="pe-2">Add to cart</span>
-                    </a>
-                    <a href="" class="btn btn-primary rounded-5">
+                    </button>
+                    <button class="btn btn-primary rounded-5">
                         <i class="p-2 bi bi-bag"></i>
                         <span class="pe-2">Buy now</span>
-                    </a>
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     @include('layouts/footer')

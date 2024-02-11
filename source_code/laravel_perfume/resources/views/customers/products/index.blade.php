@@ -1,6 +1,7 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <x-layout>
     @include('layouts/nav')
+{{--    HEADING--}}
     <div class="d-flex justify-content-between mb-3">
         <div class="w-100 text-capitalize text-center bg-black fs-3 fw-bold text-white py-4">
             {{$search != "" ? 'Search results for "' . $search . '"' : 'All Perfumes'}}
