@@ -17,6 +17,11 @@ class ProductController extends Controller
     //show all products
     public function index(Request $request)
     {
+        //search
+        $search = "";
+        if (isset($request->search)) {
+            $search = $request->search;
+        }
         //filter
         $price_1 = 0;
         $price_2 = 9999;
@@ -86,6 +91,7 @@ class ProductController extends Controller
             ->whereIn('category_id', $category)
             ->whereIn('size_id', $size)
             ->whereIn('season_id', $season)
+            ->where('product_name', 'like', '%' . $search . '%')
             ->orderBy($orderBy, $orderDirection)
             ->paginate(6)
             ->withQueryString();
@@ -103,13 +109,21 @@ class ProductController extends Controller
             'categories' => $categories,
             'sizes' => $sizes,
             'seasons' => $seasons,
+            'search' => $search,
             'sorting' => $sorting,
             'f_price_1' => $price_1,
             'f_price_2' => $price_2,
             'f_brand' => $brand,
             'f_category' => $category,
             'f_size' => $size,
-            'f_season' => $season,
+            'f_season' => $season
+        ]);
+    }
+
+    public function show(Product $product)
+    {
+        return view('customers.products.show', [
+            'product' => $product
         ]);
     }
 }

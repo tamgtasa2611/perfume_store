@@ -2,8 +2,8 @@
 <x-layout>
     @include('layouts/nav')
     <div class="d-flex justify-content-between mb-3">
-        <div class="w-100 text-uppercase text-center bg-black fs-3 fw-bold text-white py-4">
-            All Perfumes
+        <div class="w-100 text-capitalize text-center bg-black fs-3 fw-bold text-white py-4">
+            {{$search != "" ? 'Search results for "' . $search . '"' : 'All Perfumes'}}
         </div>
     </div>
     <div class="container-fluid fs-6">
@@ -30,6 +30,8 @@
                         Price: High to Low
                     </option>
                 </select>
+                {{--                lay giay tri search--}}
+                <input type="hidden" class="invisible" name="search" value="{{$search}}">
                 {{--                lay gia tri filter      --}}
                 <input type="hidden" class="invisible" name="price_1" value="{{$f_price_1}}">
                 <input type="hidden" class="invisible" name="price_2" value="{{$f_price_2}}">
@@ -57,6 +59,8 @@
             <div class="w-20 pe-3">
                 <hr class="mt-0">
                 <form action="" method="get">
+                    {{--                    lay gia tri search--}}
+                    <input type="hidden" class="invisible" name="search" value="{{$search}}">
                     {{--                    PRICE--}}
                     <div class="w-100">
                         <div>
@@ -69,42 +73,6 @@
                                 </div>
                             </div>
                             <div class="collapse collapsing expand" id="price">
-                                {{--                                <div>--}}
-                                {{--                                    <div class="form-check">--}}
-                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
-                                {{--                                               id="price_1"--}}
-                                {{--                                               value="1"--}}
-                                {{--                                            {{in_array(1, $f_price) ? 'checked' : ''}}>--}}
-                                {{--                                        <label class="form-check-label h-pointer" for="price_1">--}}
-                                {{--                                            $0 - $50--}}
-                                {{--                                        </label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="form-check">--}}
-                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
-                                {{--                                               id="price_2"--}}
-                                {{--                                               value="2"--}}
-                                {{--                                            {{in_array(2, $f_price) ? 'checked' : ''}}>--}}
-                                {{--                                        <label class="form-check-label h-pointer" for="price_2">--}}
-                                {{--                                            $50 - $100--}}
-                                {{--                                        </label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="form-check">--}}
-                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
-                                {{--                                               id="price_3"--}}
-                                {{--                                               value="3" {{in_array(3, $f_price) ? 'checked' : ''}}>--}}
-                                {{--                                        <label class="form-check-label h-pointer" for="price_3">--}}
-                                {{--                                            $100 - $200--}}
-                                {{--                                        </label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="form-check">--}}
-                                {{--                                        <input class="form-check-input h-pointer" type="checkbox" name="price[]"--}}
-                                {{--                                               id="price_4"--}}
-                                {{--                                               value="4" {{in_array(4, $f_price) ? 'checked' : ''}}>--}}
-                                {{--                                        <label class="form-check-label h-pointer" for="price_4">--}}
-                                {{--                                            > $200--}}
-                                {{--                                        </label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
                                 <div class="d-flex justify-content-between align-items-center">
                                     <input type="number" class="form-control w-45" name="price_1" id="price_1"
                                            step="0.01" value="{{$f_price_1 != 0 ? $f_price_1 : ''}}" min="0"
@@ -254,11 +222,13 @@
                             <div class="col border bg-white">
                                 <div
                                     class="position-relative overflow-hidden d-flex justify-content-center">
-                                    <img
-                                        src="{{$product->image}}"
-                                        height="200px"
-                                        class="p-1 mt-5"
-                                        alt="product_image">
+                                    <a href="/product/{{$product->id}}">
+                                        <img
+                                            src="{{$product->image}}"
+                                            height="200px"
+                                            class="p-1 mt-5"
+                                            alt="product_image">
+                                    </a>
                                     <div
                                         class="w-100 mt-3 position-absolute d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -281,7 +251,7 @@
                                 <div class="mt-5 mb-3 d-flex justify-content-between align-items-center">
                                     <div class="text-start text-success">${{$product->price}}</div>
                                     <div class="d-flex text-end">
-                                        <a href="" class="btn btn-dark rounded-5 me-2">
+                                        <a href="" class="btn btn-light border rounded-5 me-2">
                                             <i class="p-2 bi bi-bag"></i>
                                             <span class="pe-2">Add to cart</span>
                                         </a>
