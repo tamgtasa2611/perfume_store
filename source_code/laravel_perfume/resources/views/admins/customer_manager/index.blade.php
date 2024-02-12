@@ -1,4 +1,3 @@
-
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <title>Customers Manager</title>
 <body style="background-color: #303036">
@@ -34,7 +33,8 @@
                                     <div class="card bg-dark">
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
+                                                <table
+                                                    class="table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">ID</th>
@@ -57,29 +57,45 @@
                                                             <td> {{$customer->phone_number}} </td>
                                                             <td> {{$customer->address}} </td>
                                                             <td>
-                                                                    <?php
-                                                                    if($customer['status'] == 1){
-                                                                        echo '<button class="btn btn-success"><a href="status.php?id='.$customer['id'].'&status=0"
-                                    class="link-light nav-link">Enable</a></button>';
-                                                                    }
-                                                                    else{
-                                                                        echo '<button class="btn btn-danger"><a href="status.php?id='.$customer['id'].'&status=1"
-                                    class="link-light nav-link">Disable</a></button>';
-                                                                    }
-                                                                    ?>
+                                                                @switch($customer->status)
+                                                                    @case(1)
+                                                                        <button class="btn btn-success"><a
+                                                                                href="status.php?id='.$customer['id'].'&status=1"
+                                                                                class="link-light nav-link">Active</a>
+                                                                        </button>
+                                                                        @break
+                                                                    @case(2)
+                                                                        <button class="btn btn-warning"><a
+                                                                                href="status.php?id='.$customer['id'].'&status=2"
+                                                                                class="link-light nav-link">Locked</a>
+                                                                        </button>
+                                                                        @break
+                                                                    @case(3)
+                                                                        <button class="btn btn-danger"><a
+                                                                                href="status.php?id='.$customer['id'].'&status=3"
+                                                                                class="link-light nav-link">Banned</a>
+                                                                        </button>
+                                                                        @break
+                                                                @endswitch
+
                                                             </td>
                                                             <td class="d-flex justify-content-center pt-4">
                                                                 <div>
                                                                     <button type="button" class="btn btn-primary">
-                                                                        <a href="{{route('customer/edit', $customer) }}" class="text-white nav-link bi-pencil"
+                                                                        <a href="{{route('customer/edit', $customer) }}"
+                                                                           class="text-white nav-link bi-pencil"
                                                                            style="text-decoration: none">Edit</a>
                                                                     </button>
                                                                 </div>
 
-                                                                <form method="post" action="{{ route('customer/destroy', $customer) }}">
+                                                                <form method="post"
+                                                                      action="{{ route('customer/destroy', $customer) }}">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button class="text-white btn bg-danger border-danger-subtle">Delete</button>
+                                                                    <button
+                                                                        class="text-white btn bg-danger border-danger-subtle">
+                                                                        Delete
+                                                                    </button>
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -90,8 +106,10 @@
                                                     </tbody>
                                                 </table>
                                                 <div style="display: flex" class="justify-content-between">
-                                                    <button type="button" class="btn btn-primary nice-box-shadow h-75 mt-3">
-                                                        <a href="{{route('customer/create')}}" class="text-white" style="text-decoration: none">Add a customer</a>
+                                                    <button type="button"
+                                                            class="btn btn-primary nice-box-shadow h-75 mt-3">
+                                                        <a href="{{route('customer/create')}}" class="text-white"
+                                                           style="text-decoration: none">Add a customer</a>
                                                     </button>
                                                     <div class="pt-3">
                                                         {{$customers->onEachSide(3)->links()}}

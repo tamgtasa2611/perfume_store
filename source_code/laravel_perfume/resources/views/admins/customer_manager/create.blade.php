@@ -82,10 +82,15 @@
                                 <div class="input-group d-flex">
                                     <label class="col-form-label text-dark font-monospace">status</label>
                                     <div style="display: inline-block" class="d-flex">
-                                        <input class="form-check-input" type="radio" name="status" value="status" checked>
-                                        Enable
-                                        <input class="form-check-input" type="radio" name="status" value="status">
-                                        Disable
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="status">
+                                        Active
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="status">
+                                        Locked
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="status">
+                                        Banned
                                     </div>
                                 </div>
                             </div>

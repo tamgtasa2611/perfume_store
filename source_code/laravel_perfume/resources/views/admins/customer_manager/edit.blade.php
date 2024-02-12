@@ -24,7 +24,7 @@
                                     <label class="col-form-label text-dark font-monospace">First Name</label>
                                     <input class="rounded-3 px-3" type="text" name="first_name"
                                            pattern="[A-Za-z]+"
-                                            value="{{$customer->first_name}}">
+                                           value="{{$customer->first_name}}">
                                 </div>
                             </div>
                             <div class="col-4">
@@ -56,7 +56,8 @@
                             <div class="col-4">
                                 <div class="input-group">
                                     <label class="col-form-label text-dark font-monospace">Phone</label>
-                                    <input class="rounded-3 input--style-4 px-3" type="number" pattern="0-9" name="phone_number" required
+                                    <input class="rounded-3 input--style-4 px-3" type="number" pattern="0-9"
+                                           name="phone_number" required
                                            value="{{$customer->phone_number}}">
                                 </div>
                             </div>
@@ -73,10 +74,15 @@
                                 <div class="input-group d-flex">
                                     <label class="col-form-label text-dark font-monospace">status</label>
                                     <div style="display: inline-block" class="d-flex">
-                                        <input class="form-check-input" type="radio" name="status" value="{{$customer->status}}">
-                                        Enable
-                                        <input class="form-check-input" type="radio" name="status" value="{{$customer->status}}">
-                                        Disable
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="{{$customer->status}}">
+                                        Active
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="{{$customer->status}}">
+                                        Locked
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="{{$customer->status}}">
+                                        Banned
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +91,8 @@
                     <div class="row justify-content-between w-100 mt-4">
                         <div class="col-4">
                             <div class="d-flex">
-                                <a class="btn btn-primary nice-box-shadow font-monospace" href="{{route('admin/customer')}}">Back</a>
+                                <a class="btn btn-primary nice-box-shadow font-monospace"
+                                   href="{{route('admin/customer')}}">Back</a>
                             </div>
                         </div>
                         <div class="col-2">
