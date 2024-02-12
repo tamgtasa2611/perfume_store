@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,13 +29,12 @@ Route::get('/discover', function () {
     return view('customers.products.discover');
 })->name('discover');
 
-Route::get('/product/female', function () {
-    return view('customers.products.female');
-})->name('product/female');
+//show 1 product
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');
 
-Route::get('/product/male', function () {
-    return view('customers.products.male');
-})->name('product/male');
+Route::get('/contact', function () {
+    return view('customers.contact');
+})->name('contact');
 
 Route::get('/profile', function () {
     return view('customers.profiles.profile');

@@ -21,17 +21,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('product') ? 'active' : '' }}"
-                       href="{{ route('product') }}">ALL PRODUCTS
+                       href="{{ route('product') }}">STORE
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('product/female') ? 'active' : '' }}"
-                       href="{{ route('product/female') }}">WOMEN'S PERFUMES
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('product/male') ? 'active' : '' }}"
-                       href="{{ route('product/male') }}">MEN'S PERFUMES
+                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+                       href="{{ route('contact') }}">CONTACT
                     </a>
                 </li>
             </ul>
@@ -49,11 +44,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile') }}">
                         <i class="bi bi-person"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/wishlist">
-                        <i class="bi bi-star"></i>
                     </a>
                 </li>
                 <li class="nav-item">

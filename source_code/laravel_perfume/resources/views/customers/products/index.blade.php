@@ -15,7 +15,7 @@
                 <label for="sorting" class="w-50 d-flex align-items-center justify-content-center px-1">
                     Sort by
                 </label>
-                <select class="form-select" aria-label="sorting" id="sorting" name="sorting"
+                <select class="form-select bg-white rounded-5" aria-label="sorting" id="sorting" name="sorting"
                         onchange="this.form.submit()">
                     <option value="default" {{$sorting == 'default' ? 'selected' : ''}}>Default
                     </option>
