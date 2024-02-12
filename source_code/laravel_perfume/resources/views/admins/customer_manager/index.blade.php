@@ -1,6 +1,6 @@
 
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
-
+<title>Customers Manager</title>
 <body style="background-color: #303036">
 <div id="content" class="">
     <div class="wrapper d-flex align-items-stretch">
@@ -119,7 +119,9 @@
     </script>
     <script src="//unpkg.com/alpinejs" defer></script>
 </div>
+
 </body>
+
 <x-flash-message/>
 
 
