@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Listing>
@@ -21,10 +22,12 @@ class CustomerFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->email(),
-            'password' => '123456',
-            'phone_number' => $this->faker->e164PhoneNumber(),
+            'password' => Hash::make('123456'),
+            'phone_number' => $this->faker->numberBetween(010000000, 9999999999),
             'address' => $this->faker->address(),
-            'status' => $this->faker->boolean()
+//            1 = active
+//            2 = locked
+            'status' => $this->faker->numberBetween(1, 2)
         ];
     }
 }

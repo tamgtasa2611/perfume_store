@@ -34,13 +34,14 @@
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table
-                                                    class="table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
+                                                    class="fs-6 table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">ID</th>
                                                         <th scope="col">FIRST NAME</th>
                                                         <th scope="col">LAST NAME</th>
                                                         <th scope="col">EMAIL</th>
+                                                        <th scope="col">pwd (đã hash từ (123456))</th>
                                                         <th scope="col">PHONE</th>
                                                         <th scope="col">ADDRESS</th>
                                                         <th scope="col">STATUS</th>
@@ -54,6 +55,7 @@
                                                             <td> {{$customer->first_name}} </td>
                                                             <td> {{$customer->last_name}} </td>
                                                             <td> {{$customer->email}} </td>
+                                                            <td> {{$customer->password}} </td>
                                                             <td> {{$customer->phone_number}} </td>
                                                             <td> {{$customer->address}} </td>
                                                             <td>

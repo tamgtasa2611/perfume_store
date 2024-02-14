@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Middleware\CheckLoginCustomer;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,19 +37,35 @@ Route::get('/contact', function () {
     return view('customers.contact');
 })->name('contact');
 
-Route::get('/profile', function () {
-    return view('customers.profiles.profile');
-})->name('profile');
+//check login
+Route::middleware(CheckLoginCustomer::class)->group(function () {
+    Route::get('/profile', [CustomerController::class, 'editProfile'])->name('profile');
+    Route::put('/profile', [CustomerController::class, 'updateProfile'])->name('profile.update');
 
-Route::get('/cart', function () {
-    return view('customers.carts.cart');
-})->name('cart');
+    Route::get('/orders_history', [CustomerController::class, 'showOrdersHistory'])->name('ordersHistory');
+
+    Route::get('/change_password', [CustomerController::class, 'editPassword'])->name('pwd.edit');
+    Route::put('/change_password', [CustomerController::class, 'updatePassword'])->name('pwd.update');
+
+    Route::get('/cart', function () {
+        return view('customers.carts.cart');
+    })->name('cart');
+});
+
+Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
+Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
+Route::post('/login', [CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
+Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+Route::get('/forgot_password', [CustomerController::class, 'forgotPassword'])->name('customer.forgotPassword');
+
 
 ////show create form
 //Route::get('/admin/customer/create', [CustomerController::class, 'create'])->name('admin/customer/create');
 //
 ////store data
 //Route::post('/admin/customer/store', [CustomerController::class, 'store'])->name('customer/store');
+//show home customer manager
+Route::get('/admin/customer', [CustomerController::class, 'show'])->name('admin/customer');
 
 Route::get('/create', [CustomerController::class, 'create'])->name('customer/create');
 Route::post('/create', [CustomerController::class, 'store'])->name('customer/store');
@@ -60,5 +77,3 @@ Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('cust
 //Route::get('/admin/customer/edit', [CustomerController::class, 'edit'])->name('customer/edit');
 //Route::put('/admin/customer/update', [CustomerController::class, 'update'])->name('{customers}/update');
 
-//show home customer manager
-Route::get('/admin/customer', [CustomerController::class, 'show'])->name('admin/customer');

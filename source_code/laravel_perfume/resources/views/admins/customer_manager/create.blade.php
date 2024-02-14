@@ -83,14 +83,11 @@
                                     <label class="col-form-label text-dark font-monospace">status</label>
                                     <div style="display: inline-block" class="d-flex">
                                         <input class="form-check-input" type="radio" name="status"
-                                               value="status">
+                                               value="1">
                                         Active
                                         <input class="form-check-input" type="radio" name="status"
-                                               value="status">
+                                               value="2">
                                         Locked
-                                        <input class="form-check-input" type="radio" name="status"
-                                               value="status">
-                                        Banned
                                     </div>
                                 </div>
                             </div>
