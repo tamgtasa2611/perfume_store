@@ -35,7 +35,7 @@ class CustomerController extends Controller
             $array = Arr::add($array, 'first_name', $request->first_name);
             $array = Arr::add($array, 'last_name', $request->last_name);
             $array = Arr::add($array, 'email', $request->email);
-            $array = Arr::add($array, 'password', $request->password);
+            $array = Arr::add($array, 'password', Hash::make($request->password));
             $array = Arr::add($array, 'phone_number', $request->phone_number);
             $array = Arr::add($array, 'address', $request->address);
             $array = Arr::add($array, 'status', $request->status);
@@ -81,6 +81,27 @@ class CustomerController extends Controller
     public function register()
     {
         return view('customers.register');
+    }
+
+    public function registerProcess(StoreCustomerRequest $request)
+    {
+        if ($request->validated()) {
+            $array = [];
+            $array = Arr::add($array, 'first_name', $request->first_name);
+            $array = Arr::add($array, 'last_name', $request->last_name);
+            $array = Arr::add($array, 'email', $request->email);
+            $array = Arr::add($array, 'password', Hash::make($request->password));
+            $array = Arr::add($array, 'phone_number', $request->phone_number);
+            $array = Arr::add($array, 'address', $request->address);
+            $array = Arr::add($array, 'status', 1);
+            //Lấy dữ liệu từ form và lưu lên db
+            Customer::create($array);
+
+            return Redirect::route('customer.login');
+        } else {
+            //cho quay về trang login
+            return Redirect::back();
+        }
     }
 
     public function login()

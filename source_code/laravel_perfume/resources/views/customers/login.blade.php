@@ -5,14 +5,21 @@
         <form method="post" action="{{ route('customer.loginProcess') }}"
               class="border bg-white p-3 rounded">
             @csrf
+            <div class="my-4 text-center">
+                <h1 class="h1">Login</h1>
+            </div>
+
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" name="email" class="form-control" id="email">
+                <input type="email" name="email" class="form-control" id="email"
+                       value="{{old('email')}}"
+                >
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="password">
+                <input type="password" name="password" class="form-control" id="password"
+                       value="{{old('password')}}">
             </div>
 
             <div class="mb-3 d-flex justify-content-center align-items-center">

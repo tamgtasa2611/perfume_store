@@ -53,20 +53,17 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
 });
 
 Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
+Route::post('/register', [CustomerController::class, 'registerProcess'])->name('customer.registerProcess');
+
 Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
 Route::post('/login', [CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
+
 Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 Route::get('/forgot_password', [CustomerController::class, 'forgotPassword'])->name('customer.forgotPassword');
 
-
-////show create form
-//Route::get('/admin/customer/create', [CustomerController::class, 'create'])->name('admin/customer/create');
-//
-////store data
-//Route::post('/admin/customer/store', [CustomerController::class, 'store'])->name('customer/store');
 //show home customer manager
 Route::get('/admin/customer', [CustomerController::class, 'show'])->name('admin/customer');
-
+//show create
 Route::get('/create', [CustomerController::class, 'create'])->name('customer/create');
 Route::post('/create', [CustomerController::class, 'store'])->name('customer/store');
 //show edit form
@@ -74,6 +71,4 @@ Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('custo
 Route::put('/{customer}/edit', [CustomerController::class, 'update'])->name('customer/update');
 Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('customer/destroy');
 
-//Route::get('/admin/customer/edit', [CustomerController::class, 'edit'])->name('customer/edit');
-//Route::put('/admin/customer/update', [CustomerController::class, 'update'])->name('{customers}/update');
 
