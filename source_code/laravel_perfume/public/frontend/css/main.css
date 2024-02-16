@@ -145,7 +145,19 @@ video {
     height: 80% !important;
 }
 
+.h-85 {
+    height: 85% !important;
+}
+
 .h-90 {
     height: 90% !important;
+}
+
+.min-vh-50 {
+    min-height: 50vh !important
+}
+
+.min-vh-80 {
+    min-height: 80vh !important
 }
 

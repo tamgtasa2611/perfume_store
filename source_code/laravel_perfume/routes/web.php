@@ -19,17 +19,16 @@ use App\Http\Middleware\CheckLoginCustomer;
 Route::get('/', function () {
     return view('customers.home');
 })->name('home');
-
 Route::get('/home', function () {
     return view('customers.home');
 })->name('home');
-
-Route::get('/product', [ProductController::class, 'index'])->name('product');
 
 Route::get('/discover', function () {
     return view('customers.products.discover');
 })->name('discover');
 
+//show all product
+Route::get('/product', [ProductController::class, 'index'])->name('product');
 //show 1 product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');
 
@@ -47,9 +46,11 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
     Route::get('/change_password', [CustomerController::class, 'editPassword'])->name('pwd.edit');
     Route::put('/change_password', [CustomerController::class, 'updatePassword'])->name('pwd.update');
 
-    Route::get('/cart', function () {
-        return view('customers.carts.cart');
-    })->name('cart');
+    Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
+    Route::get('/addToCart/{product}', [ProductController::class, 'addToCart'])->name('product.addToCart');
+    Route::get('/updateCartQuantity/{id}', [ProductController::class, 'updateCartQuantity'])->name('product.updateCartQuantity');
+    Route::get('/deleteFromCart/{id}', [ProductController::class, 'deleteFromCart'])->name('product.deleteFromCart');
+    Route::get('/deleteAllFromCart', [ProductController::class, 'deleteAllFromCart'])->name('product.deleteAllFromCart');
 });
 
 Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');

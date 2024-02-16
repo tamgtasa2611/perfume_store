@@ -1,7 +1,7 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <x-layout>
     @include('layouts/nav')
-{{--    HEADING--}}
+    {{--    HEADING--}}
     <div class="d-flex justify-content-between mb-3">
         <div class="w-100 text-capitalize text-center bg-black fs-3 fw-bold text-white py-4">
             {{$search != "" ? 'Search results for "' . $search . '"' : 'All Perfumes'}}
@@ -219,51 +219,53 @@
                 {{--                PRODUCT LIST--}}
                 <div class="container text-center">
                     <div class="row row-cols-3">
-                        @foreach($products as $product)
-                            <div class="col border bg-white">
-                                <div
-                                    class="position-relative overflow-hidden d-flex justify-content-center">
-                                    <a href="/product/{{$product->id}}">
-                                        <img
-                                            src="{{$product->image}}"
-                                            height="200px"
-                                            class="p-1 mt-5"
-                                            alt="product_image">
-                                    </a>
+                        @if(count($products) != 0)
+                            @foreach($products as $product)
+                                <div class="col border bg-white">
                                     <div
-                                        class="w-100 mt-3 position-absolute d-flex justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-calendar p-1"></i>
-                                            <span class="p-1">
+                                        class="position-relative overflow-hidden d-flex justify-content-center">
+                                        <a href="/product/{{$product->id}}">
+                                            <img
+                                                src="{{$product->image}}"
+                                                height="200px"
+                                                class="p-1 mt-5"
+                                                alt="product_image">
+                                        </a>
+                                        <div
+                                            class="w-100 mt-3 position-absolute d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-calendar p-1"></i>
+                                                <span class="p-1">
                                                 {{$product->season_name}}
                                             </span>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-droplet p-1"></i>
-                                            <span class="p-1">
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-droplet p-1"></i>
+                                                <span class="p-1">
                                                 {{$product->size_name}}ml
                                             </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 text-capitalize">
+                                        {{$product->product_name}}
+                                    </div>
+                                    <div class="mt-5 mb-3 d-flex justify-content-between align-items-center">
+                                        <div class="text-start text-success">${{$product->price}}</div>
+                                        <div class="d-flex justify-content-end">
+                                            <a href="/product/{{$product->id}}"
+                                               class="btn btn-light border rounded-5 me-2">
+                                                <span class="px-2">View product</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-5 text-capitalize">
-                                    {{$product->product_name}}
-                                </div>
-                                <div class="mt-5 mb-3 d-flex justify-content-between align-items-center">
-                                    <div class="text-start text-success">${{$product->price}}</div>
-                                    <div class="d-flex text-end">
-                                        <a href="" class="btn btn-light border rounded-5 me-2">
-                                            <i class="p-2 bi bi-bag"></i>
-                                            <span class="pe-2">Add to cart</span>
-                                        </a>
-                                        <a href="" class="btn btn-primary rounded-5">
-                                            <i class="p-2 bi bi-bag"></i>
-                                            <span class="pe-2">Buy now</span>
-                                        </a>
-                                    </div>
-                                </div>
+                            @endforeach
+                        @else
+                            <div class="d-flex vh-100 w-100 align-items-start justify-content-center fs-5">
+                                No result
                             </div>
-                        @endforeach
+                        @endif
                     </div>
                 </div>
                 {{--                    pagination--}}

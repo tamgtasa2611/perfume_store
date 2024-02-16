@@ -1,9 +1,9 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <x-layout>
     @include('layouts/nav')
-    <div class="container h-80 mt-5 d-flex justify-content-center align-items-center">
+    <div class="container h-90 mt-5 d-flex justify-content-center align-items-center">
         <form method="post" action="{{route('customer.registerProcess')}}" enctype="multipart/form-data"
-              class="border bg-white p-3 rounded">
+              class="border bg-white p-3 rounded m-0">
             @csrf
             <div class="my-4 text-center">
                 <h1 class="h1">Register</h1>

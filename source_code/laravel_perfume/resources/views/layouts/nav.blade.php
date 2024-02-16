@@ -30,11 +30,12 @@
                     </a>
                 </li>
             </ul>
-            <form class="d-flex search-form mb-0" role="search">
+            <form method="get" action="{{ route('product') }}" class="d-flex search-form mb-0" role="search">
+                @csrf
                 <div class="input-group input-group-sm">
                     <input class="form-control" name="search" type="search" placeholder="Type to search..."
                            aria-label="Search"
-                           value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
+                           value="{{request()->query('search')}}">
                     <button class="btn btn-outline-secondary" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
@@ -47,8 +48,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart') }}">
-                        <i class="bi bi-bag"></i>
+                    <a class="nav-link" href="{{ route('product.cart') }}">
+                        <i class="bi bi-cart"></i>
                     </a>
                 </li>
             </ul>

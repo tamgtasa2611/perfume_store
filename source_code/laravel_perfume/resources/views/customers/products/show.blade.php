@@ -52,22 +52,21 @@
             </table>
             {{--BUTTON--}}
             <form action="" class="d-flex justify-content-between align-items-center w-100">
-                <div class="d-flex align-items-center w-50">
-                    <span class="me-3">
-                        Buy quantity
-                    </span>
-                    <input type="number" class="form-control rounded-5 w-25" name="quantity" id="quantity"
-                           step="1" value="" min="0" max="{{$product->quantity}}" required>
+                <div class="d-flex align-items-center w-25">
+                    <a href="{{route('product')}}" class="text-decoration-none d-flex align-items-center">
+                        <i class="bi bi-arrow-left me-2"></i>
+                        Back
+                    </a>
                 </div>
-                <div class="w-50 text-end">
-                    <button class="btn btn-light border rounded-5 me-2">
-                        <i class="p-2 bi bi-bag"></i>
+                <div class="w-75 d-flex justify-content-end">
+                    <a class="btn btn-light border rounded-5 me-3" href="{{route('product.addToCart', $product)}}">
+                        <i class="p-2 bi bi-cart"></i>
                         <span class="pe-2">Add to cart</span>
-                    </button>
-                    <button class="btn btn-primary rounded-5">
+                    </a>
+                    <a class="btn btn-primary rounded-5" href="{{route('product.addToCart', $product)}}">
                         <i class="p-2 bi bi-bag"></i>
                         <span class="pe-2">Buy now</span>
-                    </button>
+                    </a>
                 </div>
             </form>
         </div>
