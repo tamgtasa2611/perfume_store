@@ -11,7 +11,9 @@ class Category extends Model
 
     protected $fillable = ['category_name', 'description'];
     protected $table = 'categories';
-
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false) {

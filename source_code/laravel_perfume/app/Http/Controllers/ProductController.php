@@ -134,7 +134,7 @@ class ProductController extends Controller
             ->where('products.id', '=', $id)
             ->first();
 
-        $product = Product::where('id', $id)->first();
+        $product = Product::with('brand')->where('id', $id)->first();
 
         return view('customers.products.show', [
             'product' => $product
@@ -148,6 +148,41 @@ class ProductController extends Controller
 
     public function addToCart(Product $product)
     {
+//        neu da co cart
+        if (Session::exists('cart')) {
+//            lay cart hien tai
+            $cart = Session::get('cart');
+//            neu san pham da co trong cart => +1 so luong
+            if (isset($cart[$product->id])) {
+                $cart[$product->id]['quantity']++;
+            } else {
+//                them sp vao cart
+                $cart = Arr::add($cart, $product->id, [
+                    'image' => $product->image,
+                    'product_name' => $product->product_name,
+                    'price' => $product->price,
+                    'quantity' => 1
+                ]);
+            }
+        } else {
+//            tao cart moi
+            $cart = array();
+            $cart = Arr::add($cart, $product->id, [
+                'image' => $product->image,
+                'product_name' => $product->product_name,
+                'price' => $product->price,
+                'quantity' => 1
+            ]);
+        }
+//        nem cart len session
+        Session::put(['cart' => $cart]);
+
+        return Redirect::route('product.cart');
+    }
+
+    public function addToCart2(int $id)
+    {
+        $product = Product::where('id', $id)->first();
 //        neu da co cart
         if (Session::exists('cart')) {
 //            lay cart hien tai

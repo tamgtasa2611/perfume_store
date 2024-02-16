@@ -51,7 +51,7 @@
                                     <div class="w-10 p-2 text-success">
                                         ${{$product['price'] * $product['quantity']}}
                                         @php
-                                            $total_price[$product_id] = $product['price'] * $product['quantity']
+                                            $amount[$product_id] = $product['price'] * $product['quantity']
                                         @endphp
                                     </div>
                                     <div class="w-10 p-2">
@@ -112,11 +112,11 @@
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
                         <div>
-                            Total price
+                            Amount
                         </div>
                         <div class="text-success">
                             @if(\Illuminate\Support\Facades\Session::get('cart') != null)
-                                ${{array_sum($total_price)}}
+                                ${{array_sum($amount)}}
                             @else
                                 $0
                             @endif
@@ -124,8 +124,8 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
-                    <a class="btn btn-primary rounded-5" href="">
-                        Payment
+                    <a class="btn btn-dark rounded-5" href="">
+                        Continue to checkout
                     </a>
                 </div>
             </div>

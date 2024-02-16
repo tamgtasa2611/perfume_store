@@ -60,7 +60,7 @@
                     </a>
                 </div>
                 <div class="w-75 d-flex justify-content-end">
-                    <a class="btn btn-light border rounded-5 me-3"
+                    <a class="btn btn-light border rounded-5 me-3" href="{{route('product.addToCart2', $product->id)}}"
                        id="addToCart">
                         <i class="p-2 bi bi-cart"></i>
                         <span class="pe-2">Add to cart</span>

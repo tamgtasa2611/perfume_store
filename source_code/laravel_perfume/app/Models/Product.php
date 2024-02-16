@@ -11,21 +11,27 @@ class Product extends Model
 
     protected $fillable = ['product_name', 'quantity', 'price', 'description', 'image', 'category_id', 'country_id', 'age_id', 'brand_id'];
     protected $table = 'products';
+
+    public function brand(){
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function season(){
+        return $this->belongsTo(Season::class);
+    }
+
+    public function size(){
+        return $this->belongsTo(Size::class);
+    }
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false) {
             $query->where('product_name', 'like', '%' . request('search') . '%')
                 ->orWhere('description', 'like', '%' . request('search') . '%');
         }
-    }
-
-    public function category()
-    {
-        return $this->belongsTo('App\Category');
-    }
-
-    public function size()
-    {
-        return $this->belongsTo('App\Size');
     }
 }

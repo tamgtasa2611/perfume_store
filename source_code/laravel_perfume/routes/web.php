@@ -48,6 +48,7 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
 
     Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
     Route::get('/addToCart/{product}', [ProductController::class, 'addToCart'])->name('product.addToCart');
+    Route::get('/product/addToCart2/{id}', [ProductController::class, 'addToCart2'])->name('product.addToCart2');
     Route::get('/updateCartQuantity/{id}', [ProductController::class, 'updateCartQuantity'])->name('product.updateCartQuantity');
     Route::get('/deleteFromCart/{id}', [ProductController::class, 'deleteFromCart'])->name('product.deleteFromCart');
     Route::get('/deleteAllFromCart', [ProductController::class, 'deleteAllFromCart'])->name('product.deleteAllFromCart');

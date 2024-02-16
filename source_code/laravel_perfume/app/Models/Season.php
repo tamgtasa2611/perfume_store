@@ -11,7 +11,9 @@ class Season extends Model
 
     protected $fillable = ['season_name'];
     protected $table = 'seasons';
-
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false) {
