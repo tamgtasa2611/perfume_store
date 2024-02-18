@@ -47,11 +47,14 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
     Route::put('/change_password', [CustomerController::class, 'updatePassword'])->name('pwd.update');
 
     Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
-    Route::get('/addToCart/{product}', [ProductController::class, 'addToCart'])->name('product.addToCart');
-    Route::get('/product/addToCart2/{id}', [ProductController::class, 'addToCart2'])->name('product.addToCart2');
+    Route::get('/cartAjax', [ProductController::class, 'cartAjax'])->name('product.cartAjax');
+    Route::get('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('product.addToCart');
+    Route::get('/product/addToCartAjax/{id}', [ProductController::class, 'addToCartAjax'])->name('product.addToCartAjax');
     Route::get('/updateCartQuantity/{id}', [ProductController::class, 'updateCartQuantity'])->name('product.updateCartQuantity');
     Route::get('/deleteFromCart/{id}', [ProductController::class, 'deleteFromCart'])->name('product.deleteFromCart');
     Route::get('/deleteAllFromCart', [ProductController::class, 'deleteAllFromCart'])->name('product.deleteAllFromCart');
+
+    Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 });
 
 Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');

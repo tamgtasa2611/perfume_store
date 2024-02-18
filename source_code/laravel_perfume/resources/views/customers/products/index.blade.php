@@ -40,6 +40,10 @@
                     <input type="hidden" class="invisible" name="brand[]"
                            value="{{is_array($brand_value) ? implode($brand_value) : $brand_value}}">
                 @endforeach
+                @foreach($f_gender as $gender_value)
+                    <input type="hidden" class="invisible" name="gender[]"
+                           value="{{is_array($gender_value) ? implode($gender_value) : $gender_value}}">
+                @endforeach
                 @foreach($f_category as $category_value)
                     <input type="hidden" class="invisible" name="category[]"
                            value="{{is_array($category_value) ? implode($category_value) : $category_value}}">
@@ -116,6 +120,36 @@
                         </div>
                         <hr>
                     </div>
+                    {{--GENDER--}}
+                    <div class="w-100">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center h-pointer"
+                                 data-bs-toggle="collapse" data-bs-target="#gender"
+                                 aria-controls="gender">
+                                <div class="">Gender</div>
+                                <div>
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="collapse collapsing expand" id="gender">
+                                <div>
+                                    @foreach($genders as $gender)
+                                        <div class="form-check">
+                                            <input class="form-check-input h-pointer" type="checkbox" name="gender[]"
+                                                   id="gender_{{$gender->id}}"
+                                                   value="{{$gender->id}}"
+                                                {{in_array($gender->id, $f_gender) ? 'checked' : ''}}
+                                            >
+                                            <label class="form-check-label h-pointer" for="gender_{{$gender->id}}">
+                                                {{$gender->gender_name}}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                     {{--CATEGORY--}}
                     <div class="w-100">
                         <div>
@@ -167,7 +201,7 @@
                                                 {{in_array($size->id, $f_size) ? 'checked' : ''}}
                                             >
                                             <label class="form-check-label h-pointer" for="size_{{$size->id}}">
-                                                {{$size->size_name}}ml
+                                                {{$size->size_name}}
                                             </label>
                                         </div>
                                     @endforeach
@@ -236,13 +270,23 @@
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-calendar p-1"></i>
                                                 <span class="p-1">
-                                                {{$product->season_name}}
+                                                {{$product->season->season_name}}
                                             </span>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <i class="bi bi-droplet p-1"></i>
+                                                @switch($product->gender->gender_name)
+                                                    @case("Male")
+                                                        <i class="bi bi-gender-male p-1"></i>
+                                                        @break
+                                                    @case("Female")
+                                                        <i class="bi bi-gender-female p-1"></i>
+                                                        @break
+                                                    @case("Unisex")
+                                                        <i class="bi bi-gender-neuter p-1"></i>
+                                                        @break
+                                                @endswitch
                                                 <span class="p-1">
-                                                {{$product->size_name}}ml
+                                                {{$product->gender->gender_name}}
                                             </span>
                                             </div>
                                         </div>

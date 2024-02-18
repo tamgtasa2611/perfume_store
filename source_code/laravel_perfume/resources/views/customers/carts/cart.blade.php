@@ -10,7 +10,8 @@
             <div class="border bg-white w-100 rounded overflow-hidden">
                 {{--                top--}}
                 <div class="d-flex border-bottom align-items-center justify-content-center text-center">
-                    <div class="w-60 p-2 px-3 text-start">Product</div>
+                    <div class="w-50 p-2 px-3 text-start">Product</div>
+                    <div class="w-10 p-2">Size</div>
                     <div class="w-10 p-2">Unit price</div>
                     <div class="w-10 p-2">Quantity</div>
                     <div class="w-10 p-2">Total price</div>
@@ -22,7 +23,7 @@
                         @foreach(\Illuminate\Support\Facades\Session::get('cart') as $product_id => $product)
                             <form class="m-0" action="{{route('product.updateCartQuantity', $product_id)}}">
                                 <div class="d-flex border-bottom align-items-center justify-content-center text-center">
-                                    <div class="w-60 p-2 d-flex align-items-center">
+                                    <div class="w-50 p-2 d-flex align-items-center">
                                         <div
                                             class="border rounded w-25 overflow-hidden">
                                             <a href="/product/{{$product_id}}"
@@ -35,6 +36,9 @@
                                                 {{$product['product_name']}}
                                             </a>
                                         </div>
+                                    </div>
+                                    <div class="w-10 p-2">
+                                        {{$product['size']['name']}}
                                     </div>
                                     <div class="w-10 p-2 text-success">
                                         ${{$product['price']}}
@@ -56,8 +60,8 @@
                                     </div>
                                     <div class="w-10 p-2">
                                         <a href="{{route('product.deleteFromCart', $product_id)}}"
-                                           class="text-danger p-2">
-                                            <i class="bi bi-x-circle-fill p-2"></i>
+                                           class="text-danger p-2 text-decoration-none">
+                                            Remove
                                         </a>
                                     </div>
                                 </div>
@@ -124,7 +128,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
-                    <a class="btn btn-dark rounded-5" href="">
+                    <a class="btn btn-dark rounded-5" href="{{route('checkout')}}">
                         Continue to checkout
                     </a>
                 </div>

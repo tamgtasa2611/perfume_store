@@ -26,11 +26,7 @@
             </div>
             <div class="my-3">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    {{$product->description}}
                 </p>
             </div>
             <table class="table table-bordered text-center w-100 my-3">
@@ -39,16 +35,16 @@
                     <td class="bg-white">{{$product->brand->brand_name}}</td>
                 </tr>
                 <tr>
+                    <td class="w-25">Gender</td>
+                    <td class="bg-white">{{$product->gender->gender_name}}</td>
+                </tr>
+                <tr>
                     <td class="w-25">Size</td>
                     <td class="bg-white">{{$product->size->size_name}}</td>
                 </tr>
                 <tr>
                     <td class="w-25">Season</td>
                     <td class="bg-white">{{$product->season->season_name}}</td>
-                </tr>
-                <tr>
-                    <td class="w-25">In stock</td>
-                    <td class="bg-white">{{$product->quantity}}</td>
                 </tr>
             </table>
             {{--BUTTON--}}
@@ -60,12 +56,13 @@
                     </a>
                 </div>
                 <div class="w-75 d-flex justify-content-end">
-                    <a class="btn btn-light border rounded-5 me-3"
-                       id="addToCart">
+                    <a class="btn btn-light border rounded-5"
+                       id="addToCartAjax">
                         <i class="p-2 bi bi-cart"></i>
                         <span class="pe-2">Add to cart</span>
                     </a>
-                    <a class="btn btn-primary rounded-5" href="{{route('product.addToCart', $product)}}">
+                    <a class="btn btn-primary rounded-5 ms-3"
+                       href="{{route('product.addToCart', $product->id)}}">
                         <i class="p-2 bi bi-bag"></i>
                         <span class="pe-2">Buy now</span>
                     </a>

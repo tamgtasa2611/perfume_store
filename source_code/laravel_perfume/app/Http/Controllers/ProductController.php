@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Gender;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Season;
@@ -45,6 +46,11 @@ class ProductController extends Controller
             $brand = $request->brand;
         }
 
+        $gender = Gender::all('id')->toArray();
+        if (isset($request->gender)) {
+            $gender = $request->gender;
+        }
+
         $category = Category::all('id')->toArray();
         if (isset($request->category)) {
             $category = $request->category;
@@ -85,12 +91,27 @@ class ProductController extends Controller
 
 //        cach 1 loi filter
 //        $products = Product::all()->filter(request('search'))->paginate(3);
-        $products = DB::table('products')
-            ->join('sizes', 'products.size_id', 'sizes.id')
-            ->join('seasons', 'products.season_id', 'seasons.id')
-            ->select('products.*', 'sizes.size_name', 'seasons.season_name')
+//        cach 2
+//        $products = DB::table('products')
+//            ->join('products_sizes', 'products.id', 'products_sizes.product_id')
+//            ->join('sizes', 'products_sizes.size_id', 'sizes.id')
+//            ->join('seasons', 'products.season_id', 'seasons.id')
+//            ->select('products.*', 'sizes.size_name', 'seasons.season_name')
+//            ->whereBetween('price', [$price_1, $price_2])
+//            ->whereIn('brand_id', $brand)
+//            ->whereIn('category_id', $category)
+//            ->whereIn('size_id', $size)
+//            ->whereIn('season_id', $season)
+//            ->where('product_name', 'like', '%' . $search . '%')
+//            ->orderBy($orderBy, $orderDirection)
+//            ->paginate(6)
+//            ->withQueryString();
+
+        $products = Product::with('season')
+            ->with('gender')
             ->whereBetween('price', [$price_1, $price_2])
             ->whereIn('brand_id', $brand)
+            ->whereIn('gender_id', $gender)
             ->whereIn('category_id', $category)
             ->whereIn('size_id', $size)
             ->whereIn('season_id', $season)
@@ -98,17 +119,17 @@ class ProductController extends Controller
             ->orderBy($orderBy, $orderDirection)
             ->paginate(6)
             ->withQueryString();
-//        cach 3 khong join duoc
-//        $products = Product::paginate(6);
 
-        $categories = Category::all();
         $brands = Brand::all();
+        $genders = Gender::all();
+        $categories = Category::all();
         $sizes = Size::all();
         $seasons = Season::all();
 
         return view('customers.products.index', [
             'products' => $products,
             'brands' => $brands,
+            'genders' => $genders,
             'categories' => $categories,
             'sizes' => $sizes,
             'seasons' => $seasons,
@@ -117,6 +138,7 @@ class ProductController extends Controller
             'f_price_1' => $price_1,
             'f_price_2' => $price_2,
             'f_brand' => $brand,
+            'f_gender' => $gender,
             'f_category' => $category,
             'f_size' => $size,
             'f_season' => $season
@@ -125,16 +147,13 @@ class ProductController extends Controller
 
     public function show(int $id)
     {
-        $product = DB::table('products')
-            ->join('brands', 'products.brand_id', 'brands.id')
-            ->join('categories', 'products.category_id', 'categories.id')
-            ->join('sizes', 'products.size_id', 'sizes.id')
-            ->join('seasons', 'products.season_id', 'seasons.id')
-            ->select('products.*', 'brands.brand_name', 'categories.category_name', 'sizes.size_name', 'seasons.season_name')
-            ->where('products.id', '=', $id)
+        $product = Product::with('brand')
+            ->with('category')
+            ->with('gender')
+            ->with('size')
+            ->with('season')
+            ->where('id', $id)
             ->first();
-
-        $product = Product::with('brand')->where('id', $id)->first();
 
         return view('customers.products.show', [
             'product' => $product
@@ -146,8 +165,21 @@ class ProductController extends Controller
         return view('customers.carts.cart');
     }
 
-    public function addToCart(Product $product)
+    public function cartAjax()
     {
+        return view('customers.carts.cartAjax');
+    }
+
+    public function addToCart(int $id)
+    {
+        $product = Product::with('brand')
+            ->with('category')
+            ->with('gender')
+            ->with('size')
+            ->with('season')
+            ->where('id', $id)
+            ->first();
+
 //        neu da co cart
         if (Session::exists('cart')) {
 //            lay cart hien tai
@@ -161,7 +193,11 @@ class ProductController extends Controller
                     'image' => $product->image,
                     'product_name' => $product->product_name,
                     'price' => $product->price,
-                    'quantity' => 1
+                    'quantity' => 1,
+                    'size' => [
+                        'id' => $product->size->id,
+                        'name' => $product->size->size_name
+                    ]
                 ]);
             }
         } else {
@@ -171,7 +207,11 @@ class ProductController extends Controller
                 'image' => $product->image,
                 'product_name' => $product->product_name,
                 'price' => $product->price,
-                'quantity' => 1
+                'quantity' => 1,
+                'size' => [
+                    'id' => $product->size->id,
+                    'name' => $product->size->size_name
+                ]
             ]);
         }
 //        nem cart len session
@@ -180,9 +220,15 @@ class ProductController extends Controller
         return Redirect::route('product.cart');
     }
 
-    public function addToCart2(int $id)
+    public function addToCartAjax(int $id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::with('brand')
+            ->with('category')
+            ->with('gender')
+            ->with('size')
+            ->with('season')
+            ->where('id', $id)
+            ->first();
 //        neu da co cart
         if (Session::exists('cart')) {
 //            lay cart hien tai
@@ -196,7 +242,11 @@ class ProductController extends Controller
                     'image' => $product->image,
                     'product_name' => $product->product_name,
                     'price' => $product->price,
-                    'quantity' => 1
+                    'quantity' => 1,
+                    'size' => [
+                        'id' => $product->size->id,
+                        'name' => $product->size->size_name
+                    ]
                 ]);
             }
         } else {
@@ -206,13 +256,17 @@ class ProductController extends Controller
                 'image' => $product->image,
                 'product_name' => $product->product_name,
                 'price' => $product->price,
-                'quantity' => 1
+                'quantity' => 1,
+                'size' => [
+                    'id' => $product->size->id,
+                    'name' => $product->size->size_name
+                ]
             ]);
         }
 //        nem cart len session
         Session::put(['cart' => $cart]);
 
-        return Redirect::route('product.cart');
+        return Redirect::route('product.cartAjax');
     }
 
     public function updateCartQuantity(int $id, Request $request)
@@ -244,5 +298,10 @@ class ProductController extends Controller
         Session::forget('cart');
 
         return Redirect::back();
+    }
+
+    public function checkout()
+    {
+        return view('customers.carts.checkout');
     }
 }
