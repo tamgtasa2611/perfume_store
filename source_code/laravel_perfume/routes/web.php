@@ -46,7 +46,7 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
     Route::get('/change_password', [CustomerController::class, 'editPassword'])->name('pwd.edit');
     Route::put('/change_password', [CustomerController::class, 'updatePassword'])->name('pwd.update');
 
-    Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
+    // Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
     Route::get('/cartAjax', [ProductController::class, 'cartAjax'])->name('product.cartAjax');
     Route::get('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('product.addToCart');
     Route::get('/product/addToCartAjax/{id}', [ProductController::class, 'addToCartAjax'])->name('product.addToCartAjax');
