@@ -298,7 +298,7 @@
                                         <div class="text-start text-success">${{$product->price}}</div>
                                         <div class="d-flex justify-content-end">
                                             <a href="/product/{{$product->id}}"
-                                               class="btn btn-light border rounded-5 me-2">
+                                               class="btn btn-light border rounded-5">
                                                 <span class="px-2">View product</span>
                                             </a>
                                         </div>
