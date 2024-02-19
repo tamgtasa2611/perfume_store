@@ -162,7 +162,7 @@ class ProductController extends Controller
 
     public function cart()
     {
-        return view('customers.carts.cart');
+        return view('customers.products.index');
     }
 
     public function cartAjax()
@@ -217,7 +217,7 @@ class ProductController extends Controller
 //        nem cart len session
         Session::put(['cart' => $cart]);
 
-        return Redirect::route('product.cart');
+        return Redirect::route('product');
     }
 
     public function addToCartAjax(int $id)
