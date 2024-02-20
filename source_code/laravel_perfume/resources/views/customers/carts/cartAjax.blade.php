@@ -1,7 +1,6 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <x-layout>
     @include('layouts/nav')
-
     <div class="offcanvas offcanvas-end show visible justify-content-between align-items-center " id="modalShoppingCart"
          tabindex="-1" role="dialog" aria-modal="true">
         {{--        upper--}}
