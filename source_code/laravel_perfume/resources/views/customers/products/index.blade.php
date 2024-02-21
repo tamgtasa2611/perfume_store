@@ -300,7 +300,7 @@
                                         <div class="d-flex justify-content-end">
                                             <a href="/product/{{$product->id}}"
                                                class="btn btn-light border rounded-5">
-                                                <span class="px-2">View product</span>
+                                                <span class="px-2">View details</span>
                                             </a>
                                         </div>
                                     </div>

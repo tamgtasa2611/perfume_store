@@ -2,8 +2,6 @@
 $("#addToCartAjax").click(function (ev) {
     // lay id
     let productId = window.location.pathname.split('/')[2];
-    // lay size
-    let sizeId = 1;
     $.ajax({
         type: "GET",
         url: "addToCartAjax/" + productId,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Customer;
 use App\Models\Gender;
 use App\Models\Product;
 use App\Models\Category;
@@ -10,6 +11,7 @@ use App\Models\Season;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -162,12 +164,12 @@ class ProductController extends Controller
 
     public function cart()
     {
-        return view('customers.products.index');
+        return view('customers.carts.cart');
     }
 
     public function cartAjax()
     {
-        return view('customers.carts.cartAjax');
+        return view('customers.products.index');
     }
 
     public function addToCart(int $id)
@@ -217,7 +219,7 @@ class ProductController extends Controller
 //        nem cart len session
         Session::put(['cart' => $cart]);
 
-        return Redirect::route('product');
+        return Redirect::route('product.cart');
     }
 
     public function addToCartAjax(int $id)
@@ -266,7 +268,7 @@ class ProductController extends Controller
 //        nem cart len session
         Session::put(['cart' => $cart]);
 
-        return Redirect::route('product.cartAjax');
+        return Redirect::route('product');
     }
 
     public function updateCartQuantity(int $id, Request $request)
@@ -302,6 +304,10 @@ class ProductController extends Controller
 
     public function checkout()
     {
-        return view('customers.carts.checkout');
+        $customer_id = Auth::guard('customer')->id();
+        $customer = Customer::find($customer_id);
+        return view('customers.carts.checkout', [
+            'customer' => $customer
+        ]);
     }
 }
