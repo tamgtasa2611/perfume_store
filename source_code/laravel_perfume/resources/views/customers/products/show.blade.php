@@ -58,7 +58,7 @@
                 </div>
                 <div class="w-75 d-flex justify-content-end">
                     <a class="btn btn-light border rounded-5"
-                       id="addToCartAjax">
+                       id="addToCartAjax" href="{{route('product.addToCart', $product->id)}}">
                         <i class="p-2 bi bi-cart"></i>
                         <span class="pe-2">Add to cart</span>
                     </a>
