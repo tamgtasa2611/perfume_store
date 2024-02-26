@@ -145,6 +145,9 @@ INSERT INTO sizes(size_name) VALUES
 ("125ml"),
 ("200ml");
 
+select * from orders;
+select * from orders_details;
+select * from admins;
 select * from products;
 -- delete from products;
 -- alter table products auto_increment = 1;
