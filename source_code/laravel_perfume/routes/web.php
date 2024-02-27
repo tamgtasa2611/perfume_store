@@ -19,16 +19,17 @@ use App\Http\Middleware\CheckLoginCustomer;
 Route::get('/', function () {
     return view('customers.home');
 })->name('home');
+
 Route::get('/home', function () {
     return view('customers.home');
 })->name('home');
+
+Route::get('/product', [ProductController::class, 'index'])->name('product');
 
 Route::get('/discover', function () {
     return view('customers.products.discover');
 })->name('discover');
 
-//show all product
-Route::get('/product', [ProductController::class, 'index'])->name('product');
 //show 1 product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');
 
@@ -66,14 +67,96 @@ Route::post('/login', [CustomerController::class, 'loginProcess'])->name('custom
 Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 Route::get('/forgot_password', [CustomerController::class, 'forgotPassword'])->name('customer.forgotPassword');
 
-//show home customer manager
-Route::get('/admin/customer', [CustomerController::class, 'show'])->name('admin/customer');
-//show create
-Route::get('/create', [CustomerController::class, 'create'])->name('customer/create');
-Route::post('/create', [CustomerController::class, 'store'])->name('customer/store');
+// -------- Start Product manager ----------
+Route::prefix('admin/product')->group(function () {
+
+    Route::get('/', [ProductController::class, 'show2'])->name('admin.product');
+//
+////show create form
+    Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/create', [ProductController::class, 'store'])->name('product.store');
 //show edit form
-Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('customer/edit');
-Route::put('/{customer}/edit', [CustomerController::class, 'update'])->name('customer/update');
-Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('customer/destroy');
+    Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('/{product}/edit', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+});
+
+//show home customer manager
+Route::prefix('admin/customer')->group(function () {
+    Route::get('/', [CustomerController::class, 'show'])->name('admin.customer');
+
+//show create form
+    Route::get('/create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/create', [CustomerController::class, 'store'])->name('customer.store');
+//show edit form
+    Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::put('/{customer}/edit', [CustomerController::class, 'update'])->name('customer.update');
+    Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+//show edit status form
+    Route::get('/admin/{customer}/status', [CustomerController::class, 'editStatus'])->name('customer.editStatus');
+    Route::put('/admin/{customer}/status', [CustomerController::class, 'updateStatus'])->name('customer.status');
+});
 
 
+// -------- End Product manager ----------
+
+Route::prefix('admin/category')->group(function(){
+    //Route read
+    Route::get('/', [\App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
+    //Route hiển thị form thêm brand
+    Route::get('/create', [\App\Http\Controllers\CategoryController::class, 'create'])->name('category.create');
+    //Route thêm dữ liệu lên db
+    Route::post('/create', [\App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
+    //Route hiển thị form sửa
+    Route::get('/{category}/edit',[\App\Http\Controllers\CategoryController::class, 'edit'])->name('category.edit');
+    //Route update dữ liệu trên db
+    Route::put('/{category}/edit', [\App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
+    //Route để xóa
+    Route::delete('/{category}', [\App\Http\Controllers\CategoryController::class, 'destroy'])->name('category.destroy');
+});
+
+Route::prefix('admin/brand')->group(function(){
+    //Route read
+    Route::get('/', [\App\Http\Controllers\BrandController::class, 'index'])->name('brand.index');
+    //Route hiển thị form thêm brand
+    Route::get('/create', [\App\Http\Controllers\BrandController::class, 'create'])->name('brand.create');
+    //Route thêm dữ liệu lên db
+    Route::post('/create', [\App\Http\Controllers\BrandController::class, 'store'])->name('brand.store');
+    //Route hiển thị form sửa
+    Route::get('/{brand}/edit',[\App\Http\Controllers\BrandController::class, 'edit'])->name('brand.edit');
+    //Route update dữ liệu trên db
+    Route::put('/{brand}/edit', [\App\Http\Controllers\BrandController::class, 'update'])->name('brand.update');
+    //Route để xóa
+    Route::delete('/{brand}', [\App\Http\Controllers\BrandController::class, 'destroy'])->name('brand.destroy');
+});
+
+Route::prefix('admin/size')->group(function(){
+    //Route read
+    Route::get('/', [\App\Http\Controllers\SizeController::class, 'index'])->name('size.index');
+    //Route hiển thị form thêm brand
+    Route::get('/create', [\App\Http\Controllers\SizeController::class, 'create'])->name('size.create');
+    //Route thêm dữ liệu lên db
+    Route::post('/create', [\App\Http\Controllers\SizeController::class, 'store'])->name('size.store');
+    //Route hiển thị form sửa
+    Route::get('/{size}/edit',[\App\Http\Controllers\SizeController::class, 'edit'])->name('size.edit');
+    //Route update dữ liệu trên db
+    Route::put('/{size}/edit', [\App\Http\Controllers\SizeController::class, 'update'])->name('size.update');
+    //Route để xóa
+    Route::delete('/{size}', [\App\Http\Controllers\SizeController::class, 'destroy'])->name('size.destroy');
+});
+
+Route::prefix('admin/season')->group(function(){
+    //Route read
+    Route::get('/', [\App\Http\Controllers\SizeController::class, 'index'])->name('season.index');
+    //Route hiển thị form thêm brand
+    Route::get('/create', [\App\Http\Controllers\SizeController::class, 'create'])->name('season.create');
+    //Route thêm dữ liệu lên db
+    Route::post('/create', [\App\Http\Controllers\SizeController::class, 'store'])->name('season.store');
+    //Route hiển thị form sửa
+    Route::get('/{season}/edit',[\App\Http\Controllers\SizeController::class, 'edit'])->name('season.edit');
+    //Route update dữ liệu trên db
+    Route::put('/{season}/edit', [\App\Http\Controllers\SizeController::class, 'update'])->name('season.update');
+    //Route để xóa
+    Route::delete('/{season}', [\App\Http\Controllers\SizeController::class, 'destroy'])->name('season.destroy');
+});

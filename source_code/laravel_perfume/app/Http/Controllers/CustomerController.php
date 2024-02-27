@@ -42,7 +42,7 @@ class CustomerController extends Controller
             //Lấy dữ liệu từ form và lưu lên db
             Customer::create($array);
 
-            return Redirect::route('admin/customer')->with('success', 'Add a customer successfully!');
+            return Redirect::route('admin.customer')->with('success', 'Add a customer successfully!');
         }
     }
 
@@ -66,7 +66,7 @@ class CustomerController extends Controller
         $array = Arr::add($array, 'status', $request->status);
         $customer->update($array);
         //Quay về danh sách
-        return Redirect::route('admin/customer')->with('success', 'Edit a customer successfully!');
+        return Redirect::route('admin.customer')->with('success', 'Edit a customer successfully!');
     }
 
     public function destroy(Customer $customer)
@@ -74,7 +74,7 @@ class CustomerController extends Controller
         //Xóa bản ghi được chọn
         $customer->delete();
         //Quay về danh sách
-        return Redirect::route('admin/customer')->with('success', 'Delete a customer successfully!');
+        return Redirect::route('admin.customer')->with('success', 'Delete a customer successfully!');
     }
 
     //trang customer

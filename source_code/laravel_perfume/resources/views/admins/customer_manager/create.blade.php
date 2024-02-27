@@ -12,7 +12,7 @@
         <!--  content  -->
         <div class="justify-content-center mt-5" style="width: 620px">
             <h4 class="fs-1 text-white text-center">Add a new customer</h4>
-            <form method="post" action="{{route('customer/store')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('customer.store')}}" enctype="multipart/form-data">
                 <div class="card-body bg-white rounded-4 p-5 shadow-lg m-5">
                     <h2 class="card-title font-monospace">Registration Form</h2>
                     <form>
@@ -88,6 +88,9 @@
                                         <input class="form-check-input" type="radio" name="status"
                                                value="2">
                                         Locked
+                                        <input class="form-check-input" type="radio" name="status"
+                                               value="3">
+                                        Banned
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +99,7 @@
                     <div class="row justify-content-between w-100 mt-4">
                         <div class="col-4">
                             <div class="d-flex">
-                                <a class="btn btn-primary nice-box-shadow font-monospace" href="{{route('admin/customer')}}">Back</a>
+                                <a class="btn btn-primary nice-box-shadow font-monospace" href="{{route('admin.customer')}}">Back</a>
                             </div>
                         </div>
                         <div class="col-2">

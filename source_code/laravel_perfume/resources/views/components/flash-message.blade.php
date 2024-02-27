@@ -9,3 +9,14 @@
         </p>
     </div>
 @endif
+
+@if (session()->has('unsuccessful'))
+    <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)
+         "x-show="show"
+         class="alert alert-danger position-absolute" role="alert"
+         style="top: 1%; right: 30%; box-shadow: 1px 1px crimson; height: 60px; animation: fadeOut 5s;">
+        <p>
+            {{session('unsuccessful')}}
+        </p>
+    </div>
+@endif

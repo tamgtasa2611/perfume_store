@@ -15,7 +15,7 @@
                 <h1 class="me-sm-5 text-white">Customer list</h1>
                 <nav style="width: 520px"></nav>
 
-                <form class="d-flex search-form mb-0" action="{{route('admin/customer')}}">
+                <form class="d-flex search-form mb-0" action="{{route('admin.customer')}}">
                     <div class="input-group input-group-sm">
                         <input class="form-control" name="search" type="text" placeholder="Type to search...">
                         <button class="btn btn-outline-secondary" type="submit">
@@ -34,14 +34,13 @@
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table
-                                                    class="fs-6 table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
+                                                    class="table table-borderless table-dark text-white mb-0 text-center table-striped align-middle">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">ID</th>
                                                         <th scope="col">FIRST NAME</th>
                                                         <th scope="col">LAST NAME</th>
                                                         <th scope="col">EMAIL</th>
-                                                        <th scope="col">pwd (đã hash từ (123456))</th>
                                                         <th scope="col">PHONE</th>
                                                         <th scope="col">ADDRESS</th>
                                                         <th scope="col">STATUS</th>
@@ -49,32 +48,32 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @if($customers->count() > 0)
                                                     @foreach ($customers as $customer)
                                                         <tr style="background-color: #000000">
                                                             <td> {{$customer->id}} </td>
                                                             <td> {{$customer->first_name}} </td>
                                                             <td> {{$customer->last_name}} </td>
                                                             <td> {{$customer->email}} </td>
-                                                            <td> {{$customer->password}} </td>
                                                             <td> {{$customer->phone_number}} </td>
                                                             <td> {{$customer->address}} </td>
                                                             <td>
                                                                 @switch($customer->status)
                                                                     @case(1)
                                                                         <button class="btn btn-success"><a
-                                                                                href="status.php?id='.$customer['id'].'&status=1"
+                                                                                href="{{route('customer.editStatus', $customer)}}"
                                                                                 class="link-light nav-link">Active</a>
                                                                         </button>
                                                                         @break
                                                                     @case(2)
                                                                         <button class="btn btn-warning"><a
-                                                                                href="status.php?id='.$customer['id'].'&status=2"
+                                                                                href="{{route('customer.editStatus', $customer)}}"
                                                                                 class="link-light nav-link">Locked</a>
                                                                         </button>
                                                                         @break
                                                                     @case(3)
                                                                         <button class="btn btn-danger"><a
-                                                                                href="status.php?id='.$customer['id'].'&status=3"
+                                                                                href="{{route('customer.editStatus', $customer)}}"
                                                                                 class="link-light nav-link">Banned</a>
                                                                         </button>
                                                                         @break
@@ -84,14 +83,14 @@
                                                             <td class="d-flex justify-content-center pt-4">
                                                                 <div>
                                                                     <button type="button" class="btn btn-primary">
-                                                                        <a href="{{route('customer/edit', $customer) }}"
+                                                                        <a href="{{route('customer.edit', $customer) }}"
                                                                            class="text-white nav-link bi-pencil"
                                                                            style="text-decoration: none">Edit</a>
                                                                     </button>
                                                                 </div>
 
                                                                 <form method="post"
-                                                                      action="{{ route('customer/destroy', $customer) }}">
+                                                                      action="{{ route('customer.destroy', $customer) }}">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button
@@ -105,12 +104,17 @@
 
                                                         <!--                              end modal-->
                                                     @endforeach
+                                                    @else
                                                     </tbody>
                                                 </table>
+                                                <p class="text-white text-center fs-3 mt-5 ">
+                                                    No Customers found!
+                                                </p>
+                                                @endif
                                                 <div style="display: flex" class="justify-content-between">
                                                     <button type="button"
                                                             class="btn btn-primary nice-box-shadow h-75 mt-3">
-                                                        <a href="{{route('customer/create')}}" class="text-white"
+                                                        <a href="{{route('customer.create')}}" class="text-white"
                                                            style="text-decoration: none">Add a customer</a>
                                                     </button>
                                                     <div class="pt-3">
