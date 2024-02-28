@@ -92,7 +92,7 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-outline-dark rounded-5"
                                 style="transition: all 0.2s ease-in-out">
-                            <a href="{{ route('product')}}" class="nav-link">
+                            <a href="{{ route('product.deleteAllFromCart')}}" class="nav-link">
                                 Pay on delivery
                             </a>
                         </button>
