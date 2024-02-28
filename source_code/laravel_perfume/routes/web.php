@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Middleware\CheckLoginCustomer;
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +47,7 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
     Route::get('/change_password', [CustomerController::class, 'editPassword'])->name('pwd.edit');
     Route::put('/change_password', [CustomerController::class, 'updatePassword'])->name('pwd.update');
 
-    // Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
+    Route::get('/cart', [ProductController::class, 'cart'])->name('product.cart');
     Route::get('/cartAjax', [ProductController::class, 'cartAjax'])->name('product.cartAjax');
     Route::get('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('product.addToCart');
     Route::get('/product/addToCartAjax/{id}', [ProductController::class, 'addToCartAjax'])->name('product.addToCartAjax');
@@ -56,6 +56,7 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
     Route::get('/deleteAllFromCart', [ProductController::class, 'deleteAllFromCart'])->name('product.deleteAllFromCart');
 
     Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [OrderController::class, 'checkoutProcess'])->name('checkoutProcess');
 });
 
 Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');

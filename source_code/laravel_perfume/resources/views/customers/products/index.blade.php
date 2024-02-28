@@ -10,7 +10,10 @@
     </div>
     <div class="container-fluid fs-6">
         {{--                SORTING--}}
-        <div class="d-flex justify-content-end align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="">
+                Filter
+            </div>
             <form action="" class="d-flex" style="width: 250px">
                 {{--                select--}}
                 <label for="sorting" class="w-50 d-flex align-items-center justify-content-center px-1">
@@ -315,9 +318,7 @@
                 </div>
                 {{--                    pagination--}}
                 <div class="mt-5">
-                    <div class="pt-3">
-                        {{$products->onEachSide(2)->links()}}
-                    </div>
+                    {{$products->onEachSide(2)->links()}}
                 </div>
             </div>
             {{--END PRODUCT--}}

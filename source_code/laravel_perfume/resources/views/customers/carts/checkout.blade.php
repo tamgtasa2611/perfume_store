@@ -38,7 +38,7 @@
         {{--    PAY --}}
         <div class="w-50 d-flex justify-content-between flex-column">
             <div class="border bg-white w-100 rounded overflow-hidden">
-                <form action="" method="post" class="p-3">
+                <form action="{{route('checkoutProcess')}}" method="post" class="p-3">
                     @csrf
                     <div class="text-center fw-bold fs-5 mb-3">
                         Receiver information
@@ -48,17 +48,26 @@
                             <label for="receiver_name" class="form-label">Receiver name</label>
                             <input type="text" class="form-control" name="receiver_name" id="receiver_name"
                                    value="{{$customer->first_name . ' ' . $customer->last_name}}">
+                            @if($errors->has('receiver_name'))
+                                {{ $errors->first('receiver_name') }}
+                            @endif
                         </div>
                         <div class="w-45">
                             <label for="receiver_phone" class="form-label">Receiver phone</label>
                             <input type="text" class="form-control" name="receiver_phone" id="receiver_phone"
                                    value="{{$customer->phone_number}}">
+                            @if($errors->has('receiver_phone'))
+                                {{ $errors->first('receiver_phone') }}
+                            @endif
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="receiver_address" class="form-label">Receiver address</label>
                         <input type="text" class="form-control" name="receiver_address" id="receiver_address"
                                value="{{$customer->address}}">
+                        @if($errors->has('receiver_address'))
+                            {{ $errors->first('receiver_address') }}
+                        @endif
                     </div>
                     <div class="d-flex justify-content-end mb-1">
                         <div>
@@ -81,7 +90,8 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-outline-dark rounded-5" style="transition: all 0.2s ease-in-out">
+                        <button type="submit" class="btn btn-outline-dark rounded-5"
+                                style="transition: all 0.2s ease-in-out">
                             Pay on delivery
                         </button>
                     </div>

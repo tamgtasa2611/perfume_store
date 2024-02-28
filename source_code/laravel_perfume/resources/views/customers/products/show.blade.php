@@ -2,14 +2,16 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
 <x-layout>
     @include('layouts/nav')
-    <div class="container bg-white h-80 mt-5 rounded-5 d-flex justify-content-center align-items-center">
+    <div class="container bg-white h-70 mt-5 rounded d-flex justify-content-evenly align-items-center
+    overflow-y-hidden">
         {{--       IMG--}}
-        <div class="w-50 d-flex align-items-center justify-content-center h-100 overflow-hidden">
+        <div class="w-40 d-flex align-items-center justify-content-center ratio ratio-4x3
+        overflow-hidden object-fit-contain p-5">
             <img src="{{asset($product->image)}}" alt="product_image"
-                 class="h-80">
+                 class="p-5">
         </div>
         {{--        MAIN--}}
-        <div class="w-50 pe-3">
+        <div class="w-60 pe-3">
             {{--            HEADING--}}
             <div class="w-100 d-flex justify-content-between align-items-center mb-3">
                 <div class="fs-3 fw-bold text-capitalize w-50">{{$product->product_name}}
@@ -21,7 +23,6 @@
             {{--            BODY--}}
             <div class="d-flex justify-content-start align-items-center">
                 <div class="fs-5 fw-bold text-success">
-                    <span class="text-danger text-decoration-line-through">${{$product->price + 20}}</span>
                     ${{$product->price}}
                 </div>
             </div>
@@ -30,7 +31,7 @@
                     {{$product->description}}
                 </p>
             </div>
-            <table class="table table-bordered text-center w-100 my-3">
+            <table class="table table-bordered text-center w-100 my-3 fs-6">
                 <tr>
                     <td class="w-25">Brand</td>
                     <td class="bg-white">{{$product->brand->brand_name}}</td>
@@ -58,7 +59,7 @@
                 </div>
                 <div class="w-75 d-flex justify-content-end">
                     <a class="btn btn-light border rounded-5"
-                       id="addToCartAjax" href="{{route('product.addToCart', $product->id)}}">
+                       id="addToCartAjax">
                         <i class="p-2 bi bi-cart"></i>
                         <span class="pe-2">Add to cart</span>
                     </a>
