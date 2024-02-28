@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td class="w-25">Size</td>
-                    <td class="bg-white">{{$product->size->size_name}}</td>
+                    <td class="bg-white">{{$product->size->size_name}}ml</td>
                 </tr>
                 <tr>
                     <td class="w-25">Season</td>
