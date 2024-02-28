@@ -115,7 +115,7 @@
                                                         </a>
                                                     </div>
                                                     <div>
-                                                        {{$product['size']['name']}}
+                                                        {{$product['size']['name']}}ml
                                                     </div>
                                                 </div>
 
