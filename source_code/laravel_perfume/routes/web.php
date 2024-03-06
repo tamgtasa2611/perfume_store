@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Middleware\CheckLoginCustomer;
-use App\Http\Controllers\OrderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,6 +70,13 @@ Route::post('/login', [CustomerController::class, 'loginProcess'])->name('custom
 Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 Route::get('/forgot_password', [CustomerController::class, 'forgotPassword'])->name('customer.forgotPassword');
 
+// -------- Start Dashboard manager ----------
+
+Route::get('admin/dashboard', [HomeController::class, 'index'])->name('dashboard.index');
+
+// -------- End Dashboard manager ----------
+
+
 // -------- Start Product manager ----------
 Route::prefix('admin/product')->group(function () {
 
@@ -82,7 +91,9 @@ Route::prefix('admin/product')->group(function () {
     Route::delete('/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 });
+// -------- End Product manager ----------
 
+// -------- Start Customer manager ----------
 //show home customer manager
 Route::prefix('admin/customer')->group(function () {
     Route::get('/', [CustomerController::class, 'show'])->name('admin.customer');
@@ -98,10 +109,9 @@ Route::prefix('admin/customer')->group(function () {
     Route::get('/admin/{customer}/status', [CustomerController::class, 'editStatus'])->name('customer.editStatus');
     Route::put('/admin/{customer}/status', [CustomerController::class, 'updateStatus'])->name('customer.status');
 });
+// -------- End Customer manager ----------
 
-
-// -------- End Product manager ----------
-
+// -------- Start Category manager ----------
 Route::prefix('admin/category')->group(function(){
     //Route read
     Route::get('/', [\App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
@@ -116,7 +126,9 @@ Route::prefix('admin/category')->group(function(){
     //Route để xóa
     Route::delete('/{category}', [\App\Http\Controllers\CategoryController::class, 'destroy'])->name('category.destroy');
 });
+// -------- End Category manager ----------
 
+// -------- Start Brand manager ----------
 Route::prefix('admin/brand')->group(function(){
     //Route read
     Route::get('/', [\App\Http\Controllers\BrandController::class, 'index'])->name('brand.index');
@@ -131,7 +143,9 @@ Route::prefix('admin/brand')->group(function(){
     //Route để xóa
     Route::delete('/{brand}', [\App\Http\Controllers\BrandController::class, 'destroy'])->name('brand.destroy');
 });
+// -------- End Brand manager ----------
 
+// -------- Start Size manager ----------
 Route::prefix('admin/size')->group(function(){
     //Route read
     Route::get('/', [\App\Http\Controllers\SizeController::class, 'index'])->name('size.index');
@@ -146,18 +160,4 @@ Route::prefix('admin/size')->group(function(){
     //Route để xóa
     Route::delete('/{size}', [\App\Http\Controllers\SizeController::class, 'destroy'])->name('size.destroy');
 });
-
-Route::prefix('admin/season')->group(function(){
-    //Route read
-    Route::get('/', [\App\Http\Controllers\SizeController::class, 'index'])->name('season.index');
-    //Route hiển thị form thêm brand
-    Route::get('/create', [\App\Http\Controllers\SizeController::class, 'create'])->name('season.create');
-    //Route thêm dữ liệu lên db
-    Route::post('/create', [\App\Http\Controllers\SizeController::class, 'store'])->name('season.store');
-    //Route hiển thị form sửa
-    Route::get('/{season}/edit',[\App\Http\Controllers\SizeController::class, 'edit'])->name('season.edit');
-    //Route update dữ liệu trên db
-    Route::put('/{season}/edit', [\App\Http\Controllers\SizeController::class, 'update'])->name('season.update');
-    //Route để xóa
-    Route::delete('/{season}', [\App\Http\Controllers\SizeController::class, 'destroy'])->name('season.destroy');
-});
+// -------- End Size manager ----------

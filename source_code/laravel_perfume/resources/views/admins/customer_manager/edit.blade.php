@@ -73,11 +73,11 @@
                                 <div class="input-group d-flex">
                                     <label class="col-form-label text-dark font-monospace">Status</label>
                                     <select name="status" class="form-select rounded-4">
-                                        <option value="status">
+                                        <div name="status">
                                             @if($customer->status == 1) Active @endif
                                             @if($customer->status == 2) Locked @endif
                                             @if($customer->status == 3) Banned @endif
-                                        </option>
+                                        </div>
 
                                         <option class="form-check-input" type="radio" name="status"
                                                 value="1" {{Request::get('status') == 'Active' ? 'selected':''}}>

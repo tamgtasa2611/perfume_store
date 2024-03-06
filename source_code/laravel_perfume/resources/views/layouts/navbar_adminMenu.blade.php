@@ -14,21 +14,31 @@
             Menu
         </span>
         <li class="nav-item link-opacity-50-hover">
-            <button href="#" class="fs-3 nav-link link-light link-offset-1-hover bi bi-house mx-3 mt-3 ">
+            <a href="{{route('dashboard.index')}}" class="fs-3 nav-link link-light link-offset-1-hover bi bi-house mx-3 mt-3 ">
                 <span class="ms-3">Dashboard</span>
-            </button>
-        </li>
-        <li class="nav-item link-opacity-50-hover">
-            <a href="#" class="fs-3 nav-link link-light bi bi-bar-chart mx-3">
-                <span class="ms-3">Statistics</span>
             </a>
         </li>
         <span class="my-sm-3">
             Manage
         </span>
         <li class="nav-item link-opacity-50-hover">
-            <a href="#" class="fs-3 nav-link link-light bi bi-box2 mx-3">
+            <a href="{{route('admin.product')}}" class="fs-3 nav-link link-light bi bi-box2 mx-3">
                 <span class="ms-3">Products</span>
+            </a>
+        </li>
+        <li class="nav-item link-opacity-50-hover">
+            <a href="{{route('category.index')}}" class="fs-3 nav-link link-light bi bi-box2 mx-3">
+                <span class="ms-3">Category</span>
+            </a>
+        </li>
+        <li class="nav-item link-opacity-50-hover">
+            <a href="{{route('size.index')}}" class="fs-3 nav-link link-light bi bi-arrows-angle-expand mx-3">
+                <span class="ms-3">Size</span>
+            </a>
+        </li>
+        <li class="nav-item link-opacity-50-hover">
+            <a href="{{route('brand.index')}}" class="fs-3 nav-link link-light bi bi-windows mx-3">
+                <span class="ms-3">Brand</span>
             </a>
         </li>
         <li class="nav-item link-opacity-50-hover">
@@ -37,7 +47,7 @@
             </a>
         </li>
         <li class="nav-item link-opacity-50-hover">
-            <a class="fs-3 nav-link link-light bi bi-person mx-3">
+            <a href="{{route('admin.customer')}}" class="fs-3 nav-link link-light bi bi-person mx-3">
                 <span class="ms-3">Customers</span>
             </a>
         </li>

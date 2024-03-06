@@ -70,7 +70,7 @@
                                                                 <td> {{$product->gender->gender_name}}</td>
                                                                 <td> {{$product->brand->brand_name}}</td>
 
-                                                                <td class="d-flex justify-content-center align-middle popover-body pt-5">
+                                                                <td class="d-flex justify-content-center  popover-body py-sm-5">
                                                                     <div>
                                                                         <button type="button" class="btn btn-primary">
                                                                             <a href="{{route('product.edit', $product) }}"
@@ -79,15 +79,14 @@
                                                                         </button>
                                                                     </div>
 
-                                                                    <form method="post"
-                                                                          action="{{ route('product.destroy', $product) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    <div>
                                                                         <button
-                                                                            class="text-white btn bg-danger border-danger-subtle bi bi-trash">
+                                                                            class="text-white btn bg-danger border-danger-subtle"
+                                                                            data-bs-toggle="modal" wire:click="setDeleteId({{$product->id}})"
+                                                                            data-bs-target="#deleteModal">
                                                                             Delete
                                                                         </button>
-                                                                    </form>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                             <!--                              end modal-->
@@ -119,16 +118,42 @@
                 </div>
             </section>
         </div>
-    <!--  js close button modal  -->
-    <script>
-        let clickClose = document.getElementById('click-close');
-        let closeTarget = document.getElementById('close-target')
+        {{--        Delete Modal--}}
+        {{--        Modal--}}
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Product ?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this product??
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-        function closeMes() {
-            closeTarget.classList.add("d-none");
-        }
-    </script>
-    <script src="//unpkg.com/alpinejs" defer></script>
+                        <form method="post" action="{{route('product.destroy', $products)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger border-danger-subtle">Yes, Delete!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--  js close button modal  -->
+        @push('script')
+            <script>
+                window.addEventListener('hide:delete-modal', function () {
+                    $('#deleteModal').modal('hide');
+                });
+            </script>
+        @endpush
+        <script src="//unpkg.com/alpinejs" defer></script>
+
 </div>
 </body>
 

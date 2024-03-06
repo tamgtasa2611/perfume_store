@@ -77,6 +77,22 @@ class CustomerController extends Controller
         return Redirect::route('admin.customer')->with('success', 'Delete a customer successfully!');
     }
 
+    public function editStatus(Customer $customer)
+    {
+        return view("admins.customer_manager.edit-status", [
+            "customer" => $customer
+        ]);
+    }
+
+    public function updateStatus(Request $request, Customer $customer )
+    {
+        $array = [];
+        $array = Arr::add($array, 'status', $request->status);
+        $customer->update($array);
+        //Quay về danh sách
+        return Redirect::route('admin.customer')->with('success', "Edit Customer's Status successfully!");
+    }
+
     //trang customer
     public function register()
     {

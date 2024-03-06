@@ -58,15 +58,14 @@
                                                                         </button>
                                                                     </div>
 
-                                                                    <form method="post"
-                                                                          action="{{ route('brand.destroy', $brand) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    <div>
                                                                         <button
-                                                                            class="text-white btn bg-danger border-danger-subtle">
+                                                                            class="text-white btn bg-danger border-danger-subtle"
+                                                                            data-bs-toggle="modal" wire:click="setDeleteId({{$brand->id}})"
+                                                                            data-bs-target="#deleteModal">
                                                                             Delete
                                                                         </button>
-                                                                    </form>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
 
@@ -101,16 +100,40 @@
                 </div>
             </section>
         </div>
+        {{--        Delete Modal--}}
+        {{--        Modal--}}
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Brand ?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this brand??
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        <form method="post" action="{{route('brand.destroy', $brand)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger border-danger-subtle">Yes, Delete!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--  js close button modal  -->
     @push('script')
         <script>
-            window.addEventListener('close-modal', event => {
-                $('#addBrandModal').modal('hide');
-            })
+            window.addEventListener('hide:delete-modal', function () {
+                $('#deleteModal').modal('hide');
+            });
         </script>
-        <script src="//unpkg.com/alpinejs" defer></script>
     @endpush
+    <script src="//unpkg.com/alpinejs" defer></script>
 </div>
 
 </body>
