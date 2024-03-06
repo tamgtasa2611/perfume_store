@@ -80,7 +80,7 @@
                                                                 @endswitch
 
                                                             </td>
-                                                            <td class="d-flex justify-content-center pt-4">
+                                                            <td class="d-flex justify-content-center py-sm-3">
                                                                 <div>
                                                                     <button type="button" class="btn btn-primary">
                                                                         <a href="{{route('customer.edit', $customer) }}"
@@ -89,15 +89,14 @@
                                                                     </button>
                                                                 </div>
 
-                                                                <form method="post"
-                                                                      action="{{ route('customer.destroy', $customer) }}">
-                                                                    @csrf
-                                                                    @method('DELETE')
+                                                                <div>
                                                                     <button
-                                                                        class="text-white btn bg-danger border-danger-subtle">
+                                                                        class="text-white btn bg-danger border-danger-subtle"
+                                                                        data-bs-toggle="modal" wire:click="setDeleteId({{$customer->id}})"
+                                                                        data-bs-target="#deleteModal">
                                                                         Delete
                                                                     </button>
-                                                                </form>
+                                                                </div>
                                                             </td>
                                                         </tr>
 
@@ -131,16 +130,39 @@
                 </div>
             </section>
         </div>
+        {{--        Delete Modal--}}
+        {{--        Modal--}}
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Customer ?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this customer??
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        <form method="post" action="{{route('customer.destroy', $customer)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger border-danger-subtle">Yes, Delete!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--  js close button modal  -->
-    <script>
-        let clickClose = document.getElementById('click-close');
-        let closeTarget = document.getElementById('close-target')
-
-        function closeMes() {
-            closeTarget.classList.add("d-none");
-        }
-    </script>
+    @push('script')
+        <script>
+            window.addEventListener('hide:delete-modal', function () {
+                $('#deleteModal').modal('hide');
+            });
+        </script>
+    @endpush
     <script src="//unpkg.com/alpinejs" defer></script>
 </div>
 

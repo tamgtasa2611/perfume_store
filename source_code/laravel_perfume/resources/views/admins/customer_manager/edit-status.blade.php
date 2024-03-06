@@ -11,7 +11,7 @@
         <!--  content  -->
         <div class="justify-content-center mt-5" style="width: 620px">
             <h4 class="fs-1 text-white text-center">Edit Customer's Status</h4>
-            <form method="post" action="{{ route('customer.editStatus', $customers) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('customer.editStatus', $customer) }}" enctype="multipart/form-data">
                 <div class="card-body bg-white rounded-4 p-5 shadow-lg m-5">
                     <h2 class="card-title font-monospace">Edit Status Form</h2>
                     <hr>
@@ -20,22 +20,22 @@
                         @method('PUT')
                         <div class="row justify-content-between w-100 pl-5">
                             <div>
-                                <h3>Name: {{$customers->first_name}} {{$customers->last_name}}</h3>
+                                <h3>Name: {{$customer->first_name}} {{$customer->last_name}}</h3>
                             </div>
                         </div>
                         <div class="row justify-content-between w-100 pl-5">
                             <div>
-                                <h3>Email: {{$customers->email}}</h3>
+                                <h3>Email: {{$customer->email}}</h3>
                             </div>
                         </div>
                         <div class="row justify-content-between w-100 pl-5">
                             <div>
-                                <h3>Phone: {{$customers->phone_number}}</h3>
+                                <h3>Phone: {{$customer->phone_number}}</h3>
                             </div>
                         </div>
                         <div class="row justify-content-between w-100 pl-5">
                             <div>
-                                <h3>Address: {{$customers->address}}</h3>
+                                <h3>Address: {{$customer->address}}</h3>
                             </div>
                         </div>
                         <div class="row justify-content-between w-100 pl-5">
@@ -44,9 +44,9 @@
                                 <div class="input-group w-75">
                                     <select name="status" class="form-select">
                                         <option value="status">
-                                            @if($customers->status == 1) Active @endif
-                                            @if($customers->status == 2) Locked @endif
-                                            @if($customers->status == 3) Banned @endif
+                                            @if($customer->status == 1) Active @endif
+                                            @if($customer->status == 2) Locked @endif
+                                            @if($customer->status == 3) Banned @endif
                                         </option>
 
                                         <option class="form-check-input" type="radio" name="status"

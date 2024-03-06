@@ -1,5 +1,5 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
-<title>Categories Manager</title>
+<title>Sizes Manager</title>
 <body style="background-color: #303036">
 <div id="content" class="">
     <div class="wrapper d-flex align-items-stretch">
@@ -12,7 +12,7 @@
 
         <div class="content-container mt-5 ">
             <div class="d-flex mx-auto mt-5">
-                <h1 class="me-sm-5 text-white">Category list</h1>
+                <h1 class="me-sm-5 text-white">Size list</h1>
                 <nav style="width: 520px"></nav>
 
                 <form class="d-flex search-form mb-0" action="{{route('size.index')}}">
@@ -57,16 +57,14 @@
                                                                                style="text-decoration: none">Edit</a>
                                                                         </button>
                                                                     </div>
-
-                                                                    <form method="post"
-                                                                          action="{{ route('size.destroy', $size) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    <div>
                                                                         <button
-                                                                            class="text-white btn bg-danger border-danger-subtle">
+                                                                            class="text-white btn bg-danger border-danger-subtle"
+                                                                            data-bs-toggle="modal" wire:click="setDeleteId({{$size->id}})"
+                                                                            data-bs-target="#deleteModal">
                                                                             Delete
                                                                         </button>
-                                                                    </form>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
 
@@ -100,16 +98,39 @@
                 </div>
             </section>
         </div>
-    </div>
-    <!--  js close button modal  -->
-    <script>
-        let clickClose = document.getElementById('click-close');
-        let closeTarget = document.getElementById('close-target')
+{{--        Delete Modal--}}
+{{--        Modal--}}
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Delete Size ?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this size??
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-        function closeMes() {
-            closeTarget.classList.add("d-none");
-        }
-    </script>
+                            <form method="post" action="{{route('size.destroy', $size)}}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger border-danger-subtle">Yes, Delete!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    @push('script')
+        <script>
+            window.addEventListener('hide:delete-modal', function () {
+                $('#deleteModal').modal('hide');
+            });
+        </script>
+    @endpush
     <script src="//unpkg.com/alpinejs" defer></script>
 </div>
 

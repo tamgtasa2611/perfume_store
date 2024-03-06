@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Season;
 use App\Models\Size;
 use App\Requests\SizeFormRequest;
 use Illuminate\Support\Facades\Redirect;
@@ -10,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 class SizeController extends Controller
 {
     public function index(){
-        $sizes = Season::paginate(6);
+        $sizes = Size::paginate(6);
         return view('admins.size_manager.index', [
             "sizes" => $sizes
         ]);
@@ -41,7 +40,17 @@ class SizeController extends Controller
         return Redirect::route('size.index')->with('success', 'Edit a size successfully!');
     }
 
-    public function destroy(Season $size)
+//    public $delete_id;
+//
+//    public function deleteEmp()
+//    {
+//        $size = Size::where('id', $this->delete_id)->first();
+//        $size->delete();
+//        $this->dispatchBrowserEvent('hide:delete-modal');
+//        return Redirect::route('size.index')->with('success', 'Delete a size successfully!');
+//    }
+
+    public function destroy(Size $size)
     {
         //Xóa bản ghi được chọn
         $size->delete();

@@ -46,7 +46,7 @@ class OrderController extends Controller
         }
 
         //lay du lieu de insert vao bang order_details
-        foreach (\Illuminate\Support\Facades\Session::get('cart') as $product_id => $product) {
+        foreach (Session::get('cart') as $product_id => $product) {
             $orderDetails = [];
             $orderDetails = Arr::add($orderDetails, 'order_id', $maxOrderId);
             $orderDetails = Arr::add($orderDetails, 'product_id', $product_id);
