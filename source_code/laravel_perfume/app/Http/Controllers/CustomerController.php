@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Requests\StoreCustomerRequest;
+use App\Http\Requests\StoreCustomerRequest;
+use App\Models\Customer;
 use App\Requests\UpdateCustomerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;

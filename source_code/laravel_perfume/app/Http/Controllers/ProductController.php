@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Gender;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Season;
 use App\Models\Size;
-use App\Requests\StoreCustomerRequest;
-use App\Requests\StoreProductRequest;
-use App\Requests\UpdateCustomerRequest;
 use App\Requests\UpdateProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
 
 class ProductController extends Controller
 {
