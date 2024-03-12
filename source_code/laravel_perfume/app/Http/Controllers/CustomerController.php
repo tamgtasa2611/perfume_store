@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCustomerRequest;
+use App\Models\Order;
+use App\Requests\StoreCustomerRequest;
 use App\Models\Customer;
 use App\Requests\UpdateCustomerRequest;
 use Illuminate\Http\Request;
@@ -192,8 +193,12 @@ class CustomerController extends Controller
         $id = Auth::guard('customer')->user()->id;
         //lay ban ghi
         $customer = Customer::find($id);
-        return view('customers.profiles.profile', [
-            'customer' => $customer
+        $orders = Order::with('customer')
+        ->where('customer_id', '=', $id)
+        ->simplePaginate(6);
+        return view('customers.profiles.orderHistory', [
+            'customer' => $customer,
+            'orders' => $orders
         ]);
     }
 

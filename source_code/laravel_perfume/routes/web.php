@@ -161,3 +161,13 @@ Route::prefix('admin/size')->group(function(){
     Route::delete('/{size}', [\App\Http\Controllers\SizeController::class, 'destroy'])->name('size.destroy');
 });
 // -------- End Size manager ----------
+
+// -------- End Order manager ----------
+Route::prefix('admin/order')->group(function(){
+    //Route read
+    Route::get('/index', [OrderController::class, 'showOrder'])->name('order.index');
+    //Route hiển thị form sửa
+    Route::get('/{order}/edit',[OrderController::class, 'edit'])->name('order.edit');
+    //Route update dữ liệu trên db
+    Route::put('/{order}/edit', [OrderController::class, 'update'])->name('order.update');
+});

@@ -42,7 +42,7 @@
             </a>
         </li>
         <li class="nav-item link-opacity-50-hover">
-            <a href="#" class="fs-3 nav-link link-light bi bi-file-earmark-richtext mx-3">
+            <a href="{{ route('order.index')}}" class="fs-3 nav-link link-light bi bi-file-earmark-richtext mx-3">
                 <span class="ms-3">Orders</span>
             </a>
         </li>

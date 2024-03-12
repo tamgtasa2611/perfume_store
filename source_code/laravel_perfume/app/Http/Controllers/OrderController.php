@@ -2,21 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Requests\StoreOrderRequest;
-use Illuminate\Http\Request;
+use App\Requests;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use App\Requests\OrderFormRequest;
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\isNull;
 use function Sodium\add;
 
 class OrderController extends Controller
 {
+    public function showOrder(){
+        $customers =  Customer::all();
+        $orders = Order::with('customer')
+            ->simplePaginate(6);
+        return view('admins.order_manager.index', [
+            'customers' => $customers,
+            'orders' => $orders,
+        ]);
+    }
+
+    public function index(){
+        $customers =  Customer::all();
+        $orders = Order::all();
+        return view('customers.profiles.orderHistory', [
+            'customers' => $customers,
+            'orders' => $orders
+        ]);
+    }
+
+
+
     public function checkoutProcess(StoreOrderRequest $request)
     {
         //date mua hang
@@ -41,9 +64,11 @@ class OrderController extends Controller
         Order::create($array);
 
         $maxOrderId = Order::where('customer_id', $customerId)->max('id');
-        if (!$maxOrderId) {
-            $maxOrderId = 1;
-        }
+//        if (!$maxOrderId) {
+//            $maxOrderId = 1;
+//        }else {
+//            $maxOrderId++;
+//        }
 
         //lay du lieu de insert vao bang order_details
         foreach (Session::get('cart') as $product_id => $product) {
@@ -58,12 +83,24 @@ class OrderController extends Controller
             $productQuantity->save();
             OrderDetail::create($orderDetails);
         }
-
         Session::forget('cart');
         return Redirect::route('ordersHistory')->with('success', 'Order created successfully!');
 //        } else {
 //            dd("loi");
 ////            return Redirect::route('checkout')->with('error', 'Create order failed!');
 //        }
+    }
+
+    public function edit(Order $order)
+    {
+        return view('admins.order_manager.edit', [
+            "order" => $order
+        ]);
+    }
+
+    public function update(OrderFormRequest $request, Order $order)
+    {
+        $order->update($request->all());
+        return Redirect::route('order.index')->with('success', 'Edit a order successfully!');
     }
 }
