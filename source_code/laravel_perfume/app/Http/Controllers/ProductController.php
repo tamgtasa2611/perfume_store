@@ -482,8 +482,7 @@ class ProductController extends Controller
     {
 //       xoa cart
         Session::forget('cart');
-
-        return Redirect::back();
+        return Redirect::route('product');
     }
 
     public function checkout()
