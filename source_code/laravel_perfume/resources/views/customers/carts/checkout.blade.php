@@ -38,8 +38,10 @@
         {{--    PAY --}}
         <div class="w-50 d-flex justify-content-between flex-column">
             <div class="border bg-white w-100 rounded overflow-hidden">
-                <form action="{{route('checkoutProcess')}}" method="post" class="p-3">
+                <form action="{{ route('checkoutProcess') }}" method="post"
+                      class="p-3" enctype="multipart/form-data">
                     @csrf
+                    @method('POST')
                     <div class="text-center fw-bold fs-5 mb-3">
                         Receiver information
                     </div>
@@ -92,9 +94,7 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-outline-dark rounded-5"
                                 style="transition: all 0.2s ease-in-out">
-                            <a href="{{ route('checkoutProcess')}}" class="nav-link">
-                                Pay on delivery
-                            </a>
+                            Pay on delivery
                         </button>
                     </div>
                 </form>

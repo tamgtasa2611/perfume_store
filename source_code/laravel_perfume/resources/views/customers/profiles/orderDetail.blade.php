@@ -8,7 +8,7 @@
         <div class="bg-white border w-80 rounded-end p-3 h-100 d-flex flex-column justify-content-between">
             <div>
                 <div class="fs-5">
-                    Orders history
+                    Order Detail
                 </div>
                 <div>
                     Manage your order details
@@ -42,26 +42,26 @@
                                 @endphp
                                 Order date: {{$orderDate}}
                             </div>
-{{--                            <div>--}}
-{{--                                Total: <span class="text-success fw-bold">${{$orderTotal}}</span>--}}
-{{--                            </div>--}}
+                                <div>
+                                    Total: <span class="text-success fw-bold">$
+                                        @php
+                                        $orderTotal = 0;
+                                        $orderTotal += ($order->order_detail->quantity * $order->order_detail->price);
+                                        @endphp
+                                        {{$orderTotal}})
+                                    </span>
+                                </div>
                             <div>
                                 Payment method: Pay on delivery
                             </div>
                         </div>
                         <div class="h-100 w-25 d-flex align-items-center justify-content-end">
-                            <a href="{{ route('orderDetail', $order->id)}}" class="btn btn-primary">
+                            <a href="" class="btn btn-primary">
                                 View order
                             </a>
                         </div>
                     </div>
                 @endforeach
-            </div>
-            <div>
-                <hr class="mt-0">
-                <div class="d-flex justify-content-between align-items-center">
-                    {{$orders->onEachSide(2)->links()}}
-                </div>
             </div>
         </div>
     </div>

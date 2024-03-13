@@ -37,4 +37,8 @@ class Order extends Model
         return $this->belongsTo(Method::class);
     }
 
+    public function order_detail()
+    {
+        return $this->belongsTo(OrderDetail::class);
+    }
 }

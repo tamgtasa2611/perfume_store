@@ -22,7 +22,8 @@ class OrderController extends Controller
     public function showOrder(){
         $customers =  Customer::all();
         $orders = Order::with('customer')
-            ->simplePaginate(6);
+            ->orderBy('id', 'desc')
+            ->paginate(6);
         return view('admins.order_manager.index', [
             'customers' => $customers,
             'orders' => $orders,
@@ -38,10 +39,24 @@ class OrderController extends Controller
         ]);
     }
 
+    public function orderDetail(int $id) {
+        $customerId = Auth::guard('customer')->id();
+        $customer = Customer::find($customerId);
+        $orders = Order::with('order_detail')
+        ->with('customer')
+        ->where('customer_id', '=', $customerId)
+        ->where('id','=',$id)
+        ->first();
 
+        return view('customers.profiles.orderDetail', [
+            'orders' => $orders,
+            'customer' => $customer
+        ]);
+    }
 
     public function checkoutProcess(StoreOrderRequest $request)
     {
+
         //date mua hang
         $dateBuy = date("Y-m-d H:i:s");
         //lay status (status mac dinh la 0 tuong ung trang thai xac nhan don hang)
@@ -63,7 +78,8 @@ class OrderController extends Controller
 //        $array = Arr::add($array, 'method_id', $methodId);
         Order::create($array);
 
-        $maxOrderId = Order::where('customer_id', $customerId)->max('id');
+        $maxOrderId = Order::get()
+        ->where('customer_id', $customerId)->max('id');
 //        if (!$maxOrderId) {
 //            $maxOrderId = 1;
 //        }else {
