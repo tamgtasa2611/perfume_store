@@ -8,11 +8,12 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Requests\StoreOrderRequest;
 use App\Requests;
+use http\Env\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use App\Requests\OrderFormRequest;
+use App\Requests\UpdateOrderRequest;
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\isNull;
 use function Sodium\add;
@@ -107,16 +108,35 @@ class OrderController extends Controller
 //        }
     }
 
-    public function edit(Order $order)
+    public function edit(int $id)
     {
+        $customer_id = Auth::guard('customer')->id();
+        $customer = Customer::find($customer_id);
+        $order = Order::with('customer')
+            ->where('id','=', $id)
+            ->first();
+
+        $order_details = OrderDetail::with('product')
+            ->with('order')
+            ->where('order_id', '=', $id)
+            ->get();
+
         return view('admins.order_manager.edit', [
-            "order" => $order
+            'customer' => $customer,
+            'order' => $order,
+            'order_details' => $order_details,
         ]);
     }
 
-    public function update(OrderFormRequest $request, Order $order)
+    public function update( Order $order, UpdateOrderRequest $request)
     {
-        $order->update($request->all());
+        $selectedValue = $request->input('order_status');
+        $array = [];
+        $array = Arr::add($array, 'order_status', $selectedValue);
+        $order->update($array);
+
+//        dd($array);
+
         return Redirect::route('order.index')->with('success', 'Edit a order successfully!');
     }
 }

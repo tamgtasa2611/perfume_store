@@ -22,7 +22,7 @@
                                 <div class="input-group">
                                     <label class="col-form-label text-dark font-monospace">First Name</label>
                                     <input class="rounded-3 px-3" type="text" name="first_name"
-                                           pattern="[A-Za-z]+"
+{{--                                           pattern="[A-Za-z]+"--}}
                                            value="{{$customer->first_name}}">
                                 </div>
                             </div>

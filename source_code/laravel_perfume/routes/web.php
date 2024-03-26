@@ -168,7 +168,7 @@ Route::prefix('admin/order')->group(function(){
     //Route read
     Route::get('/index', [OrderController::class, 'showOrder'])->name('order.index');
     //Route hiển thị form sửa
-    Route::get('/{order}/edit',[OrderController::class, 'edit'])->name('order.edit');
+    Route::get('/order_{id}/edit',[OrderController::class, 'edit'])->name('order.edit');
     //Route update dữ liệu trên db
-    Route::put('/{order}/edit', [OrderController::class, 'update'])->name('order.update');
+    Route::put('/order_{order}/edit', [OrderController::class, 'update'])->name('order.update');
 });

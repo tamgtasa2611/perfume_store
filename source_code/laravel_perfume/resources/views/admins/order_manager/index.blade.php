@@ -65,7 +65,7 @@
                                                                 <td class="d-flex justify-content-center pt-2">
                                                                     <div>
                                                                         <button type="button" class="btn btn-primary">
-                                                                            <a href="{{route('order.edit', $order) }}"
+                                                                            <a href="{{route('order.edit', $order->id) }}"
                                                                                class="text-white nav-link bi-pencil"
                                                                                style="text-decoration: none">Edit</a>
                                                                         </button>
@@ -80,7 +80,7 @@
                                                     No Categories found!
                                                 </p>
                                                 @endif
-                                                <div style="display: flex" class="justify-content-between">
+                                                <div style="display: flex" class="justify-content-end">
                                                     <div class="pt-3">
                                                         {{$orders->onEachSide(3)->links()}}
                                                     </div>

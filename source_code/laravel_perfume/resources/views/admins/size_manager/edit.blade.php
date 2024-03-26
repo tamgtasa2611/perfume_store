@@ -21,8 +21,8 @@
                             <div class="col-5">
                                 <div class="input-group">
                                     <label class="col-form-label text-dark font-monospace">Size Name</label>
-                                    <input class="rounded-3 px-3 " type="number" name="size_name"
-                                           pattern="[0-9]+"
+                                    <input class="rounded-3 px-3 " type="text" name="size_name"
+{{--                                           pattern="[0-9]+"--}}
                                            value="{{$size->size_name}}">
                                 </div>
                             </div>

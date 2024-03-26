@@ -481,7 +481,6 @@ class ProductController extends Controller
 
     public function checkout()
     {
-
         $customer_id = Auth::guard('customer')->id();
         $customer = Customer::find($customer_id);
         return view('customers.carts.checkout', [
