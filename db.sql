@@ -145,16 +145,8 @@ INSERT INTO sizes(size_name) VALUES
 ("125ml"),
 ("200ml");
 
-select * from orders;
-select * from orders_details;
-select * from admins;
-select * from products;
--- delete from products;
--- alter table products auto_increment = 1;
-
--- tạm thời fake dữ liệu product = db:seed trong laravel nhé ko dùng cái insert products
-
--- INSERT INTO products(product_name, quantity, price, description, image, size_id, category_id, season_id, gender_id, brand_id) VALUES
--- ("ACQUA DI GIOIA", 100, 200, "", "images/products/product_1.webp", 2, 2, 3, 2, 5),
--- ("PLATINUM", 100, 88, "", "images/products/product_2.webp", 3, 5, 1, 3, 1),
--- ("SAUVAGE ELIXIR", 100, 49, "", "images/products/product_3.webp", 4, 4, 3, 2, 6);
+delete from products;
+INSERT INTO products(product_name, quantity, price, description, image, size_id, category_id, season_id, brand_id) VALUES
+("ACQUA DI GIOIA", 100, 200, "", "images/products/product_1.webp", 2, 2, 3,  5),
+("PLATINUM", 100, 88, "", "images/products/product_2.webp", 3, 5, 1, 1),
+("SAUVAGE ELIXIR", 100, 49, "", "images/products/product_3.webp", 4, 4, 3, 6);
