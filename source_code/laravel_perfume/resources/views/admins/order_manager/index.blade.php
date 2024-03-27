@@ -73,7 +73,7 @@
                                                                             @break
                                                                         @case(3)
                                                                             <div class="text-success">
-                                                                                Complete
+                                                                                Completed
                                                                             </div>
                                                                             @break
                                                                         @case(4)

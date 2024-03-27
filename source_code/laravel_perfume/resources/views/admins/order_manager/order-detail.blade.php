@@ -14,42 +14,37 @@
                 <div class="fs-1">
                     Order Details #{{$order->id}}
                 </div>
-                <div class="d-flex align-items-center">
-                    Status:
-                    <select>
-                        <option value="{{$order->order_status}}">
-                            @foreach($order->order_status)
 
-                            @endforeach
-                                @case(0)
-                                    <div class="text-danger">
-                                        Pending
-                                    </div>
-                                    @break
-                                @case(1)
-                                    <div class="text-success">
-                                        Confirmed
-                                    </div>
-                                    @break
-                                @case(2)
-                                    <div class="text-primary">
-                                        Delivering
-                                    </div>
-                                    @break
-                                @case(3)
-                                    <div class="text-success">
-                                        Complete
-                                    </div>
-                                    @break
-                                @case(4)
-                                    <div class="text-danger">
-                                        Cancelled
-                                    </div>
-                                    @break
-                            @endswitch
-                        </option>
-                    </select>
-                </div>
+                <form method="post" action="{{ route('order.detail', $order) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="d-flex align-items-center">
+                        Status:
+                        <select class="form-select" name="order_status">
+                            <option class="form-check-input bg-danger text-w" type="radio" name="order_status"
+                                    value="0" {{Request::get('order_status') == 'Pending' ? 'selected':''}}>
+                                Pending
+                            </option>
+                            <option class="form-check-input bg-success " type="radio" name="order_status"
+                                    value="1" {{Request::get('order_status') == 'Confirmed' ? 'selected':''}}>
+                                Confirmed
+                            </option>
+                            <option class="form-check-input" type="radio" name="order_status"
+                                    value="2" {{Request::get('order_status') == 'Delivering' ? 'selected':''}}>
+                                Delivering
+                            </option>
+                            <option class="form-check-input" type="radio" name="order_status"
+                                    value="3" {{Request::get('order_status') == 'Completed' ? 'selected':''}}>
+                                Completed
+                            </option>
+                            <option class="form-check-input" type="radio" name="order_status"
+                                    value="4" {{Request::get('order_status') == 'Cancelled' ? 'selected':''}}>
+                                Cancelled
+                            </option>
+                        </select>
+                        <button type="submit" class="btn btn-primary nice-box-shadow font-monospace">UPDATE</button>
+                    </div>
+                </form>
             </div>
             <hr>
             <div class="d-flex container w-75">
@@ -106,8 +101,8 @@
                     @foreach($order_details as $detail)
                         <div class="d-flex mb-3">
                             <div class="border rounded p-3 object-fit-fill
-                             overflow-hidden w-25 me-3">
-                                <img src="{{asset($detail->image)}}" width="80px" height="80px">
+                             overflow-hidden w-50 me-3">
+                                <img src="{{asset($detail->image)}}" height="80px">
                             </div>
                             <div class="flex-fill d-flex flex-column justify-content-between">
                                 <div>

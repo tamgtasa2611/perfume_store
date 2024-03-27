@@ -86,7 +86,7 @@ class OrderController extends Controller
         ]);
     }
 
-    public function showDetail(Order $order)
+    public function showDetail(Order $order, Request $request)
     {
         $orderId = $order->id;
         $orderDetails = DB::table('orders_details')
@@ -102,6 +102,9 @@ class OrderController extends Controller
         }
         $orderTotal = $orderAmount + 10;
         $admin = Admin::where('id', '=', $order->admin_id)->first();
+        $array = [];
+        $array = Arr::add($array, 'order_status', $request->order_status);
+        $order->update($array);
 //        $product = Product::all();
 //        $customer = Customer::all();
 //        $admin = Admin::all();
@@ -116,5 +119,11 @@ class OrderController extends Controller
 //            'customer' => $customer,
 //            'admin' => $admin
         ]);
+    }
+    public function updateStatusOrder(Request $request, Order $order )
+    {
+        $order->update($request->all());
+        //Quay về danh sách
+        return Redirect::route('order.index')->with('success', "Edit Order's Status successfully!");
     }
 }
