@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Requests\StoreCustomerRequest;
 use App\Requests\UpdateCustomerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -192,11 +194,43 @@ class CustomerController extends Controller
         $id = Auth::guard('customer')->user()->id;
         //lay ban ghi
         $customer = Customer::find($id);
-        return view('customers.profiles.profile', [
-            'customer' => $customer
+        $orders = Order::where('customer_id', $id)->paginate(2);
+
+        return view('customers.profiles.orderHistory', [
+            'customer' => $customer,
+            'orders' => $orders,
         ]);
     }
 
+    public function orderDetail(Order $order)
+    {
+        //id cua customer dang dang nhap
+        $id = Auth::guard('customer')->user()->id;
+        //lay ban ghi
+        $customer = Customer::find($id);
+        $orderId = $order->id;
+        $orderDetails = DB::table('orders_details')
+            ->where('order_id', '=', $orderId)
+            ->join('products', 'orders_details.product_id', '=', 'products.id')
+            ->get();
+
+        $orderAmount = 0;
+        $orderItems = 0;
+        foreach ($orderDetails as $detail) {
+            $orderItems += $detail->sold_quantity;
+            $orderAmount += $detail->sold_price * $detail->sold_quantity;
+        }
+        $orderTotal = $orderAmount + 10;
+
+        return view('customers.profiles.orderDetail', [
+            'order' => $order,
+            'order_details' => $orderDetails,
+            'order_item' => $orderItems,
+            'order_amount' => $orderAmount,
+            'order_total' => $orderTotal,
+            'customer' => $customer,
+        ]);
+    }
     public function editPassword()
     {
         //id cua customer dang dang nhap

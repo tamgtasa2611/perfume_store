@@ -45,6 +45,7 @@ Route::middleware(CheckLoginCustomer::class)->group(function () {
     Route::put('/profile', [CustomerController::class, 'updateProfile'])->name('profile.update');
 
     Route::get('/orders_history', [CustomerController::class, 'showOrdersHistory'])->name('ordersHistory');
+    Route::get('/order_{id}/detail',[OrderController::class,'orderDetail'])->name('orderDetail');
 
     Route::get('/change_password', [CustomerController::class, 'editPassword'])->name('pwd.edit');
     Route::put('/change_password', [CustomerController::class, 'updatePassword'])->name('pwd.update');
@@ -161,3 +162,13 @@ Route::prefix('admin/size')->group(function(){
     Route::delete('/{size}', [\App\Http\Controllers\SizeController::class, 'destroy'])->name('size.destroy');
 });
 // -------- End Size manager ----------
+
+// -------- End Order manager ----------
+Route::prefix('admin/order')->group(function(){
+    //Route read
+    Route::get('/index', [OrderController::class, 'showOrder'])->name('order.index');
+    //Route hiển thị form sửa
+    Route::get('/order_{id}/edit',[OrderController::class, 'edit'])->name('order.edit');
+    //Route update dữ liệu trên db
+    Route::put('/order_{order}/edit', [OrderController::class, 'update'])->name('order.update');
+});

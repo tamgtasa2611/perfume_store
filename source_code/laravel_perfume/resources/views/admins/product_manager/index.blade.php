@@ -1,5 +1,5 @@
 @vite(["resources/sass/app.scss", "resources/js/app.js"])
-<title>Customers Manager</title>
+<title>Products Manager</title>
 <body style="background-color: #303036">
 <div id="content" class="">
     <div class="wrapper d-flex align-items-stretch">
@@ -12,7 +12,7 @@
         <div class="content-container mt-5 ">
             <div class="d-flex mx-auto mt-5">
                 <h1 class="me-sm-5 text-white">Product list</h1>
-                <nav style="width: 810px"></nav>
+                <nav style="width: 610px"></nav>
 
                 <form class="d-flex search-form mb-0" action="{{route('admin.product')}}">
                     <div class="input-group input-group-sm">
@@ -41,15 +41,9 @@
                                                         <th scope="col">ID</th>
                                                         <th scope="col">PRODUCT NAME</th>
                                                         <th scope="col">QUANTITY</th>
-                                                        <th scope="col">PRICE</th>
-                                                        <th scope="col">DESCRIPTION</th>
                                                         <th scope="col">IMAGE</th>
-                                                        <th scope="col">SIZE</th>
-                                                        <th scope="col">CATEGORY</th>
-                                                        <th scope="col">SEASON</th>
-                                                        <th scope="col">GENDER</th>
-                                                        <th scope="col">BRAND</th>
                                                         <th scope="col">ACTION</th>
+                                                        <th scope="col">DETAIL</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -59,16 +53,9 @@
                                                                 <td> {{$product->id}} </td>
                                                                 <td> {{$product->product_name}} </td>
                                                                 <td> {{$product->quantity}} </td>
-                                                                <td> {{$product->price}} </td>
-                                                                <td> {{$product->description}} </td>
                                                                 <td>
-                                                                    <img src="{{ asset($product->image) }}" width="90px" height="90px">
+                                                                    <img class="rounded rounded-4" src="{{ asset($product->image) }}" width="90px" height="90px">
                                                                 </td>
-                                                                <td> {{$product->size->size_name}}</td>
-                                                                <td> {{$product->category->category_name}}</td>
-                                                                <td> {{$product->season->season_name}}</td>
-                                                                <td> {{$product->gender->gender_name}}</td>
-                                                                <td> {{$product->brand->brand_name}}</td>
 
                                                                 <td class="d-flex justify-content-center  popover-body py-sm-5">
                                                                     <div>
@@ -87,6 +74,13 @@
                                                                             Delete
                                                                         </button>
                                                                     </div>
+                                                                </td>
+                                                                <td class="justify-content-center py-sm-5">
+                                                                        <button type="button" class="btn btn-success">
+                                                                            <a href="{{route('product.detail', $product) }}"
+                                                                               class="text-white nav-link bi-pencil"
+                                                                               style="text-decoration: none">Details</a>
+                                                                        </button>
                                                                 </td>
                                                             </tr>
                                                             <!--                              end modal-->

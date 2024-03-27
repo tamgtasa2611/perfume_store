@@ -17,44 +17,41 @@
             </div>
             <div class="d-flex w-100 h-100 flex-column">
                 @foreach($orders as $order)
-                    <div class="w-100 h-50 d-flex justify-content-between border rounded bg-light mb-3 p-3">
-                        <div class="h-100 w-75">
-                            <div class="fw-bold fst-italic">
-                                @switch($order->order_status)
-                                    @case(0)
-                                        <span class="text-danger">Pending</span>
-                                        @break
-                                    @case(1)
-                                        <span class="text-primary">Confirmed</span>
-                                        @break
-                                @endswitch
-                            </div>
-                            <div>
-                                Order number: {{$order->id}}
-                            </div>
-                            <div>
-                                @php
-                                    $hour = substr($order->order_date, 10);
-                                    $day = substr($order->order_date, 8, 2);
-                                    $month = date("F", mktime(0, 0, 0, substr($order->order_date, 5, 2), 1));
-                                    $year = substr($order->order_date, 0, 4);
-                                    $orderDate = $hour . ' - ' . $month . ' ' . $day . ', ' . $year;
-                                @endphp
-                                Order date: {{$orderDate}}
-                            </div>
-                            <div>
-                                Total: <span class="text-success fw-bold">${{$orderTotal}}</span>
-                            </div>
-                            <div>
-                                Payment method: Pay on delivery
-                            </div>
+                <div class="w-100 h-50 d-flex justify-content-between border rounded bg-light mb-3 p-3">
+                    <div class="h-100 w-75">
+                        <div class="fw-bold fst-italic">
+                            @switch($order->order_status)
+                            @case(0)
+                            <span class="text-danger">Pending</span>
+                            @break
+                            @case(1)
+                            <span class="text-primary">Confirmed</span>
+                            @break
+                            @endswitch
                         </div>
-                        <div class="h-100 w-25 d-flex align-items-center justify-content-end">
-                            <a href="" class="btn btn-primary">
-                                View order
-                            </a>
+                        <div>
+                            Order number: {{$order->id}}
+                        </div>
+                        <div>
+                            @php
+                            $hour = substr($order->order_date, 10);
+                            $day = substr($order->order_date, 8, 2);
+                            $month = date("F", mktime(0, 0, 0, substr($order->order_date, 5, 2), 1));
+                            $year = substr($order->order_date, 0, 4);
+                            $orderDate = $hour . ' - ' . $month . ' ' . $day . ', ' . $year;
+                            @endphp
+                            Order date: {{$orderDate}}
+                        </div>
+                        <div>
+                            Payment method: Pay on delivery
                         </div>
                     </div>
+                    <div class="h-100 w-25 d-flex align-items-center justify-content-end">
+                        <a href="{{route('orderDetail', $order)}}" class="btn btn-primary">
+                            View order
+                        </a>
+                    </div>
+                </div>
                 @endforeach
             </div>
             <div>

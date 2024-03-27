@@ -28,7 +28,7 @@
                     <div class="col-md-6">
                         <label for="new_pwd2" class="form-label">Re-enter new password</label>
                         <input type="text" class="form-control" id="new_pwd2"
-                               name="new_pwd2" value="{{$customer->password}}">
+                               name="new_pwd2" value="">
                     </div>
                     <div class="col-md-6"></div>
 

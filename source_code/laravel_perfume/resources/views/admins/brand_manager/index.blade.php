@@ -3,7 +3,7 @@
 <body style="background-color: #303036">
 <div id="content" class="">
     <div class="wrapper d-flex align-items-stretch">
-        <div style="width: 520px"></div>
+        <div style="width: 420px"></div>
         <div class="position-fixed rounded-left" style="height: 100%">
             @include('layouts.navbar_adminMenu')
         </div>

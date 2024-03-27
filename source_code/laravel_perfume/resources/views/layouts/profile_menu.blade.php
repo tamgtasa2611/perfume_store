@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="py-2">
-            <a href="{{route('ordersHistory')}}" class="text-decoration-none text-dark">
+            <a href="{{route('orderHistory')}}" class="text-decoration-none text-dark">
                 <i class="bi bi-file-text me-3 text-success"></i> Orders history
             </a>
         </li>

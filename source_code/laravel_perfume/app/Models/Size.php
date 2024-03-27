@@ -9,6 +9,7 @@ class Size extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = ['size_name'];
     protected $table = 'sizes';
 

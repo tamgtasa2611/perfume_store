@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label class="fs-4">Upload Product Image</label>
-                                            <input type="file" name="image" multiple class="form-control">
+                                            <input type="file" name="image" class="form-control">
                                         </div>
                                     </div>
                                 </div>

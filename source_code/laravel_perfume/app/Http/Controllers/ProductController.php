@@ -174,6 +174,15 @@ class ProductController extends Controller
         ]);
     }
 
+    public function showDetail(Product $product)
+    {
+        $brand = Brand::where('id', '=', $product->brand_id)->first();
+        return view('admins.product_manager.product_details', [
+            'product' => $product,
+            'brand' => $brand,
+        ]);
+    }
+
     public function create()
     {
         $brands = Brand::all();
@@ -193,44 +202,11 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-//        $data = $request->validate([
-//            'product_name' => 'required',
-//            'quantity' => 'required|numeric',
-//            'price' => 'required|numeric',
-//            'image' => 'required|mimes:png,jpg,jpeg,webp',
-//            'size_id' => 'required|numeric',
-//            'category_id' => 'required|numeric',
-//            'season_id' => 'required|numeric',
-//            'gender_id' => 'required|numeric',
-//            'brand_id' => 'required|numeric',
-//        ]);
-//        if ($request->has('image')) {
-//            $file = $request->file('image');
-//            $extension = $file->getClientOriginalExtension();
-//            $filename = time() . '.' . $extension;
-//            $path = 'images/products/';
-//            $file->move($path, $filename);
-//
-//        }
-//
-//        Product::create([
-//            'product_name' => $request->product_name,
-//            'quantity' => $request->quantity,
-//            'price' => $request->price,
-//            'description' => $request->description,
-//            'image' => $path . $filename,
-//            'category_id' => $request->category_id,
-//            'size_id' => $request->size_id,
-//            'season_id' => $request->season_id,
-//            'gender_id' => $request->gender_id,
-//            'brand_id' => $request->brand_id,
-//        ]);
-//        return Redirect::route('admin.product')->with('success', 'Add a product successfully!');
         if ($request->validated()) {
-//            $image = $request->file('image')->getClientOriginalName();
-//            if(!Storage::exists('storage/app/public/images/products/'.$image)){
-//                Storage::putFileAs('storage/app/public/images/products', $request->file('image'), $image);
-//            }
+            $image = $request->file('image')->getClientOriginalName();
+            if(!Storage::exists('images/products/'.$image)){
+                Storage::putFileAs('images/products/', $request->file('image'), $image);
+            }
             if ($request->has('image')) {
                 $file = $request->file('image');
                 $extension = $file->getClientOriginalExtension();
@@ -249,7 +225,7 @@ class ProductController extends Controller
             $array = Arr::add($array, 'season_id', $request->season_id);
             $array = Arr::add($array, 'gender_id', $request->gender_id);
             $array = Arr::add($array, 'brand_id', $request->brand_id);
-            $array = Arr::add($array, 'image', $request->image);
+            $array = Arr::add($array, 'image', $image);
             //Lấy dữ liệu từ form và lưu lên db
             Product::create($array);
             return Redirect::route('admin.product')->with('success', 'Add a product successfully!');
@@ -312,28 +288,6 @@ class ProductController extends Controller
             'gender_id' => $request->gender_id,
             'brand_id' => $request->brand_id,
         ]);
-//        if($request->file('image') != null){
-//            $image = $request->file('image')->getClientOriginalName();
-//        } else {
-//            $image = $product->image;
-//        }
-//        //Kiểm tra nếu file chưa tồn tại thì lưu vào trong folder code
-//        if(!Storage::exists('public/images/products/'.$image)){
-//            Storage::putFileAs('public/images/products/', $request->file('image'), $image);
-//        }
-//        //Lấy dữ liệu trong form và update lên db
-//        $array = [];
-//        $array = Arr::add($array, 'product_name', $request->product_name);
-//        $array = Arr::add($array, 'quantity', $request->quantity);
-//        $array = Arr::add($array, 'price', $request->price);
-//        $array = Arr::add($array, 'description', $request->description);
-//        $array = Arr::add($array, 'size', $request->size);
-//        $array = Arr::add($array, 'category', $request->category);
-//        $array = Arr::add($array, 'season', $request->season);
-//        $array = Arr::add($array, 'gender', $request->gender);
-//        $array = Arr::add($array, 'brand', $request->brand);
-//        $array = Arr::add($array, 'image', $image);
-//        $product->update($array);
         //Quay về danh sách
         return Redirect::route('admin.product')->with('success', 'Edit a product successfully!');
     }
@@ -343,7 +297,7 @@ class ProductController extends Controller
         //Xóa bản ghi được chọn
         $product->delete();
         //Quay về danh sách
-        return Redirect::back()->with('success', 'Delete a product successfully!');
+        return Redirect::route('admin.product')->with('success', 'Delete a product successfully!');
     }
 
     public function cart()
@@ -482,7 +436,8 @@ class ProductController extends Controller
     {
 //       xoa cart
         Session::forget('cart');
-        return Redirect::route('product');
+
+        return Redirect::back();
     }
 
     public function checkout()

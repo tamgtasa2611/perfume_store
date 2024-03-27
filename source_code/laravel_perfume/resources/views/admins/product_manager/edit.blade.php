@@ -109,8 +109,8 @@
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label class="fs-4">Upload Product Image</label>
-                                            <input type="file" name="image" multiple class="form-control">
-                                            <img src="{{ asset( $product->image) }}" width="100px" height="100px">
+                                            <input type="file" name="image" multiple class="form-control mb-3">
+                                            <img src="{{ asset( $product->image) }}" width="100px" height="100px" class="rounded rounded-4">
                                         </div>
                                     </div>
                                 </div>

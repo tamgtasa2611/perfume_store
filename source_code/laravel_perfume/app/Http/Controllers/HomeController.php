@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $totalOrders = Order::whereNotIn('order_status', [0,4])->count();
+        $totalOrders = Order::where('order_status', '!=', 10)->count();
         $totalProducts = Product::count();
         $totalCustomers = Customer::count();
         $totalRevenue = Order::whereNotIn('order_status', [0,4])
@@ -22,7 +22,7 @@ class HomeController extends Controller
         $currentDate = Carbon::now()->format('Y-m-d');
         $currentDateName = Carbon::now()->format('M');
 
-        $revenueThisMonth = Order::where('order_status', '!=', 4)
+        $revenueThisMonth = Order::whereNotIn('order_status', [0,4])
                             -> whereDate('order_date', '>=', $startOfMonth)
                             -> whereDate('order_date', '<=', $currentDate)
                             -> join('orders_details', 'orders.id', 'orders_details.order_id')
@@ -32,7 +32,7 @@ class HomeController extends Controller
         $lastMonthStartDate = Carbon::now()->subMonth()->startOfMonth()->format('Y-m-d');
         $lastMonthEndDate = Carbon::now()->subMonth()->endOfMonth()->format('Y-m-d');
         $lastMonthName = Carbon::now()->subMonth()->startOfMonth()->format('M');
-        $revenueLastMonth = Order::where('order_status', '!=', 4)
+        $revenueLastMonth = Order::whereNotIn('order_status', [0,4])
             -> whereDate('order_date', '>=', $lastMonthStartDate)
             -> whereDate('order_date', '<=', $lastMonthEndDate)
             -> join('orders_details', 'orders.id', 'orders_details.order_id')
@@ -41,7 +41,7 @@ class HomeController extends Controller
         // Last 30 days sale
         $last30DayStartDate = Carbon::now()->subDay(30)->format('Y-m-d');
         $last30DayName = Carbon::now()->subDay(30)->format('d-m');
-        $revenueLast30Days = Order::where('order_status', '!=', 4)
+        $revenueLast30Days = Order::whereNotIn('order_status', [0,4])
             -> whereDate('order_date', '>=', $last30DayStartDate)
             -> whereDate('order_date', '<=', $currentDate)
             -> join('orders_details', 'orders.id', 'orders_details.order_id')

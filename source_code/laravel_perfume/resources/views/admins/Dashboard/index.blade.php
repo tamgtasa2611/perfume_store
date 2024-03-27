@@ -22,7 +22,7 @@
                             <div class="icon">
                                 <i class="bi bi-bag"></i>
                             </div>
-                            <a href="#" class="small-box-footer text-white">More info<i class="bi bi-arrow-right-circle"></i></a>
+                            <a href="{{route('order.index')}}" class="small-box-footer text-white">More info<i class="bi bi-arrow-right-circle"></i></a>
                         </div>
                     </div>
 {{--                            Total Product            --}}
